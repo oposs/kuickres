@@ -77,6 +77,9 @@ jobs:
         restore-keys: |
           ${{ matrix.os }}-node-${{ matrix.node }}-
 
+    - name: Install Gettext
+      run: sudo apt-get install gettext
+
     - name: Bootstrap
       run: ./bootstrap
 
