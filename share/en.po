@@ -1,0 +1,84 @@
+#: lib/Kuickres/GuiPlugin/Song.pm:63
+msgid "*"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:64
+msgid "Nice Start"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:87
+msgid "Id"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:95 lib/Kuickres/GuiPlugin/SongForm.pm:69
+msgid "Title"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:102
+msgid "Voices"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:109 lib/Kuickres/GuiPlugin/SongForm.pm:92
+msgid "Composer"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:116
+msgid "Page"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:136 lib/Kuickres/GuiPlugin/SongForm.pm:109
+msgid "Note"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:166
+msgid "Add Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:170
+msgid "New Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:186 lib/Kuickres/GuiPlugin/Song.pm:191
+msgid "Edit Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:200
+msgid "Delete Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:203
+msgid "Do you really want to delete the selected Song "
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:60
+msgid "SongId"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:77
+msgid "Song Details"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:78
+msgid ""
+"Use the following fields to write down some extra information about the song."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:86
+msgid "Song has a "
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:97
+msgid "Song Page"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:111
+msgid "Use this area to write down additional notes on the particular song."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:144
+msgid "Save Changes"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:145
+msgid "Add Tree Node"
+msgstr ""

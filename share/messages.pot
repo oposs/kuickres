@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the kuickres package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: kuickres 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-02-27 14:50+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: lib/Kuickres/GuiPlugin/Song.pm:63
+msgid "*"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:64
+msgid "Nice Start"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:87
+msgid "Id"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:95 lib/Kuickres/GuiPlugin/SongForm.pm:69
+msgid "Title"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:102
+msgid "Voices"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:109 lib/Kuickres/GuiPlugin/SongForm.pm:92
+msgid "Composer"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:116
+msgid "Page"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:136 lib/Kuickres/GuiPlugin/SongForm.pm:109
+msgid "Note"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:166
+msgid "Add Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:170
+msgid "New Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:186 lib/Kuickres/GuiPlugin/Song.pm:191
+msgid "Edit Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:200
+msgid "Delete Song"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Song.pm:203
+msgid "Do you really want to delete the selected Song "
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:60
+msgid "SongId"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:77
+msgid "Song Details"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:78
+msgid ""
+"Use the following fields to write down some extra information about the song."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:86
+msgid "Song has a "
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:97
+msgid "Song Page"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:111
+msgid "Use this area to write down additional notes on the particular song."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:144
+msgid "Save Changes"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/SongForm.pm:145
+msgid "Add Tree Node"
+msgstr ""

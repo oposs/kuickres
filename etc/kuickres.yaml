@@ -1,0 +1,29 @@
+
+BACKEND:
+  cfg_db: /tmp/kuickres.db
+  sesame_user: adfadsfasdf4ee3r
+# perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("access"),"\n"'
+  sesame_pass: 393afhkjhffjj
+
+FRONTEND:
+# logo = ../resource/kuickres/logo.png
+# logo_small = ../resource/kuickres/logo-small.png
+  title: Kuickres Reservation System
+  initial_plugin: Booking
+  company_name: Sportamt der Stadt Zürich
+  company_url: https://sportamt.ch
+
+PLUGIN:
+  - InitialUser:
+      module: UserForm
+      mode: init
+      type: add
+      tab-name: Create Initial User
+
+  - Songs:
+      module: Song
+      tab-name: Songs
+
+  - AdminUser:
+      module: Users
+      tab-name: Admin User Manager

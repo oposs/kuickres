@@ -30,7 +30,11 @@ nytprof.out
 public/
 /config.*
 etc/*.cfg
-/frontend/compiled/
+etc/*.yaml
+!etc/*.dist.*
+etc/*secret
+/frontend/compiled
+/frontend/node_modules
 /configure
 *~
 /.vscode/perl-lang/
