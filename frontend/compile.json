@@ -28,6 +28,7 @@
     {
       "class": "kuickres.Application",
       "theme": "kuickres.theme.Theme",
+      "title": "KuickRes the Room Reservation System",
       "name": "kuickres",
       "bootPath": "source/boot"
     }

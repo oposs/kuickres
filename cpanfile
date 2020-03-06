@@ -1,2 +1,2 @@
-requires 'CallBackery', '>= 0.29.2';
+requires 'CallBackery', '>= 0.30.1';
 requires 'Mojo::SQLite';

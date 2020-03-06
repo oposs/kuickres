@@ -72,8 +72,8 @@ __DATA__
 CREATE TABLE location (
     location_id   INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     location_name TEXT NOT NULL,
-    location_opening_hr REAL NOT NULL,
-    location_closing_hr REAL NOT NULL,
+    location_open_start INTEGER NOT NULL,
+    location_open_duration INTEGER NOT NULL,
     location_address TEXT NOT NULL
 );
 
@@ -85,8 +85,8 @@ CREATE TABLE room (
 
 CREATE TABLE booking (
     booking_id  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    booking_room INTEGER NOT NULL REFERENCES room(room_id),
     booking_cbuser INTEGER NOT NULL REFERENCES cbuser(cbuser_id),
+    booking_room INTEGER NOT NULL REFERENCES room(room_id),
     booking_start_ts TIMESTAMP NOT NULL,
     booking_duration_s INTEGER NOT NULL
         CHECK( booking_duration_s > 0 ),
@@ -114,8 +114,8 @@ CREATE TABLE district (
 );
 
 CREATE TABLE agegroup (
-    group_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    group_name TEXT NOT NULL
+    agegroup_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    agegroup_name TEXT NOT NULL
 );
 
 CREATE TABLE syscfg (
@@ -141,6 +141,5 @@ CREATE TABLE IF NOT EXISTS cbuser (
 
 INSERT INTO cbright (cbright_key,cbright_label)
     VALUES 
-        ('booker','Booker'),
-        ('booker-ex','Booker Extern');
+        ('booker','Booker');
 

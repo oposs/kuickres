@@ -19,10 +19,25 @@ PLUGIN:
       mode: init
       type: add
       tab-name: Create Initial User
+  - Booking:
+      module: Booking
+      tab-name: Bookings
+      
+  - Location:
+      module: Location
+      tab-name: Locations
+      
+  - Room:
+      module: Room
+      tab-name: Rooms
 
-  - Songs:
-      module: Song
-      tab-name: Songs
+  - District:
+      module: District
+      tab-name: Districts
+
+  - Agegroup:
+      module: Agegroup
+      tab-name: Age Groups
 
   - AdminUser:
       module: Users

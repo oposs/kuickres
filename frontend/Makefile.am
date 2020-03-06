@@ -5,33 +5,35 @@ EXTRA_DIST = compile.js  compile.json  config.json Manifest.json package.json pa
 
 if BUILD_QOOXDOO_APP
 
+CBFILES=$(shell find $(CALLBACKERY_QX) -name '*.js')
+
 all-local: build
 
 .PHONY: source source-watch node_modules build clean
 
-node_modules: package-lock.json
+node_modules: node_modules/.installed
 
 source: node_modules compiled/source/.built
 
-
 source-watch: node_modules
-	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --watch --feedback=false --erase
+	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --watch --feedback=false
 
 build: ../public/.built
 
 clean: node_modules
 	$(NPX) qx clean
 
-../public/.built: $(EXTRA_DIST) Makefile.in
+../public/.built: $(EXTRA_DIST) Makefile.in $(CBFILES)
 	$(MAKE) node_modules
-	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --target=build --feedback=false --erase
+	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --target=build --feedback=false
 	touch $@
 
-compiled/source/.built: $(EXTRA_DIST) Makefile.in
-	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --feedback=false --erase
+compiled/source/.built: $(EXTRA_DIST) Makefile.in $(CBFILES)
+	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --feedback=false
 	touch $@
 
-package-lock.json: package.json
+node_modules/.installed package-lock.json: package.json
 	$(NPM) i
+	touch $@
 
 endif

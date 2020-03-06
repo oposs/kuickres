@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-27 14:50+0100\n"
+"POT-Creation-Date: 2020-03-05 14:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,87 +17,268 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: lib/Kuickres/GuiPlugin/Song.pm:63
-msgid "*"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:64
-msgid "Nice Start"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:87
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:56
+#: lib/Kuickres/GuiPlugin/Booking.pm:45
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:55
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:54
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:79
+#: lib/Kuickres/GuiPlugin/District.pm:44
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:56 lib/Kuickres/GuiPlugin/Room.pm:43
+#: lib/Kuickres/GuiPlugin/Location.pm:44 lib/Kuickres/GuiPlugin/Agegroup.pm:43
 msgid "Id"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Song.pm:95 lib/Kuickres/GuiPlugin/SongForm.pm:69
-msgid "Title"
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:65
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:64
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:63 lib/Kuickres/GuiPlugin/District.pm:52
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:65 lib/Kuickres/GuiPlugin/Room.pm:51
+#: lib/Kuickres/GuiPlugin/Location.pm:52 lib/Kuickres/GuiPlugin/Agegroup.pm:51
+msgid "Name"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Song.pm:102
-msgid "Voices"
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:74
+msgid "Location Details"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Song.pm:109 lib/Kuickres/GuiPlugin/SongForm.pm:92
-msgid "Composer"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:116
-msgid "Page"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:136 lib/Kuickres/GuiPlugin/SongForm.pm:109
-msgid "Note"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:166
-msgid "Add Song"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:170
-msgid "New Song"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:186 lib/Kuickres/GuiPlugin/Song.pm:191
-msgid "Edit Song"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:200
-msgid "Delete Song"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Song.pm:203
-msgid "Do you really want to delete the selected Song "
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/SongForm.pm:60
-msgid "SongId"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/SongForm.pm:77
-msgid "Song Details"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/SongForm.pm:78
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:75
 msgid ""
-"Use the following fields to write down some extra information about the song."
+"Use the following fields to write down some extra information about the "
+"location."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/SongForm.pm:86
-msgid "Song has a "
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:79
+msgid "Opening Time"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/SongForm.pm:97
-msgid "Song Page"
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:88
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:106
+msgid "Expected HH:MM"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/SongForm.pm:111
-msgid "Use this area to write down additional notes on the particular song."
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:95
+msgid "Closing Time"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/SongForm.pm:144
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:113
+#: lib/Kuickres/GuiPlugin/Location.pm:73
+msgid "Address"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:160
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:102
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:113
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:243
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:102
 msgid "Save Changes"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/SongForm.pm:145
-msgid "Add Tree Node"
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:161
+#: lib/Kuickres/GuiPlugin/Location.pm:94
+msgid "Add Location"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:53
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:105
+msgid "Room"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:60
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:88
+msgid "User"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:67
+msgid "Date"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:74
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:115
+msgid "Time"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:81
+msgid "Schedule Entry"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:88
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:180
+msgid "District"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:95
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:190
+msgid "Age Group"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:102
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:200
+msgid "Comment"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:109
+msgid "Created"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:116
+msgid "Deleted"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:137
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:244
+msgid "Add Booking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:142
+msgid "New Booking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:158 lib/Kuickres/GuiPlugin/Booking.pm:164
+msgid "Edit Booking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:180
+msgid "Delete Booking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:183
+msgid "Do you really want to delete the selected Booking."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:103
+#: lib/Kuickres/GuiPlugin/District.pm:73
+msgid "Add District"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:72 lib/Kuickres/GuiPlugin/Room.pm:58
+msgid "Location"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:114 lib/Kuickres/GuiPlugin/Room.pm:79
+msgid "Add Room"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:49
+msgid "Expected DD.MM.YYYY HH:MM-HH:MM"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:53
+msgid "Error parsing %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:54
+msgid "Can't book in the past!"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:98
+msgid "Invalid user"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:146
+msgid "Location %1 is only open for booking from %2 to %3"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:164
+msgid "Booking overlaps with %1 existing bookings."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:171
+msgid "Schedule Text"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:175
+msgid "Text to show in the schedule"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:203
+msgid "Note for the management"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:222
+msgid "You are not allowed to book in the name of other users."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/District.pm:77
+msgid "New District"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/District.pm:90 lib/Kuickres/GuiPlugin/District.pm:94
+msgid "Edit District"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/District.pm:107
+msgid "Delete District"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/District.pm:110
+msgid ""
+"Do you really want to delete the selected District. This will only work if "
+"there are no reservations linked to it."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:103
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:72
+msgid "Add Agegroup"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Room.pm:83
+msgid "New Room"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Room.pm:96 lib/Kuickres/GuiPlugin/Room.pm:100
+msgid "Edit Room"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Room.pm:113
+msgid "Delete Room"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Room.pm:116
+msgid ""
+"Do you really want to delete the selected Room. This will only work if there "
+"are no reservations linked to it."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:59
+msgid "Open"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:66
+msgid "Close"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:98
+msgid "New Location"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:111
+#: lib/Kuickres/GuiPlugin/Location.pm:115
+msgid "Edit Location"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:128
+msgid "Delete Location"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:131
+msgid ""
+"Do you really want to delete the selected Location. This will only work if "
+"there are no rooms linked to it."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:76
+msgid "New Agegroup"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:89 lib/Kuickres/GuiPlugin/Agegroup.pm:93
+msgid "Edit Agegroup"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:106
+msgid "Delete Agegroup"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:109
+msgid ""
+"Do you really want to delete the selected Agegroup. This will only work if "
+"there are no reservations linked to it."
 msgstr ""
