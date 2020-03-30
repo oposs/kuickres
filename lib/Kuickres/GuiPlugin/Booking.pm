@@ -24,7 +24,7 @@ has checkAccess => sub {
     my $self = shift;
     return 0 if $self->user->userId eq '__ROOT';
 
-    return $self->user->may('booker');
+    return $self->user->may('booker') || $self->user->may('admin');
 };
 
 
@@ -101,7 +101,7 @@ has tableCfg => sub {
             label => trm('Schedule Entry'),
             type => 'string',
             width => '3*',
-            key => 'bookbooking_calendar_tag',
+            key => 'booking_calendar_tag',
             sortable => true,
         },
         {
@@ -154,15 +154,15 @@ has actionCfg => sub {
 
     return [
         {
-            label => trm('Add Booking'),
+            label => trm('New Booking'),
             action => 'popup',
             addToContextMenu => false,
             name => 'bookingAddForm',
             key => 'add',
             popupTitle => trm('New Booking'),
             set => {
-                minHeight => 700,
-                minWidth => 500
+                height => 500,
+                width => 500
             },
             backend => {
                 plugin => 'BookingForm',
@@ -170,9 +170,6 @@ has actionCfg => sub {
                     type => 'add'
                 }
             }
-        },
-        {
-            action => 'separator'
         },
         {
             label => trm('Edit Booking'),

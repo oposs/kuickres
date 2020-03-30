@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: kuickres 0.0.0\n"
+"Project-Id-Version: kuickres 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 14:03+0100\n"
+"POT-Creation-Date: 2020-03-30 08:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:56
-#: lib/Kuickres/GuiPlugin/Booking.pm:45
+#: lib/Kuickres/GuiPlugin/Booking.pm:65
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:55
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:54
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:79
@@ -32,7 +32,7 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:64
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:63 lib/Kuickres/GuiPlugin/District.pm:52
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:65 lib/Kuickres/GuiPlugin/Room.pm:51
-#: lib/Kuickres/GuiPlugin/Location.pm:52 lib/Kuickres/GuiPlugin/Agegroup.pm:51
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:51
 msgid "Name"
 msgstr ""
 
@@ -60,87 +60,87 @@ msgid "Closing Time"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:113
-#: lib/Kuickres/GuiPlugin/Location.pm:73
+#: lib/Kuickres/GuiPlugin/Location.pm:66
 msgid "Address"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:160
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:102
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:113
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:243
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:248
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:102
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
 msgid "Save Changes"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:161
-#: lib/Kuickres/GuiPlugin/Location.pm:94
+#: lib/Kuickres/GuiPlugin/Location.pm:87
 msgid "Add Location"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:53
+#: lib/Kuickres/GuiPlugin/Booking.pm:49
+msgid "search words ..."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:73
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:105
 msgid "Room"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:60
+#: lib/Kuickres/GuiPlugin/Booking.pm:80
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:88
 msgid "User"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:67
+#: lib/Kuickres/GuiPlugin/Booking.pm:87
 msgid "Date"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:74
+#: lib/Kuickres/GuiPlugin/Booking.pm:94
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:115
 msgid "Time"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:81
+#: lib/Kuickres/GuiPlugin/Booking.pm:101
 msgid "Schedule Entry"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:88
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:180
+#: lib/Kuickres/GuiPlugin/Booking.pm:108
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:184
 msgid "District"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:95
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:190
+#: lib/Kuickres/GuiPlugin/Booking.pm:115
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:194
 msgid "Age Group"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:102
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:200
+#: lib/Kuickres/GuiPlugin/Booking.pm:122
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:204
 msgid "Comment"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:109
+#: lib/Kuickres/GuiPlugin/Booking.pm:129
 msgid "Created"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:116
+#: lib/Kuickres/GuiPlugin/Booking.pm:136
 msgid "Deleted"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:137
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:244
-msgid "Add Booking"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:142
+#: lib/Kuickres/GuiPlugin/Booking.pm:157 lib/Kuickres/GuiPlugin/Booking.pm:162
 msgid "New Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:158 lib/Kuickres/GuiPlugin/Booking.pm:164
+#: lib/Kuickres/GuiPlugin/Booking.pm:175 lib/Kuickres/GuiPlugin/Booking.pm:181
 msgid "Edit Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:180
+#: lib/Kuickres/GuiPlugin/Booking.pm:197
 msgid "Delete Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:183
+#: lib/Kuickres/GuiPlugin/Booking.pm:200
 msgid "Do you really want to delete the selected Booking."
 msgstr ""
 
@@ -155,6 +155,121 @@ msgstr ""
 
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:114 lib/Kuickres/GuiPlugin/Room.pm:79
 msgid "Add Room"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:58
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:61
+msgid "Invalid email address"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:65
+msgid "Unknown email address"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:71
+msgid "email address in use"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:80
+msgid "Invalid token"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:88
+msgid "Passwords must be 8 chars or longer"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:90
+msgid "Passwords < 20 chars must contain upper- and lowercase letters"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:92
+msgid ""
+"Passwords < 16 chars must contain upper- and lowercase letters and numbers"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:94
+msgid ""
+"Passwords < 12 chars must contain upper- and lowercase letters and numbers "
+"and special characters"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:99
+msgid "Passwords must must match"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:108
+msgid "Email Address"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:125
+msgid "Validation Token"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:130
+msgid "check your mail for a token"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:134
+msgid "[Send Token]"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:143
+msgid "New Password"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:145
+msgid ""
+"<a target=\"_new\" href=\"https://uit.stanford.edu/service/accounts/"
+"passwords/quickguide\">Standford Password Policy</a>"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:147
+msgid "type a your new password"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:155
+msgid "Repeat Password"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:158
+msgid "repeat the password"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:167
+msgid "Set New Password"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:173
+#: lib/Kuickres/GuiPlugin/Registration.pm:78
+msgid "%1 is required"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:186
+msgid "Failed to update password for %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:200
+msgid "Send Token"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:207
+msgid "Token sent"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:208
+msgid "The token has been sent to your Mailbox."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:261
+msgid ""
+"Hallo %1,\n"
+"\n"
+"Jemand versucht gerade ihr Passwort bei Kuickres neu zu setzen\n"
+"falls sie das selber sind, tragen sie das untenstehende Token  \n"
+"\n"
+"%2\n"
+"\n"
+"im Passwort-Reset Fenster ein."
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:49
@@ -173,43 +288,47 @@ msgstr ""
 msgid "Invalid user"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:146
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:143
 msgid "Location %1 is only open for booking from %2 to %3"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:164
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:168
 msgid "Booking overlaps with %1 existing bookings."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:171
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:175
 msgid "Schedule Text"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:175
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:179
 msgid "Text to show in the schedule"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:203
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:207
 msgid "Note for the management"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:222
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:226
 msgid "You are not allowed to book in the name of other users."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/District.pm:77
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:249
+msgid "Add Booking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/District.pm:78
 msgid "New District"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/District.pm:90 lib/Kuickres/GuiPlugin/District.pm:94
+#: lib/Kuickres/GuiPlugin/District.pm:91 lib/Kuickres/GuiPlugin/District.pm:99
 msgid "Edit District"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/District.pm:107
+#: lib/Kuickres/GuiPlugin/District.pm:112
 msgid "Delete District"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/District.pm:110
+#: lib/Kuickres/GuiPlugin/District.pm:115
 msgid ""
 "Do you really want to delete the selected District. This will only work if "
 "there are no reservations linked to it."
@@ -220,46 +339,79 @@ msgstr ""
 msgid "Add Agegroup"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Room.pm:83
+#: lib/Kuickres/GuiPlugin/Room.pm:84
 msgid "New Room"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Room.pm:96 lib/Kuickres/GuiPlugin/Room.pm:100
+#: lib/Kuickres/GuiPlugin/Room.pm:97 lib/Kuickres/GuiPlugin/Room.pm:102
 msgid "Edit Room"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Room.pm:113
+#: lib/Kuickres/GuiPlugin/Room.pm:118
 msgid "Delete Room"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Room.pm:116
+#: lib/Kuickres/GuiPlugin/Room.pm:121
 msgid ""
 "Do you really want to delete the selected Room. This will only work if there "
 "are no reservations linked to it."
 msgstr ""
 
+#: lib/Kuickres/GuiPlugin/Registration.pm:35
+msgid "Create New Account"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Registration.pm:43
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:53
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:85
+msgid "Given Name"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Registration.pm:51
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:60
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:94
+msgid "Family Name"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Registration.pm:63
+msgid ""
+"Hallo %1\n"
+"\n"
+"Jemand versucht gerade ein neues Konto in Kuickres zu erstellen.\n"
+"Falls sie das selber sind, tragen sie das untenstehende Token \n"
+"im Konto-Erzeugungs-Formular ein.\n"
+"\n"
+"     %2\n"
+"\n"
+"\n"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Registration.pm:101
+msgid "Failed to create account for %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:52
+msgid "Location Name"
+msgstr ""
+
 #: lib/Kuickres/GuiPlugin/Location.pm:59
-msgid "Open"
+msgid "Opening Hours"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Location.pm:66
-msgid "Close"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Location.pm:98
+#: lib/Kuickres/GuiPlugin/Location.pm:91
 msgid "New Location"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Location.pm:111
-#: lib/Kuickres/GuiPlugin/Location.pm:115
+#: lib/Kuickres/GuiPlugin/Location.pm:105
+#: lib/Kuickres/GuiPlugin/Location.pm:110
 msgid "Edit Location"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Location.pm:128
+#: lib/Kuickres/GuiPlugin/Location.pm:126
 msgid "Delete Location"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Location.pm:131
+#: lib/Kuickres/GuiPlugin/Location.pm:133
 msgid ""
 "Do you really want to delete the selected Location. This will only work if "
 "there are no rooms linked to it."
@@ -269,16 +421,106 @@ msgstr ""
 msgid "New Agegroup"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:89 lib/Kuickres/GuiPlugin/Agegroup.pm:93
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:90 lib/Kuickres/GuiPlugin/Agegroup.pm:98
 msgid "Edit Agegroup"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:106
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:111
 msgid "Delete Agegroup"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:109
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:114
 msgid ""
 "Do you really want to delete the selected Agegroup. This will only work if "
 "there are no reservations linked to it."
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:130
+msgid "sorry, don't know the field you are talking about"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:38
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:50
+msgid "UserId"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:46
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:59
+msgid "Username"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:67
+msgid "Rights"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:74
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:104
+msgid "Note"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:92
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:205
+msgid "Add User"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:96
+msgid "New User"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:105
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:110
+msgid "Edit User"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:115
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:139
+msgid "You have to select a user first"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:130
+msgid "Delete User"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:133
+msgid "Do you really want to delete the selected user ?"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:141
+msgid "You can not delete the user you are logged in with"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:150
+msgid "Faild to remove user %1"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:42
+msgid "Error"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:44
+msgid "No user selected."
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:68
+msgid "Password"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:76
+msgid "Password Again"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:152
+msgid "You can only edit your own stuff unless you have admin permissions."
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:156
+msgid "The password instances did not match."
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:202
+msgid "Create Admin Account"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Config.pm:453
+msgid "Wrong password!"
 msgstr ""

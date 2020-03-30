@@ -74,6 +74,7 @@ has actionCfg => sub {
             addToContextMenu => false,
             name => 'AgegroupAddForm',
             popupTitle => trm('New Agegroup'),
+            key => 'add',
             set => {
                 minHeight => 500,
                 minWidth => 500
@@ -90,6 +91,10 @@ has actionCfg => sub {
             action => 'popup',
             addToContextMenu => false,
             name => 'AgegroupEditForm',
+            key => 'edit',
+            buttonSet => {
+                enabled => false
+            },
             popupTitle => trm('Edit Agegroup'),
             set => {
                 minHeight => 500,
@@ -108,6 +113,9 @@ has actionCfg => sub {
             addToContextMenu => true,
             question => trm('Do you really want to delete the selected Agegroup. This will only work if there are no reservations linked to it.'),
             key => 'delete',
+            buttonSet => {
+                enabled => false
+            },
             actionHandler => sub {
                 my $self = shift;
                 my $args = shift;
@@ -152,7 +160,7 @@ sub getTableData {
             : ' ASC' 
         );
     }
-    return $db->query(<<"SQL_END",
+    my $data = $db->query(<<"SQL_END",
     SELECT * FROM agegroup
     $SORT
     LIMIT ? OFFSET ?
@@ -160,6 +168,17 @@ SQL_END
        $args->{lastRow}-$args->{firstRow}+1,
        $args->{firstRow},
     )->hashes;
+    for my $row (@$data) {
+        $row->{_actionSet} = {
+            edit => {
+                enabled => true
+            },
+            delete => {
+                enabled => true,
+            },
+        }
+    }
+    return $data;
 }
 
 1;

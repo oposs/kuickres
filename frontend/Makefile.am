@@ -5,7 +5,7 @@ EXTRA_DIST = compile.js  compile.json  config.json Manifest.json package.json pa
 
 if BUILD_QOOXDOO_APP
 
-CBFILES=$(shell find $(CALLBACKERY_QX) -name '*.js')
+CBFILES=$(shell find $(CALLBACKERY_QX)/*/source -name '*.js')
 
 all-local: build
 

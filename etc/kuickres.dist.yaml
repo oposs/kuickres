@@ -11,7 +11,9 @@ FRONTEND:
   title: Kuickres Reservation System
   initial_plugin: Booking
   company_name: Sportamt der Stadt Zürich
-  company_url: https://sportamt.ch
+  company_url: https://sportamt.zuerich.ch
+  passwordreset_popup: InitialUser
+  registration_popup: InitialUser
 
 PLUGIN:
   - InitialUser:

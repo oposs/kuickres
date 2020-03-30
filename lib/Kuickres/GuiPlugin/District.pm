@@ -74,10 +74,11 @@ has actionCfg => sub {
             action => 'popup',
             addToContextMenu => false,
             name => 'DistrictAddForm',
+            key => 'add',
             popupTitle => trm('New District'),
             set => {
-                minHeight => 500,
-                minWidth => 500
+                height => 500,
+                width => 500
             },
             backend => {
                 plugin => 'DistrictForm',
@@ -89,8 +90,12 @@ has actionCfg => sub {
         {
             label => trm('Edit District'),
             action => 'popup',
+            key => 'edit',
             addToContextMenu => false,
             name => 'DistrictEditForm',
+            buttonSet => {
+                enabled => false
+            },
             popupTitle => trm('Edit District'),
             set => {
                 minHeight => 500,
@@ -109,6 +114,9 @@ has actionCfg => sub {
             addToContextMenu => true,
             question => trm('Do you really want to delete the selected District. This will only work if there are no reservations linked to it.'),
             key => 'delete',
+            buttonSet => {
+                enabled => false
+            },
             actionHandler => sub {
                 my $self = shift;
                 my $args = shift;
@@ -153,7 +161,7 @@ sub getTableData {
             : ' ASC' 
         );
     }
-    return $db->query(<<"SQL_END",
+    my $data = $db->query(<<"SQL_END",
     SELECT * FROM district
     $SORT
     LIMIT ? OFFSET ?
@@ -161,6 +169,17 @@ SQL_END
        $args->{lastRow}-$args->{firstRow}+1,
        $args->{firstRow},
     )->hashes;
+    for my $row (@$data) {
+        $row->{_actionSet} = {
+            edit => {
+                enabled => true
+            },
+            delete => {
+                enabled => true,
+            },
+        }
+    }
+    return $data;
 }
 
 1;

@@ -1,2 +1,4 @@
-requires 'CallBackery', '>= 0.30.1';
+requires 'CallBackery', '>= 0.31.2';
 requires 'Mojo::SQLite';
+requires 'Email::MIME';
+requires 'Email::Sender';

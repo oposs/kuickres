@@ -24,7 +24,7 @@ The Booking Edit Form
 has checkAccess => sub {
     my $self = shift;
     return 0 if $self->user->userId eq '__ROOT';
-    return $self->user->may('booker');
+    return $self->user->may('booker') || $self->user->may('admin');
 };
 
 =head1 METHODS
@@ -65,7 +65,7 @@ sub parse_time ($self,$str) {
         end_ts => $end_ts,
         duration => $duration,
     };
-    $self->log->debug(dumper $ret);
+    # $self->log->debug(dumper $ret);
     return $ret;
 }
 
@@ -118,10 +118,7 @@ has formCfg => sub {
                 required => true,
                 placeholder => 'DD.MM.YYYY HH:MM-HH:MM',
             },
-            validator => sub {
-                my $value = shift;
-                my $fieldName = shift;
-                my $form = shift;
+            validator => sub ($value,$fieldName,$form) {
                 my $t = eval { $self->parse_time($value) };
                 if ($@) {
                     return $@ if ref $@;
@@ -148,21 +145,28 @@ SQL_END
                     $location->{location_open},
                     $location->{location_close}) 
                     if $t->{start} < $lstart or $t->{end} > $lend;
-
-
-                my $overlaps = $db->query(<<SQL_END,
-                SELECT 1 
+                my @params = (
+                    $form->{booking_room},
+                    $t->{start_ts},
+                    $t->{end_ts}
+                );
+                my $IGNORE ='';
+                if ($form->{booking_id}) {
+                    $IGNORE = "AND booking_id <> CAST(? AS INTEGER)";
+                    push @params, $form->{booking_id};
+                }
+                my $overlaps = $db->query(<<SQL_END,@params
+                SELECT COUNT(1) AS c
                 FROM booking 
-                WHERE booking_room = ? 
-                AND (
-                    ? BETWEEN booking_start_ts AND booking_start_ts + booking_duration_s
-                    OR
-                    ? BETWEEN booking_start_ts AND booking_start_ts + booking_duration_s
-                )
+                WHERE booking_delete_ts IS NULL 
+                AND booking_room = ?
+                AND booking_start_ts + booking_duration_s > CAST(? AS INTEGER)
+                AND booking_start_ts < CAST(? AS INTEGER)
+                $IGNORE
 SQL_END
-                $form->{booking_room},$t->{start_ts},$t->{end_ts})->rows;
+                )->hash;
                 return trm("Booking overlaps with %1 existing bookings.",
-                    $overlaps) if $overlaps > 0;
+                    $overlaps->{c}) if $overlaps->{c} > 0;
                 return;
             },
         },
@@ -230,7 +234,8 @@ has actionCfg => sub {
         }
         else {
             $self->db->update('booking',$data,{
-                booking_id => $args->{booking_id}});
+                booking_id => $args->{booking_id}
+            });
         }
         return {
             action => 'dataSaved'

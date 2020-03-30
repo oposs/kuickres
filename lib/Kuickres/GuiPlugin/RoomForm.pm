@@ -97,7 +97,7 @@ has actionCfg => sub {
         }
         else {
             $self->db->update('room', {
-                map { 'room'.$_ => $args->{'room'.$_} } qw(
+                map { 'room_'.$_ => $args->{'room_'.$_} } qw(
                     name location
                 )
             },{ room_id => $args->{room_id}});

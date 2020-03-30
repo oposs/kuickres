@@ -134,7 +134,7 @@ CREATE TABLE IF NOT EXISTS cbuser (
     cbuser_note TEXT,
     cbuser_calendar_tag TEXT,
     cbuser_pin INTEGER 
-        DEFAULT (substr(abs(random()-1e8)+1e8,2,7))
+        DEFAULT (substr(random() || '0000000',1,7))
 );
 
 -- add an extra right for people who can edit

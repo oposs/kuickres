@@ -86,7 +86,7 @@ has actionCfg => sub {
         }
         else {
             $self->db->update('district', {
-                map { 'district'.$_ => $args->{'district'.$_} } qw(
+                map { 'district_'.$_ => $args->{'district_'.$_} } qw(
                     name
                 )
             },{ district_id => $args->{district_id}});

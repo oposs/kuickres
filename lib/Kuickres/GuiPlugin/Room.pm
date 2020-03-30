@@ -80,10 +80,11 @@ has actionCfg => sub {
             action => 'popup',
             addToContextMenu => false,
             name => 'roomAddForm',
+            key => 'add',
             popupTitle => trm('New Room'),
             set => {
-                minHeight => 500,
-                minWidth => 500
+                height => 500,
+                width => 500
             },
             backend => {
                 plugin => 'RoomForm',
@@ -95,9 +96,13 @@ has actionCfg => sub {
         {
             label => trm('Edit Room'),
             action => 'popup',
+            key => 'edit',
             addToContextMenu => false,
             name => 'roomEditForm',
             popupTitle => trm('Edit Room'),
+            buttonSet => {
+                enabled => false
+            },
             set => {
                 minHeight => 500,
                 minWidth => 500
@@ -115,6 +120,9 @@ has actionCfg => sub {
             addToContextMenu => true,
             question => trm('Do you really want to delete the selected Room. This will only work if there are no reservations linked to it.'),
             key => 'delete',
+            buttonSet => {
+                enabled => false
+            },
             actionHandler => sub {
                 my $self = shift;
                 my $args = shift;
@@ -159,7 +167,7 @@ sub getTableData {
             : ' ASC' 
         );
     }
-    return $db->query(<<"SQL_END",
+    my $data = $db->query(<<"SQL_END",
     SELECT * FROM room JOIN location ON room_location = location_id
     $SORT
     LIMIT ? OFFSET ?
@@ -167,6 +175,17 @@ SQL_END
        $args->{lastRow}-$args->{firstRow}+1,
        $args->{firstRow},
     )->hashes;
+    for my $row (@$data) {
+        $row->{_actionSet} = {
+            edit => {
+                enabled => true
+            },
+            delete => {
+                enabled => true,
+            },
+        }
+    }
+    return $data;
 }
 
 1;

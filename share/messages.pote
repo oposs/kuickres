@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-05 14:03+0100\n"
+"POT-Creation-Date: 2020-03-13 15:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:56
-#: lib/Kuickres/GuiPlugin/Booking.pm:45
+#: lib/Kuickres/GuiPlugin/Booking.pm:65
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:55
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:54
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:79
@@ -77,70 +77,74 @@ msgstr ""
 msgid "Add Location"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:53
+#: lib/Kuickres/GuiPlugin/Booking.pm:49
+msgid "search words ..."
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:73
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:105
 msgid "Room"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:60
+#: lib/Kuickres/GuiPlugin/Booking.pm:80
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:88
 msgid "User"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:67
+#: lib/Kuickres/GuiPlugin/Booking.pm:87
 msgid "Date"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:74
+#: lib/Kuickres/GuiPlugin/Booking.pm:94
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:115
 msgid "Time"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:81
+#: lib/Kuickres/GuiPlugin/Booking.pm:101
 msgid "Schedule Entry"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:88
+#: lib/Kuickres/GuiPlugin/Booking.pm:108
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:180
 msgid "District"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:95
+#: lib/Kuickres/GuiPlugin/Booking.pm:115
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:190
 msgid "Age Group"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:102
+#: lib/Kuickres/GuiPlugin/Booking.pm:122
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:200
 msgid "Comment"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:109
+#: lib/Kuickres/GuiPlugin/Booking.pm:129
 msgid "Created"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:116
+#: lib/Kuickres/GuiPlugin/Booking.pm:136
 msgid "Deleted"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:137
+#: lib/Kuickres/GuiPlugin/Booking.pm:157
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:244
 msgid "Add Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:142
+#: lib/Kuickres/GuiPlugin/Booking.pm:162
 msgid "New Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:158 lib/Kuickres/GuiPlugin/Booking.pm:164
+#: lib/Kuickres/GuiPlugin/Booking.pm:178 lib/Kuickres/GuiPlugin/Booking.pm:184
 msgid "Edit Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:180
+#: lib/Kuickres/GuiPlugin/Booking.pm:200
 msgid "Delete Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:183
+#: lib/Kuickres/GuiPlugin/Booking.pm:203
 msgid "Do you really want to delete the selected Booking."
 msgstr ""
 

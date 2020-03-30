@@ -49,24 +49,17 @@ has tableCfg => sub {
             primary => true
         },
         {
-            label => trm('Name'),
+            label => trm('Location Name'),
             type => 'string',
             width => '6*',
             key => 'location_name',
             sortable => true,
         },
         {
-            label => trm('Open'),
+            label => trm('Opening Hours'),
             type => 'string',
-            width => '1*',
-            key => 'location_open',
-            sortable => false,
-        },
-        {
-            label => trm('Close'),
-            type => 'string',
-            width => '1*',
-            key => 'location_close',
+            width => '3*',
+            key => 'location_opentime',
             sortable => false,
         },
         {
@@ -96,9 +89,10 @@ has actionCfg => sub {
             addToContextMenu => false,
             name => 'locationAddForm',
             popupTitle => trm('New Location'),
+            key => 'add',
             set => {
-                minHeight => 500,
-                minWidth => 500
+                height => 400,
+                width => 500
             },
             backend => {
                 plugin => 'LocationForm',
@@ -110,9 +104,13 @@ has actionCfg => sub {
         {
             label => trm('Edit Location'),
             action => 'popup',
+            key => 'edit',
             addToContextMenu => false,
             name => 'locationEditForm',
             popupTitle => trm('Edit Location'),
+            buttonSet => {
+                enabled => false
+            },
             set => {
                 minHeight => 500,
                 minWidth => 500
@@ -128,8 +126,11 @@ has actionCfg => sub {
             label => trm('Delete Location'),
             action => 'submitVerify',
             addToContextMenu => true,
-            question => trm('Do you really want to delete the selected Location. This will only work if there are no rooms linked to it.'),
+            buttonSet => {
+                enabled => false
+            },
             key => 'delete',
+            question => trm('Do you really want to delete the selected Location. This will only work if there are no rooms linked to it.'),
             actionHandler => sub {
                 my $self = shift;
                 my $args = shift;
@@ -174,10 +175,10 @@ sub getTableData {
             : ' ASC' 
         );
     }
-    return $db->query(<<"SQL_END",
+    my $data = $db->query(<<"SQL_END",
     SELECT *, 
-        strftime('%H:%M',location_open_start,'unixepoch') AS location_open,
-        strftime('%H:%M',location_open_start+location_open_duration,'unixepoch') AS location_close
+        strftime('%H:%M - ',location_open_start,'unixepoch') ||
+        strftime('%H:%M',location_open_start+location_open_duration,'unixepoch') AS location_opentime
     FROM location
     $SORT
     LIMIT ? OFFSET ?
@@ -185,6 +186,17 @@ SQL_END
        $args->{lastRow}-$args->{firstRow}+1,
        $args->{firstRow},
     )->hashes;
+    for my $row (@$data) {
+        $row->{_actionSet} = {
+            edit => {
+                enabled => true,
+            },
+            delete => {
+                enabled => true,
+            },
+        }
+    }
+    return $data;
 }
 
 1;

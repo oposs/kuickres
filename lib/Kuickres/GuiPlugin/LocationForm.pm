@@ -144,7 +144,7 @@ has actionCfg => sub {
         }
         else {
             $self->db->update('location', {
-                map { 'location_'.$_ => $args->{'loation_'.$_} } qw(
+                map { 'location_'.$_ => $args->{'location_'.$_} } qw(
                     name address open_start open_duration
                 )
             },{ location_id => $args->{location_id}});
