@@ -65,6 +65,10 @@ S<Tobias Oetiker E<lt>tobi@oetiker.chE<gt>>
 
 __DATA__
 
+@@ openapi.yaml @@
+
+
+
 @@ appdb.sql
 
 -- 1 up

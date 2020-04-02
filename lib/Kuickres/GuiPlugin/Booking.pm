@@ -5,6 +5,7 @@ use CallBackery::Exception qw(mkerror);
 use Mojo::JSON qw(true false);
 use Mojo::Util qw(dumper);
 use Text::ParseWords;
+use POSIX qw(strftime);
 
 =head1 NAME
 
@@ -41,6 +42,11 @@ All the methods of L<CallBackery::GuiPlugin::AbstractTable> plus:
 has formCfg => sub {
     my $self = shift;
     return [
+        {
+            key => 'show_past',
+            widget => 'checkBox',
+            label => trm('Show Old Reservations '),
+        },
         {
             key => 'search',
             widget => 'text',
@@ -95,7 +101,7 @@ has tableCfg => sub {
             type => 'string',
             width => '3*',
             key => 'booking_time',
-            sortable => true,
+            sortable => false,
         },
         {
             label => trm('Schedule Entry'),
@@ -167,7 +173,8 @@ has actionCfg => sub {
             backend => {
                 plugin => 'BookingForm',
                 config => {
-                    type => 'add'
+                    type => 'add',
+                    from => $self->config->{from},
                 }
             }
         },
@@ -189,7 +196,8 @@ has actionCfg => sub {
             backend => {
                 plugin => 'BookingForm',
                 config => {
-                    type => 'edit'
+                    type => 'edit',
+                    from => $self->config->{from},
                 }
             }
         },
@@ -205,22 +213,63 @@ has actionCfg => sub {
             actionHandler => sub {
                 my $self = shift;
                 my $args = shift;
+                my $tx = $self->db->begin;
                 my $id = $args->{selection}{booking_id};
+                my %USER;
+                if (not $self->user->may('admin')){
+                    $USER{booking_cbuser} = $self->user->userId;
+                }
                 die mkerror(4992,"You have to select a booking first")
                     if not $id;
                 eval {
-                    $self->db->update('booking',{booking_delete_ts => time},{booking_id => $id, booking_delete_ts => undef});
+                    $self->db->update('booking',{booking_delete_ts => time},{
+                        booking_id => $id,
+                        %USER,
+                        booking_delete_ts => undef
+                    });
                 };
                 if ($@){
                     $self->log->error("remove booking $id: $@");
-                    die mkerror(4993,"Failed to remove booking $id");
+                    die mkerror(4993,trm("Failed to remove booking %1",$id));
                 }
+                my $b = $self->db->query(<<SQL_END,$id)->hash
+        SELECT 
+            cbuser_login,
+            booking_start_ts,
+            room_name,
+            location_name
+        FROM booking
+        JOIN cbuser ON booking_cbuser = cbuser_id
+        JOIN room ON booking_room = room_id
+        JOIN location ON room_location = location_id
+        WHERE booking_id = ? AND booking_delete_ts IS NOT NULL
+SQL_END
+                or die mkerror(3874,trm("Failed to remove booking %1",$id));
+
+                $self->mailer->sendMail({
+                    to => $b->{cbuser_login},
+                    from => $self->config->{from},
+                    template => 'booking-rm',
+                    args => {
+                        id => $id,
+                        date => strftime(trm('%d.%m.%Y'),
+                            localtime($b->{booking_start_ts})),
+                        location => $b->{location_name},
+                        room => $b->{room_name},
+                        email => $b->{cbuser_login},
+                    }
+                });
+                $tx->commit;
                 return {
                     action => 'reload',
                 };
             }
         }
     ];
+};
+
+has mailer => sub ($self) {
+    Kuickres::Email->new( app=> $self->app, log=>$self->log );
 };
 
 sub db {
@@ -251,9 +300,18 @@ sub WHERE {
         } 
         : {
             -and => [
-                booking_delete_ts =>undef
+                booking_delete_ts => undef
             ]
         };
+    if ($args->{formData}{show_past}) {
+        push @{$where->{-and}},
+            \[ "booking_start_ts < CAST(? AS INTEGER) ", time]
+    }
+    else {
+        push @{$where->{-and}},
+            \[ "booking_start_ts + booking_duration_s > CAST(? AS INTEGER) ", time]
+    }
+    #$self->log->debug(dumper $where);
     if (my $str = $args->{formData}{search}) {
         chomp($str);
         for my $search (quotewords('\s+', 0, $str)){
@@ -290,16 +348,21 @@ sub getTableRowCount {
 sub getTableData {
     my $self = shift;
     my $args = shift;
-    my $SORT = '';
+    my $SORT = {
+        -asc => 'booking_date'
+    };
     my $db = $self->db;
     my $dbh = $db->dbh;
     my $WHERE = $self->WHERE($args);
-    if ( $args->{sortColumn} ){
+    if ( my $sc = $args->{sortColumn} ){
+        if ($sc eq 'booking_date') {
+            $sc = 'booking_start_ts'
+        }
         $SORT = {
             $args->{sortDesc} 
                 ? '-desc' 
                 : '-asc',
-             $args->{sortColumn}
+            $sc
         };        
     }
     my $sql = SQL::Abstract->new;
@@ -345,6 +408,20 @@ sub getTableData {
     }
     return $data;
 }
+
+has grammar => sub {
+    my $self = shift;
+    $self->mergeGrammar(
+        $self->SUPER::grammar,
+        {
+            _vars => [ qw(from ) ],
+            _mandatory => [ qw(from) ],
+            from => {
+                _doc => 'sender for mails',
+            },
+        },
+    );
+};
 
 1;
 

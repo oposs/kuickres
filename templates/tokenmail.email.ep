@@ -1,0 +1,24 @@
+Subject: Token für Raumreservationssystem
+X-Mailer: tobis test mails
+----
+Hallo <%= $email %>
+
+Jemand versucht gerade ihr Passwort bei Kuickres neu zu setzen.
+
+Falls sie das selber sind, tragen sie das untenstehende Token. 
+
+  <%= $token %>
+
+Im entsprechenden Feld ein.
+----
+<html>
+<body>
+<p>Hallo <%= $email %></p>
+
+<p>Jemand versucht gerade ihr Passwort bei Kuickres neu zu setzen.</p>
+<p>Falls sie das selber sind, tragen sie bitte das untenstehende Token in der Eingabemaske ein.</p>  
+
+<p><%= $token %></p>
+
+</body>
+</html>

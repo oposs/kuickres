@@ -6,6 +6,7 @@ use Mojo::JSON qw(true false);
 use Mojo::Util qw(dumper);
 use Time::Piece qw(localtime);
 use POSIX qw(strftime);
+use Kuickres::Email;
 
 =head1 NAME
 
@@ -210,33 +211,68 @@ SQL_END
     ];
 };
 
+has mailer => sub ($self) {
+    Kuickres::Email->new( app=> $self->app, log=>$self->log );
+};
+
 has actionCfg => sub {
     my $self = shift;
     my $type = $self->config->{type} // 'add';
     my $handler = sub {
         my $self = shift;
         my $args = shift;
-        my $t = $self->parse_time(delete $args->{booking_time});
+        my $t = $self->parse_time($args->{booking_time});
         $args->{booking_start_ts} = $t->{start_ts};
         $args->{booking_duration_s} = $t->{duration};
         $args->{booking_create_ts} = time;
         $args->{booking_cbuser} //= $self->user->userId;
+        my %USER;
         if (not $self->user->may('admin') and 
             $args->{booking_cbuser} ne $self->user->userId){
-            die mkerror(3838,trm("You are not allowed to book in the name of other users."))
+            die mkerror(3838,trm("You are not allowed to book in the name of other users."));
+            $USER{booking_cbuser} = $self->user->userId;
         }
+        my $tx = $self->db->begin;
         my $data = { map { "booking_".$_ => $args->{"booking_".$_} }
             qw( cbuser room start_ts duration_s
             calendar_tag district agegroup comment create_ts) };
-
+        my $ID = $args->{booking_id};
         if ($type eq 'add')  {
-            $self->db->insert('booking',$data);
+            my $res = $self->db->insert('booking',$data);
+            $ID = $res->last_insert_id;
         }
         else {
             $self->db->update('booking',$data,{
-                booking_id => $args->{booking_id}
+                booking_id => $args->{booking_id},
+                %USER
             });
         }
+        my $room = $self->db->query(<<SQL_END,$args->{booking_room})->hash
+        SELECT room_name,location_name 
+        FROM room JOIN location ON room_location = location_id
+        WHERE room_id = ?
+SQL_END
+        or die mkerror(3874,"Room not found");
+
+        my $userInfo = $self->db->select('cbuser',undef,{
+            cbuser_id => $args->{booking_cbuser}
+        })->hash or die mkerror(3874,"User not found");
+        
+        $self->mailer->sendMail({
+            to => $userInfo->{cbuser_login},
+            from => $self->config->{from},
+            template => 'booking',
+            args => {
+                id => $ID,
+                date => strftime(trm('%d.%m.%Y'),localtime($args->{booking_start_ts})),
+                location => $room->{location_name},
+                room => $room->{room_name},
+                time => $args->{booking_time},
+                accesscode => $userInfo->{cbuser_pin},
+                email => $userInfo->{cbuser_login},
+            }
+        });
+        $tx->commit;
         return {
             action => 'dataSaved'
         };
@@ -288,6 +324,19 @@ sub getAllFieldValues {
     )->hash;
 }
 
+has grammar => sub {
+    my $self = shift;
+    $self->mergeGrammar(
+        $self->SUPER::grammar,
+        {
+            _vars => [ qw(from ) ],
+            _mandatory => [ qw(from) ],
+            from => {
+                _doc => 'sender for mails',
+            },
+        },
+    );
+};
 
 1;
 __END__

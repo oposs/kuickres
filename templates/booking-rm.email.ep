@@ -1,0 +1,30 @@
+Subject: Löschbestätigung - <%= $id %> - <%= $location %> <%= $date %>
+----
+Löschbestätigung - <%= $id %>
+--------------------------<%= '-' x length($id) %>
+
+Reservationnummer: <%= $id %>
+Ort: <%= $location %>
+Raum: <%= $room %>
+Datum: <%= $date %>
+Kontakt: <%= $email %>
+
+Diese Reservation wurde gelöscht.
+
+----
+<html>
+<body>
+<b>Löschbestätigung - $id</b>
+
+<p>
+Reservationnummer: <%= $id %><br/>
+Ort: <%= $location %><br/>
+Raum: <%= $room %><br/>
+Datum: <%= $date %><br/>
+Kontakt: <%= $email %>
+</p>
+
+<p>Diese Reservation wurde gelöscht.
+</p>
+</body>
+</html>

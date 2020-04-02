@@ -6,8 +6,8 @@ use Mojo::JSON qw(true false);
 use Mojo::Util qw(dumper hmac_sha1_sum md5_sum);
 use Time::Piece qw(localtime);
 use POSIX qw(strftime);
-use Email::MIME;
-use Email::Sender::Simple;
+use Kuickres::Email;
+
 
 =head1 NAME
 
@@ -190,6 +190,10 @@ sub createAction ($self,$args) {
     };
 }
 
+has mailer => sub ($self) {
+    Kuickres::Email->new( app=> $self->app, log=>$self->log );
+};
+
 has actionCfg => sub {
     my $self = shift;
     my $type = $self->config->{type} // 'add';
@@ -201,7 +205,15 @@ has actionCfg => sub {
             action => 'submit',
             key => 'sendToken',
             actionHandler => sub ($self,$args) {
-                $self->sendTokenMail($args->{email});
+                $self->mailer->sendMail({
+                    to => $args->{email},
+                    from => $self->config->{from},
+                    template => 'tokenmail',
+                    args => {
+                        token => $self->getToken($args->{email}),
+                        email => $args->{email},
+                    }
+                });
                 return {
                     action => 'showMessage',
                     title => trm('Token sent'),
@@ -225,16 +237,13 @@ has grammar => sub {
     $self->mergeGrammar(
         $self->SUPER::grammar,
         {
-            _vars => [ qw(from subject mailrx) ],
-            _mandatory => [ qw(from subject) ],
+            _vars => [ qw(from mailrx) ],
+            _mandatory => [ qw(from) ],
             from => {
                 _doc => 'sender for mails',
             },
-            subject => {
-                _doc => 'subject for token mails',
-            },
             mailrx => {
-                _doc => 'regular expression reuired to match for emails',
+                _doc => 'regular expression required to match for emails',
             },
         },
     );
@@ -255,40 +264,6 @@ sub checkToken ($self,$email,$token) {
     return 0 unless $email and $token;
     my ($slot,$sum) = split /g/,$token,2;
     return $token eq $self->getToken($email,$slot);
-}
-
-sub tokenMail ($self,$email,$token) {
-    return trm('Hallo %1,
-
-Jemand versucht gerade ihr Passwort bei Kuickres neu zu setzen
-falls sie das selber sind, tragen sie das untenstehende Token  
-
-%2
-
-im Passwort-Reset Fenster ein.',$email,$token);
-}
-
-sub sendTokenMail ($self,$email) {
-    my $token = $self->getToken($email);
-    eval {
-        my $msg = Email::MIME->create(
-            header_str => [
-                To      => $email,
-                From    => $self->config->{from},
-                Subject => $self->config->{subject},
-            ],
-            body_str      => $self->tokenMail($email,$token),
-            attributes  => {
-                charset => 'UTF-8',
-                encoding => 'quoted-printable',
-                content_type => "text/plain",
-            }
-        );
-        Email::Sender::Simple->send($msg);
-    };
-    if ($@) {
-        $self->log->warn($@);
-    }
 }
 
 1;

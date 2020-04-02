@@ -1,0 +1,31 @@
+Subject: Reservationsbestätigung - <%= $id %> - <%= $location %> <%= $date %>
+----
+Reservationsbestätigung - <%= $id %>
+--------------------------<%= '-' x length($id) %>
+
+Reservationnummer: <%= $id %>
+Ort: <%= $location %>
+Raum: <%= $room %>
+Zeitraum: <%= $time %>
+Pin: *<%= $accesscode %>#
+Kontakt: <%= $email %>
+
+Sie können ihre Reservation jederzeit online bearbeiten.
+
+----
+<html>
+<body>
+<b>Reservationsbestätigung</b>
+
+<p>
+Reservationnummer: <%= $id %><br/>
+Ort: <%= $location %><br/>
+Raum: <%= $room %><br/>
+Zeitraum: <%= $time %><br/>
+Pin: <code>*<%= $accesscode %>#</code><br/>
+Kontakt: <%= $email %>
+</p>
+
+<p>Sie können ihre Reservation jederzeit online bearbeiten.</p>
+</body>
+</html>
