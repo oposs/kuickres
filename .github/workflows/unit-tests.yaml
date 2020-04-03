@@ -98,6 +98,13 @@ jobs:
       run: make dist
       
     - name: Rebuild
-      run: tar xf *.tar.gz
-      
+      run: |
+        tar xf *.tar.gz
+        cd *-*.*.*
+        ./configure --prefix=$HOME/test-install
+        make test
+        make install
+        cd $HOME/test-install
+        cp etc/kuickres.dist.yaml etc/kuickres.yaml
+        ./bin/kuickres.pl
   
