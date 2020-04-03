@@ -1,21 +1,41 @@
 
 BACKEND:
   cfg_db: /tmp/kuickres.db
-  sesame_user: adfadsfasdf4ee3r
+  sesame_user: xxxxx
 # perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("access"),"\n"'
-  sesame_pass: 393afhkjhffjj
+  sesame_pass: xxxx
 
 FRONTEND:
 # logo = ../resource/kuickres/logo.png
 # logo_small = ../resource/kuickres/logo-small.png
   title: Kuickres Reservation System
   initial_plugin: Booking
-  company_name: Sportamt der Stadt Zürich
-  company_url: https://sportamt.zuerich.ch
-  passwordreset_popup: InitialUser
-  registration_popup: InitialUser
+  company_name: Kuckres Company
+  company_url: https://kuickres.org
+  passwordreset_popup:
+    plugin: ResetPassword
+    set:
+      width: 630
+      height: 240
+
+  registration_popup:
+    plugin: RegisterNewAccount
+    set:
+      width: 630
+      height: 320
 
 PLUGIN:
+  - ResetPassword:
+      module: ResetPassword
+      unlisted: true
+      tab-name: Reset Password
+      from: tobi+reset@oetiker.ch
+  - RegisterNewAccount:
+      module: Registration
+      unlisted: true
+      tab-name: Register New Account
+      from: tobi+reset@oetiker.ch
+      mailrx: "@oetiker.ch$"
   - InitialUser:
       module: UserForm
       mode: init
@@ -23,24 +43,24 @@ PLUGIN:
       tab-name: Create Initial User
   - Booking:
       module: Booking
-      tab-name: Bookings
-      
+      tab-name: Buchungen
+      from: tobi+reset@oetiker.ch
   - Location:
       module: Location
-      tab-name: Locations
+      tab-name: Standorte
       
   - Room:
       module: Room
-      tab-name: Rooms
+      tab-name: Räume
 
   - District:
       module: District
-      tab-name: Districts
+      tab-name: Bezirke
 
   - Agegroup:
       module: Agegroup
-      tab-name: Age Groups
+      tab-name: Altersgruppen
 
   - AdminUser:
       module: Users
-      tab-name: Admin User Manager
+      tab-name: Konto Manager
