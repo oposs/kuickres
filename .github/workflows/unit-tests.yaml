@@ -100,6 +100,7 @@ jobs:
         tar xf kuickres-$(cat VERSION).tar.gz
         cd kuickres-$(cat VERSION)
         ./configure --prefix=$HOME/test-install
+        make
         make test
         make install
         cd $HOME/test-install
