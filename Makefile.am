@@ -42,7 +42,7 @@ clean-local:
 LANGUAGES := $(shell  $(PERL) -e 'use JSON::PP qw(decode_json); print join(" ", map {"share/".$$_.".po"} @{decode_json(join("",<>))->{locales}})' frontend/compile.json)
 CALLBACKERY_PM := $(shell find $(CALLBACKERY_QX)/.. -name "*.pm")
 
-share/messages.pot: $(PM) $(CALLBACKERY_PM)
+share/messages.pot: $(PM)
 	mkdir -p share
 	$(XGETTEXT) --language=perl --package-name=$(PACKAGE) --package-version=$(VERSION) --from-code=UTF-8 --keyword=trm:1 --output=share/messages.pot $(PM) $(CALLBACKERY_PM)
 	sed -i 's/; charset=CHARSET/; charset=UTF-8/' share/messages.pot
