@@ -101,6 +101,7 @@ jobs:
         cd kuickres-$(cat VERSION)
         ./configure --prefix=$HOME/test-install
         make
+        cp etc/kuickres.dist.yaml  etc/kuickres.yaml
         make test
         make install
         cd $HOME/test-install
