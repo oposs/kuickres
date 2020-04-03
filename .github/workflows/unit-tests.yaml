@@ -97,8 +97,8 @@ jobs:
     - name: Build Dist
       run: |
         make dist
-        tar xf *.tar.gz
-        cd *-*.*.*
+        tar xf kuickres-$(cat VERSION).tar.gz
+        cd kuickres-$(cat VERSION)
         ./configure --prefix=$HOME/test-install
         make test
         make install
