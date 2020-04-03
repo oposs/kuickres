@@ -94,11 +94,9 @@ jobs:
           cp etc/kuickres.dist.yaml  etc/kuickres.yaml
           make test
       
-    - name: Dist
-      run: make dist
-      
-    - name: Rebuild
+    - name: Build Dist
       run: |
+        make dist
         tar xf *.tar.gz
         cd *-*.*.*
         ./configure --prefix=$HOME/test-install
