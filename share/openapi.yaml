@@ -1,0 +1,158 @@
+openapi: 3.0.3
+info:
+  title: Kuickres
+  description: |
+    Kuickres is a room reservation app with a interactive web ui.
+    This api is for the communication of external devices with
+    kuickres.  
+  version: 0.0.1
+  license:
+    name: GNU GPL Version 3
+    url: https://www.gnu.org/licenses/gpl-3.0.en.html
+  contact:
+    name: tobi oetiker
+    url: https://www.oetiker.ch
+    email: support@oetiker.ch
+servers:
+  - url: /REST/v1
+
+paths:
+  /signage/{locationId}:
+    get:
+      x-mojo-to:
+        controller: LocationApi
+        action: get_signage
+      summary: |
+        fetch a html page showing the upcoming bookings for the location
+      parameters:
+        - description: the blockKey of the block to retrieve
+          in: path
+          name: locationId
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          description: An response object from the block
+          content:
+            text/html:
+              schema:
+                type: string
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /doorKeys/{locationId}:
+    get:
+      x-mojo-to:
+        controller: LocationApi
+        action: get_door_keys
+      summary: |
+        fetch encripted pin numbers for door opening in the near future
+      security:
+        - apiKeyHeader: []
+      parameters:
+        - description: the blockKey of the block to retrieve
+          in: path
+          name: locationId
+          required: true
+          schema:
+            type: number
+      responses:
+        200:
+          description: An response object from the block
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - pinHash
+                    - validFromTs
+                    - validUntilTs
+                    - bookingId
+                  additionalProperties: false
+                  properties:                
+                    pinHash:
+                      type: string
+                      description: ScryptKDF hash of the pin that opens the door
+                    validFromTs:
+                      type: number
+                      description: Epoch timestamp for pin validity
+                    validUntilTs:
+                      type: number
+                      description: Epoch timestamp for pin validity end
+                    bookingId:
+                      type: number
+                      description: Numeric UserId of the person associated with this pin
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+  /reportKeyUse:
+    post:
+      x-mojo-to:
+        controller: LocationApi
+        action: report_key_use
+      summary: |
+        report key use to the backend
+      security:
+        - apiKeyHeader: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+                - entryTs
+                - bookingId
+              additionalProperties: false
+              properties:
+                entryTs:
+                  type: number
+                bookingId:
+                  type: number
+      responses:
+        201:
+          description: information received
+          content:
+            text/plain:
+              schema:
+                type: string
+                maxLength: 0
+        default:
+          $ref: '#/components/responses/ErrorResponse'
+
+components:
+  responses:
+    ErrorResponse:
+      description: Error Response Structure
+      content:
+        appliaction/json:
+          schema:
+            type: object
+            properties:
+              errors:
+                description: list of errors
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      description: Extra details on the error
+                    path:
+                      type: string
+                      description: where did the error occure
+                  required:
+                    - message
+              status:
+                description: http status code
+                type: integer
+                minimum: 100
+                maximum: 599
+            required:
+              - errors
+              - status
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: X-Api-Key
+      in: header
+      description: a shared key

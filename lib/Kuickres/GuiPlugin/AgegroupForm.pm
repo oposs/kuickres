@@ -77,12 +77,13 @@ has actionCfg => sub {
     my $handler = sub {
         my $self = shift;
         my $args = shift;
+        my %metaInfo;
         if ($type eq 'add')  {
-            $self->db->insert('agegroup',{
+            $metaInfo{recId} = $self->db->insert('agegroup',{
                 map { "agegroup_".$_ => $args->{"agegroup_".$_} } qw(
                     name
                 )
-            });
+            })->last_insert_id;
         }
         else {
             $self->db->update('agegroup', {
@@ -92,7 +93,8 @@ has actionCfg => sub {
             },{ agegroup_id => $args->{agegroup_id}});
         }
         return {
-            action => 'dataSaved'
+            action => 'dataSaved',
+            metaInfo => \%metaInfo
         };
     };
 

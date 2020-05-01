@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-02 17:42+0200\n"
+"POT-Creation-Date: 2020-04-30 18:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,25 @@ msgstr ""
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Config.pm:453
 msgid "Wrong password!"
 msgstr "Falsche Passwort"
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:447
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:543
+msgid "Access Denied"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:452
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:550
+msgid "Plugin Name missing"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:458
+msgid "Upload Missing"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:467
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:560
+msgid "Data Decoding Problem %1"
+msgstr ""
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:130
 msgid "sorry, don't know the field you are talking about"
@@ -88,7 +107,7 @@ msgstr "Admin Konto erzeugen"
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:160
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:113
 msgid "Save Changes"
-msgstr "Änderunge Speichern"
+msgstr "Änderungen Speichern"
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:205
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:92
@@ -197,7 +216,7 @@ msgstr "Raum"
 #: lib/Kuickres/GuiPlugin/Booking.pm:86
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:89
 msgid "User"
-msgstr "Benutzer*in"
+msgstr "Emailadresse"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:93
 msgid "Date"

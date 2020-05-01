@@ -88,12 +88,13 @@ has actionCfg => sub {
     my $handler = sub {
         my $self = shift;
         my $args = shift;
+        my %metaInfo;
         if ($type eq 'add')  {
-            $self->db->insert('room',{
+            $metaInfo{recId} = $self->db->insert('room',{
                 map { "room_".$_ => $args->{"room_".$_} } qw(
                     name location
                 )
-            });
+            })->last_insert_id;
         }
         else {
             $self->db->update('room', {
@@ -103,7 +104,8 @@ has actionCfg => sub {
             },{ room_id => $args->{room_id}});
         }
         return {
-            action => 'dataSaved'
+            action => 'dataSaved',
+            metaInfo => \%metaInfo
         };
     };
 

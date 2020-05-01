@@ -7,6 +7,7 @@ use Mojo::Template;
 use Mojo::Util qw(dumper);
 use CallBackery::Exception qw(mkerror);
 use CallBackery::Translate qw(trm);
+
 has app => sub {
     die "app property must be set";
 };
@@ -23,6 +24,10 @@ has template => sub ($self) {
     Mojo::Template->new(
         vars => 1,
     );
+};
+
+has mailTransport => sub ($self) {
+    $self->app->mailTransport;
 };
 
 sub getText ($self,$template,$args) {
@@ -85,7 +90,11 @@ sub sendMail ($self,$cfg) {
                 )
             ]
         );
-        Email::Sender::Simple->send($msg);
+        my %MT;
+        if ($self->mailTransport) {
+            $MT{transport} = $self->mailTransport
+        }
+        Email::Sender::Simple->send($msg,\%MT);
         $self->log->debug("Mail sent to $cfg->{to} ($in->{head}{Subject})");
     };
     if ($@) {

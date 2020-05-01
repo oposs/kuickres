@@ -125,6 +125,7 @@ has actionCfg => sub {
     my $handler = sub {
         my $self = shift;
         my $args = shift;
+        my %metaInfo;
         my $start = $args->{location_open};
         $start =~ s/(\d+):(\d+)/$1*3600+$2*60/e;
         my $end = $args->{location_close};
@@ -136,11 +137,11 @@ has actionCfg => sub {
         $args->{location_open_duration} = $end - $start;
 
         if ($type eq 'add')  {
-            $self->db->insert('location',{
+            $metaInfo{recId} = $self->db->insert('location',{
                 map { "location_".$_ => $args->{"location_".$_} } qw(
                     name address open_start open_duration
                 )
-            });
+            })->last_insert_id;
         }
         else {
             $self->db->update('location', {
@@ -150,7 +151,8 @@ has actionCfg => sub {
             },{ location_id => $args->{location_id}});
         }
         return {
-            action => 'dataSaved'
+            action => 'dataSaved',
+            metaInfo => \%metaInfo
         };
     };
 

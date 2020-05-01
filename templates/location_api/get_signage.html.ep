@@ -1,0 +1,18 @@
+% use POSIX qw(strftime);
+<html>
+<head>
+</head>
+<body>
+% for my $row (sort { 
+%   $a->{booking_start_ts} <=> $b->{booking_start_ts} 
+% } @$bookings) {
+    <div>
+    <%= strftime("%d.%m.%Y %H:%M-", 
+         localtime $row->{booking_start_ts})
+      . strftime("%H:%M", 
+         localtime $row->{booking_start_ts}+$row->{booking_duration_s}) %>
+     </div>
+     <div><%= $row->{location_name} %></div>
+% }
+</body>
+</html>

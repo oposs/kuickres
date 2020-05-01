@@ -1,19 +1,15 @@
 
 BACKEND:
-  cfg_db: /tmp/kuickres.db
-  sesame_user: xxxxx
-# perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("password")
-  sesame_pass: xxxx
-# perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("apikey")'
-  api_key: yyyy
+  cfg_db: /tmp/kuickres-testing.db
+  api_key: a6b3a23b564d61601cb1c132845cd7d785501b5d
 
 FRONTEND:
 # logo = ../resource/kuickres/logo.png
 # logo_small = ../resource/kuickres/logo-small.png
   title: Kuickres Reservation System
   initial_plugin: Booking
-  company_name: Kuckres Company
-  company_url: https://kuickres.org
+  company_name: Sportamt der Stadt Zürich
+  company_url: https://sportamt.ch
   passwordreset_popup:
     plugin: ResetPassword
     set:

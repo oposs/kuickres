@@ -1,7 +1,9 @@
 package Kuickres;
 
-use Mojo::Base 'CallBackery';
+use Mojo::Base 'CallBackery', -signatures;
 use CallBackery::Model::ConfigJsonSchema;
+use Mojo::Util qw(dumper);
+use Digest::SHA;
 
 =head1 NAME
 
@@ -30,20 +32,24 @@ use our own plugin directory and our own configuration file:
 
 =cut
 
-has config => sub {
-    my $self = shift;
+has config => sub ($self) {
     my $config = CallBackery::Model::ConfigJsonSchema->new(
         app => $self,
         file => $ENV{Kuickres_CONFIG} || $self->home->rel_file('etc/kuickres.yaml')
     );
-    unshift @{$config->pluginPath}, 'Kuickres::GuiPlugin';
+    my $s = $config->schema->{properties}{BACKEND};
+    $s->{properties}{api_key} = {
+        type => 'string'
+    };
+    push @{$s->{required}},'api_key';
+
+    unshift @{$config->pluginPath}, __PACKAGE__.'::GuiPlugin';
     return $config;
 };
 
 
-has database => sub {
-    my $self = shift;
-    my $database = $self->SUPER::database(@_);
+has database => sub ($self) {
+    my $database = $self->SUPER::database();
     $database->sql->migrations
         ->name('KuickresBaseDB')
         ->from_data(__PACKAGE__,'appdb.sql')
@@ -51,6 +57,38 @@ has database => sub {
     return $database;
 };
 
+has mailTransport => sub ($self) {
+    if ($ENV{HARNESS_ACTIVE}) {
+        require Email::Sender::Transport::Test;
+        return Email::Sender::Transport::Test->new
+    }
+    return;
+};
+
+sub startup ($self) {
+    my $apiKey = $self->config->cfgHash->{BACKEND}{api_key};
+    $self->plugin("OpenAPI" => {
+        spec => $self->home->child('share', 'openapi.yaml'),
+        schema => 'v3',
+        render_specification => 1,
+        render_specification_for_paths => 1,
+        security => {
+            apiKeyHeader => sub ($c, $definition, $scopes, $cb) {
+                if (my $key = 
+                    $c->tx->req->content->headers->header('X-API-Key')) {
+                    my $keyHash = Digest::SHA::hmac_sha1_hex($key);
+                    if ($keyHash eq $apiKey) {
+                        return $c->$cb();
+                    }
+                    warn $apiKey;
+                    return $c->$cb('Api Key not valid');
+                }
+                return $c->$cb('X-Api-Key header not present');
+            }
+        }
+    });
+    $self->SUPER::startup();
+}
 1;
 
 =head1 COPYRIGHT
@@ -106,9 +144,11 @@ CREATE TABLE booking (
 
 CREATE TABLE access_log (
     access_log_id  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    access_log_ts  TIMESTAMP NOT NULL,
-    access_log_location INTEGER NOT NULL REFERENCES location(location_id),
-    access_log_cbuser INTEGER NOT NULL REFERENCES cbuser(cbuser_id),
+    access_log_entry_ts TIMESTAMP NOT NULL,
+    access_log_insert_ts TIMESTAMP NOT NULL,
+    access_log_ip TEXT NOT NULL,
+    access_log_location INTEGER REFERENCES location(location_id),
+    access_log_cbuser INTEGER REFERENCES cbuser(cbuser_id),
     access_log_booking INTEGER REFERENCES booking(booking_id)
 );
 

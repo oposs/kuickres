@@ -52,7 +52,8 @@ sub parse_time ($self,$str) {
     my $start_ts = eval { 
         localtime->strptime("$1 $2:$3",'%d.%m.%Y %H:%M')->epoch };
     die trm("Error parsing %1","$1 $2:$3") if $@;
-    die trm("Can't book in the past!") if $start_ts < time;
+    
+    die trm("Can't book in the past! ($start_ts)") if $start_ts < time;
     
     my $start = $2*3600+$3*60;
     my $end = $4*3600+$5*60;
@@ -139,8 +140,11 @@ has formCfg => sub {
                 WHERE room_id = ?
 SQL_END
                 $form->{booking_room})->hash;
+                return trm("Room %1 not found",$form->{booking_room}) 
+                    if not  $location;
                 my $lstart = $location->{location_open_start};
                 my $lend = $lstart + $location->{location_open_duration};
+                $self->log->debug(dumper $location);
                 return trm("Location %1 is only open for booking from %2 to %3",
                     $location->{location_name},
                     $location->{location_open},
@@ -221,6 +225,7 @@ has actionCfg => sub {
     my $handler = sub {
         my $self = shift;
         my $args = shift;
+        my %metaInfo;
         my $t = $self->parse_time($args->{booking_time});
         $args->{booking_start_ts} = $t->{start_ts};
         $args->{booking_duration_s} = $t->{duration};
@@ -239,7 +244,7 @@ has actionCfg => sub {
         my $ID = $args->{booking_id};
         if ($type eq 'add')  {
             my $res = $self->db->insert('booking',$data);
-            $ID = $res->last_insert_id;
+            $ID = $metaInfo{recId} = $res->last_insert_id;
         }
         else {
             $self->db->update('booking',$data,{
@@ -274,7 +279,8 @@ SQL_END
         });
         $tx->commit;
         return {
-            action => 'dataSaved'
+            action => 'dataSaved',
+            metaInfo => \%metaInfo
         };
     };
 
