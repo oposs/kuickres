@@ -53,7 +53,7 @@ sub parse_time ($self,$str) {
         localtime->strptime("$1 $2:$3",'%d.%m.%Y %H:%M')->epoch };
     die trm("Error parsing %1","$1 $2:$3") if $@;
     
-    die trm("Can't book in the past! ($start_ts)") if $start_ts < time;
+    die trm("Can't book in the past! (%1)",$start_ts) if $start_ts < time;
     
     my $start = $2*3600+$3*60;
     my $end = $4*3600+$5*60;
