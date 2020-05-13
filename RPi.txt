@@ -1,0 +1,12 @@
+systemctl disable serial-getty@ttyAMA0.service
+systemctl stop serial-getty@ttyAMA0.service
+
+/boot/firmware/config.txt 
+
+enable_uart=1
+
+
+apt install cpanm gcc make
+
+cpanm RPi::Serial RPi::Pin
+

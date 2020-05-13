@@ -1,0 +1,8 @@
+requires 'Mojolicious';
+requires 'RPi::Serial';
+requires 'RPi::Pin';
+requires 'Crypt::ScryptKDF';
+requires 'Data::Compare';
+requires 'Net::SSLeay';
+requires 'IO::Socket::SSL';
+requires 'libev';

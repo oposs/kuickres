@@ -1,0 +1,6 @@
+{
+    "didact.registered": [
+        "{\"name\":\"Didact Demo\",\"category\":\"Didact\",\"sourceUri\":\"/home/oetiker/.vscode/extensions/redhat.vscode-didact-0.1.6/demo/didact-demo.didact.md\"}",
+        "{\"name\":\"Create a New Didact Tutorial Extension\",\"category\":\"Didact\",\"sourceUri\":\"/home/oetiker/.vscode/extensions/redhat.vscode-didact-0.1.6/create_extension/create-new-tutorial-with-extension.didact.md\"}"
+    ]
+}

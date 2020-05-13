@@ -80,7 +80,6 @@ sub startup ($self) {
                     if ($keyHash eq $apiKey) {
                         return $c->$cb();
                     }
-                    warn $apiKey;
                     return $c->$cb('Api Key not valid');
                 }
                 return $c->$cb('X-Api-Key header not present');

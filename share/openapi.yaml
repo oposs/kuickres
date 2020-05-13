@@ -99,15 +99,21 @@ paths:
         content:
           application/json:
             schema:
-              required:
-                - entryTs
-                - bookingId
-              additionalProperties: false
-              properties:
-                entryTs:
-                  type: number
-                bookingId:
-                  type: number
+              type: array
+              items:
+                type: object
+                required:
+                  - entryTs
+                  - bookingId
+                  - hash
+                additionalProperties: false
+                properties:
+                  entryTs:
+                    type: number
+                  bookingId:
+                    type: number
+                  hash:
+                    type: string
       responses:
         201:
           description: information received

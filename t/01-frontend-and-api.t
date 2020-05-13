@@ -46,7 +46,7 @@ $t->post_ok('/QX-JSON-RPC', json => {
   ->json_has('/result/sessionCookie');
 
 my $cookie = { 'X-Session-Cookie' => $t->tx->res->json->{result}{sessionCookie} };
-
+my $key;
 my %metaInfo;
 
 subtest "Data Entry" => sub {
@@ -133,10 +133,11 @@ subtest 'REST API' => sub {
 
     is scrypt_hash_verify($PIN,$doorKeys->[0]{pinHash}),1,'door pin check';
 
-    $t->post_ok('/REST/v1/reportKeyUse',$header, json => {
+    $t->post_ok('/REST/v1/reportKeyUse',$header, json => [ {
         entryTs => time,
-        bookingId => $doorKeys->[0]{bookingId}
-    })
+        bookingId => $doorKeys->[0]{bookingId},
+        hash => scrypt_hash($doorKeys->[0]{bookingId}.":".$PIN)
+    }])
     ->status_is(201)
     ->content_is('');
     
