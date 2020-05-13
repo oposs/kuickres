@@ -1,0 +1,19 @@
+# put this into /etc/systemd/system/kuickres-satellite.service 
+# systemctl daemon-reload
+# systemctl enable kuickres-satellite
+# systemctl start kuickres-satellite
+
+[Unit]
+Description=Kuickres
+
+[Service]
+Type=simple
+Restart=always
+Environment=MOJO_MODE=production
+Environment=MOJO_LOG_LEVEL=info
+Environment=MOJO_LOG_SHORT=true
+KillMode=process
+ExecStart=/opt/kuickres-satellite/bin/kuickres-satellite.pl satellite --server=https://kuickres-server --location=1
+TimeoutStopSec=1
+[Install]
+WantedBy=multi-user.target
