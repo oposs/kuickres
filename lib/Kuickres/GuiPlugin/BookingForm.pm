@@ -28,6 +28,14 @@ has checkAccess => sub {
     return $self->user->may('booker') || $self->user->may('admin');
 };
 
+has singleRoom => sub ($self) {
+    my $rooms = $self->db->query(<<SQL_END)->hashes;
+SELECT * FROM room LIMIT 2;
+SQL_END
+    return false if $rooms->size > 1;
+    return $rooms->first->{room_id};
+};
+
 =head1 METHODS
 
 All the methods of L<CallBackery::GuiPlugin::AbstractForm> plus:
@@ -102,16 +110,18 @@ has formCfg => sub {
             },
         }
         :(),
-        {
-            key => 'booking_room',
-            label => trm('Room'),
-            widget => 'selectBox',
-            cfg => {
-                structure => $db->select(
-                    'room',[\"room_id AS key",\"room_name AS title"],undef,'room_name'
-                )->hashes->to_array
-            }
-        },
+        $self->singleRoom ? ():(
+            {
+                key => 'booking_room',
+                label => trm('Room'),
+                widget => 'selectBox',
+                cfg => {
+                    structure => $db->select(
+                        'room',[\"room_id AS key",\"room_name AS title"],undef,'room_name'
+                    )->hashes->to_array
+                }
+            },
+        ),
         {
             key => 'booking_time',
             label => trm('Time'),
@@ -121,10 +131,18 @@ has formCfg => sub {
                 placeholder => 'DD.MM.YYYY HH:MM-HH:MM',
             },
             validator => sub ($value,$fieldName,$form) {
+                $form->{booking_room} //= $self->singleRoom;
                 my $t = eval { $self->parse_time($value) };
                 if ($@) {
                     return $@ if ref $@;
                     die mkerror(8462,$@);
+                }
+                if (not $self->user->may('admin')) {
+                    if (my $fd = $self->config->{futureLimitDays}){
+                        if (($t->{start_ts} - time) > $fd * 24 * 3600) {
+                            return trm("No booking more than %1 days in advance",$fd);
+                        } 
+                    }
                 }
 
                 my $location = $db->query(<<SQL_END,
@@ -231,6 +249,7 @@ has actionCfg => sub {
         $args->{booking_duration_s} = $t->{duration};
         $args->{booking_create_ts} = time;
         $args->{booking_cbuser} //= $self->user->userId;
+        $args->{booking_room} //= $self->singleRoom;
         my %USER;
         if (not $self->user->may('admin') and 
             $args->{booking_cbuser} ne $self->user->userId){
@@ -247,6 +266,12 @@ has actionCfg => sub {
             $ID = $metaInfo{recId} = $res->last_insert_id;
         }
         else {
+            if ($self->db->select('booking',
+                'booking_start_ts',{
+                    booking_id => $args->{booking_id}
+                })->hash->{booking_start_ts} < time){
+                die mkerror(6534,trm("Can't modify booking in the past. Please close the form."))
+            }
             $self->db->update('booking',$data,{
                 booking_id => $args->{booking_id},
                 %USER
@@ -335,11 +360,14 @@ has grammar => sub {
     $self->mergeGrammar(
         $self->SUPER::grammar,
         {
-            _vars => [ qw(from ) ],
+            _vars => [ qw(from futureLimitDays) ],
             _mandatory => [ qw(from) ],
             from => {
                 _doc => 'sender for mails',
             },
+            futureLimitDays => {
+                _doc => 'Keine Buchungen mehr als X Tage in der Zukunft, ohne admin'
+            }
         },
     );
 };

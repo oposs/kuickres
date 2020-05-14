@@ -12,7 +12,7 @@ sub get_door_keys {
     my $locationId = $c->param('locationId');
     my $res = $c->db->query(<<SQL_END,time,time+3*24*3600,$locationId)->hashes;
     SELECT booking_id AS "booking_id",
-           booking_start_ts AS "valid_from_ts",
+           booking_start_ts - 15*60 AS "valid_from_ts",
            booking_start_ts + booking_duration_s AS "valid_until_ts",
            cbuser_pin
     FROM booking

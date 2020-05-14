@@ -20,10 +20,10 @@ DISTRIBUTIONS
       Term::ReadKey 0
       strict 0
       warnings 0
-  CallBackery-0.32.6
-    pathname: O/OE/OETIKER/CallBackery-0.32.6.tar.gz
+  CallBackery-0.33.1
+    pathname: O/OE/OETIKER/CallBackery-0.33.1.tar.gz
     provides:
-      CallBackery 0.032006
+      CallBackery 0.033001
       CallBackery::Config undef
       CallBackery::Controller::RpcService undef
       CallBackery::Database undef

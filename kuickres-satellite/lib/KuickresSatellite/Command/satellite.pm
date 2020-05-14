@@ -22,8 +22,20 @@ usage: $0 satellite
     --secret=/path/to/secret.file
     --cache=/path/to/cache.file
     --location=1
+    --relayOn=0.8
 
 EOF
+
+
+has opt => sub {
+    {
+        secret => '/etc/kuickres.secret',
+        server => 'http://froburg.oetiker.ch:3626',
+        cache => '/var/cache/kuickres.json',
+        location => 1,
+        relayOn => 0.8,
+    };
+};
 
 has relay => sub ($self) {
     my $relay = RPi::Pin->new(21);
@@ -39,9 +51,9 @@ has log => sub ($self) {
 sub openRelay ($self,$duration) {
     my $relay = $self->relay;
     $relay->write(LOW);
-    $self->log->debug("Open Relay");
+    $self->log->info("Open Relay");
     Mojo::Promise->timer($duration)->then(sub {
-    $self->log->debug("Close Relay");
+    $self->log->info("Close Relay");
         $relay->write(HIGH);
     });       
 }
@@ -85,15 +97,6 @@ has cache => sub ($self) {
 };
 
 
-has opt => sub {
-    {
-        secret => '/etc/kuickres.secret',
-        server => 'http://froburg.oetiker.ch:3626',
-        cache => '/var/cache/kuickres.json',
-        location => 1,
-    };
-};
-
 
 sub startKeypadWatcher ($self) {
     my $ser = RPi::Serial->new("/dev/ttyAMA0",9600);
@@ -104,10 +107,10 @@ sub startKeypadWatcher ($self) {
            $buffer .= chr($ord);
            if (length($buffer) > 0 && $buffer =~ s/.*\*(\d+)#//){
               my $key = $1;
-              $self->log->debug("Entered $key");
+              $self->log->info("Entered $key");
               if ($self->codeCheck($key)){
-                  $self->log->debug("Code Valid");              
-                  $self->openRelay(0.8);
+                  $self->log->info("Code Valid");              
+                  $self->openRelay($self->opt->{relayOn});
               }
            }
         }
@@ -167,7 +170,7 @@ sub startKeyUseReporter ($self) {
     Mojo::IOLoop->recurring(5 => sub {
         my $log = $self->cache->{keyUseLog};
         if (@$log) {
-            $self->log->debug("Pushing ".$self->reportKeyUse);
+            $self->log->info("Pushing ".$self->reportKeyUse);
             $self->ua->post_p($self->reportKeyUse->to_string,$self->headers => json => $log)->then(sub ($tx) {
                 my $res = $tx->result;
                 if ($res->code == 201) {
@@ -192,6 +195,7 @@ sub run ($self,@args) {
         server=s
         cache=s
         location=i
+        relayOn=s
     ) or exit 1;
     $self->headers;
     $self->relay;

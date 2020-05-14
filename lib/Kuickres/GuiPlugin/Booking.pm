@@ -75,13 +75,13 @@ has tableCfg => sub {
             sortable => true,
             primary => true
         },
-        {
+        ( $self->singleRoom ? ():({
             label => trm('Room'),
             type => 'string',
             width => '4*',
             key => 'room_name',
             sortable => true,
-        },
+        })),
         {
             label => trm('User'),
             type => 'string',
@@ -110,6 +110,7 @@ has tableCfg => sub {
             key => 'booking_calendar_tag',
             sortable => true,
         },
+        ($adm ? (
         {
             label => trm('District'),
             type => 'string',
@@ -124,6 +125,7 @@ has tableCfg => sub {
             key => 'agegroup_name',
             sortable => true,
         },
+        ):()),
         {
             label => trm('Comment'),
             type => 'string',
@@ -198,6 +200,7 @@ has actionCfg => sub {
                 config => {
                     type => 'edit',
                     from => $self->config->{from},
+                    futureLimitDays => $self->config->{futureLimitDays},
                 }
             }
         },
@@ -219,11 +222,12 @@ has actionCfg => sub {
                 if (not $self->user->may('admin')){
                     $USER{booking_cbuser} = $self->user->userId;
                 }
-                die mkerror(4992,"You have to select a booking first")
-                    if not $id;
+                die mkerror(3843,trm("Bookings in the past can not be deleted"))
+                    if $args->{selection}{booking_start_ts} < time;
                 eval {
                     $self->db->update('booking',{booking_delete_ts => time},{
                         booking_id => $id,
+                        \[ "booking_start_ts < CAST(? AS INTEGER) ", time],
                         %USER,
                         booking_delete_ts => undef
                     });
@@ -266,6 +270,14 @@ SQL_END
             }
         }
     ];
+};
+
+has singleRoom => sub ($self) {
+    my $rooms = $self->db->query(<<SQL_END)->hashes;
+SELECT * FROM room LIMIT 2;
+SQL_END
+    return false if $rooms->size > 1;
+    return $rooms->first->{room_id};
 };
 
 has mailer => sub ($self) {
@@ -367,18 +379,23 @@ sub getTableData {
     }
     my $sql = SQL::Abstract->new;
     my ($from,@from_bind) = $sql->_table($FROM);
+    my $adm = $self->user->may('admin');
     my ($fields,@field_bind) = $sql->_select_fields([
         'booking.*',
         'room_name',
-        'agegroup_name',
-        'district_name',
+        ( $adm ? (
+            'agegroup_name',
+            'district_name',
+        ):()),
         'cbuser_login',
         'cbuser_id', 
         \"strftime('%d.%m.%Y',booking_start_ts,'unixepoch', 'localtime') AS booking_date",
         \"strftime('%H:%M',booking_start_ts,'unixepoch', 'localtime') || '-' ||
         strftime('%H:%M',booking_start_ts+booking_duration_s,'unixepoch','localtime') AS booking_time",
         \"strftime('%d.%m.%Y %H:%M',booking_create_ts,'unixepoch', 'localtime') AS booking_created",
-        \"strftime('%d.%m.%Y %H:%M',booking_delete_ts,'unixepoch', 'localtime') AS booking_deleted"
+        ( $adm ? (
+            \"strftime('%d.%m.%Y %H:%M',booking_delete_ts,'unixepoch', 'localtime') AS booking_deleted" ): ()
+        ),
     ]);
     my ($where,@where_bind) = $sql->where($WHERE,$SORT);
     my $data = $db->query("SELECT $fields FROM $from $where LIMIT ? OFFSET ?",
@@ -390,8 +407,12 @@ sub getTableData {
     )->hashes;
     for my $row (@$data) {
         my $ok = false;
-        if ((delete $row->{cbuser_id} == $self->user->userId
-            or $self->user->may('admin') )
+        my $mine = delete $row->{cbuser_id} == $self->user->userId;
+        if (not $mine and not $adm){
+            delete $row->{cbuser_login};
+            delete $row->{cbuser_comment};
+        }
+        if (($mine or $adm )
             and not $row->{booking_delete_ts}
             and $row->{booking_start_ts} > time
         ){
@@ -414,11 +435,14 @@ has grammar => sub {
     $self->mergeGrammar(
         $self->SUPER::grammar,
         {
-            _vars => [ qw(from ) ],
+            _vars => [ qw(from futureLimitDays) ],
             _mandatory => [ qw(from) ],
             from => {
                 _doc => 'sender for mails',
             },
+            futureLimitDays => {
+                _doc => 'Keine Buchungen mehr als X Tage in der Zukunft, ohne admin'
+            }
         },
     );
 };
