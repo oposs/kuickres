@@ -1,0 +1,7 @@
+msgid "Reset Password"
+msgstr "Passwort vergessen"
+
+msgid "Register New Account"
+msgstr "Neues Konto anlegen"
+
+# end

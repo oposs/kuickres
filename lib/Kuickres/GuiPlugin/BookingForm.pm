@@ -53,19 +53,17 @@ Returns a Configuration Structure for the Booking Entry Form.
 
 =cut
 
-sub parse_time ($self,$str) {
-    if ($str !~ /^\s*(\d{1,2}\.\d{1,2}\.\d{4})\s+(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})\s*$/) {
-            die trm("Expected DD.MM.YYYY HH:MM-HH:MM");
-    }
+sub parse_time ($self,$date,$from,$to) {
+    my $date_str = strftime("%d.%m.%Y",gmtime($date));
     my $start_ts = eval { 
-        localtime->strptime("$1 $2:$3",'%d.%m.%Y %H:%M')->epoch };
-    die trm("Error parsing %1","$1 $2:$3") if $@;
+        localtime->strptime("$date_str $from",'%d.%m.%Y %H:%M')->epoch };
+    die trm("Error parsing %1","$date_str $from")
+        if $@;
     
-    die trm("Can't book in the past! (%1)",$start_ts) if $start_ts < time;
-    
-    my $start = $2*3600+$3*60;
-    my $end = $4*3600+$5*60;
-    $end += 24*3600 if $end < $start;
+    $from =~ /^(\d{1,2}):(\d{2})$/;
+    my $start = $1*3600+$2*60;
+    $to =~ /^(\d{1,2}):(\d{2})$/;
+    my $end = $1*3600+$2*60;
     my $duration = $end - $start;
     my $end_ts = $start_ts + $duration;
     my $ret = {
@@ -83,6 +81,22 @@ has formCfg => sub {
     my $self = shift;
     my $db = $self->db;
     my $adm = $self->user->may('admin');
+    my $districts = $db->select(
+        'district',[\"district_id AS key",\"district_name AS title"],undef,'district_id'
+    )->hashes->to_array;
+    if ($self->config->{type} eq 'add'){
+        unshift @$districts, {
+            key => undef, title => trm("Select District")
+        }
+    }
+    my $agegroups = $db->select(
+        'agegroup',[\"agegroup_id AS key",\"agegroup_name AS title"],undef,'agegroup_id'
+    )->hashes->to_array;
+    if ($self->config->{type} eq 'add'){
+        unshift @$agegroups, {
+            key => undef, title => trm("Select Agegroup")
+        }
+    }
     return [
         $self->config->{type} eq 'edit' ? {
             key => 'booking_id',
@@ -123,36 +137,82 @@ has formCfg => sub {
             },
         ),
         {
-            key => 'booking_time',
-            label => trm('Time'),
-            widget => 'text',
+            key => 'booking_date',
+            label => trm('Date'),
+            widget => 'date',
             set => {
+                maxWidth => 100,
                 required => true,
-                placeholder => 'DD.MM.YYYY HH:MM-HH:MM',
             },
             validator => sub ($value,$fieldName,$form) {
-                $form->{booking_room} //= $self->singleRoom;
-                my $t = eval { $self->parse_time($value) };
-                if ($@) {
-                    return $@ if ref $@;
-                    die mkerror(8462,$@);
+                if ($value < time-24*3600) {
+                    return trm("Can't book in the past.")
                 }
                 if (not $self->user->may('admin')) {
                     if (my $fd = $self->config->{futureLimitDays}){
-                        if (($t->{start_ts} - time) > $fd * 24 * 3600) {
+                        if (($value - time) > $fd * 24 * 3600) {
                             return trm("No booking more than %1 days in advance",$fd);
                         } 
                     }
+                }
+                return;
+            }
+        },
+        {
+            key => 'booking_from',
+            label => trm('Start Time'),
+            widget => 'comboBox',
+            set => {
+                required => true,
+                maxWidth => 100,
+            },
+            cfg => {
+                structure => [
+                    map {
+                        strftime("%H:%M",gmtime($_*30*60));
+                    } ( (7*2)..(18*2) )
+                ]
+            },
+            validator => sub ($value,$fieldName,$form) {
+                return trm("HH:MM expected")
+                    if $value !~ /^\d{1,2}:\d{2}$/;
+                return;
+            }
+        },
+        {
+            key => 'booking_to',
+            label => trm('End Time'),
+            widget => 'comboBox',
+            set => {
+                maxWidth => 100,
+                required => true,
+            },
+            cfg => {
+                structure => [
+                    map {
+                        strftime("%H:%M",gmtime($_*30*60));
+                    } ( (7*2)..(18*2) )
+                ]
+            },
+            validator => sub ($value,$fieldName,$form) {
+                return trm("HH:MM expected")
+                    if $value !~ /^\d{1,2}:\d{2}$/;
+                $form->{booking_room} //= $self->singleRoom;
+                my $t = eval { $self->parse_time(
+                    $form->{booking_date},
+                    $form->{booking_from},
+                    $form->{booking_to}
+                )};
+                $self->log->debug(dumper $t);
+                if ($@) {
+                    $self->log->debug($@);
+                    return trm("Invalid Date/Time specification");
                 }
 
                 my $location = $db->query(<<SQL_END,
                 SELECT 
                     location_name, 
-                    location_open_start,
-                    location_open_duration,
-                    strftime('%H:%M',location_open_start,'unixepoch') 
-                        AS location_open,
-                    strftime('%H:%M',location_open_start+location_open_duration,'unixepoch') AS location_close
+                    location_open_yaml
                 FROM location 
                 JOIN room ON room_location = location_id 
                 WHERE room_id = ?
@@ -160,19 +220,24 @@ SQL_END
                 $form->{booking_room})->hash;
                 return trm("Room %1 not found",$form->{booking_room}) 
                     if not  $location;
-                my $lstart = $location->{location_open_start};
-                my $lend = $lstart + $location->{location_open_duration};
-                $self->log->debug(dumper $location);
-                return trm("Location %1 is only open for booking from %2 to %3",
+                my $oh = Kuickres::Model::OperatingHours->new(
+                    $location->{location_open_yaml});
+                $self->log->debug(dumper $oh->rules);
+                return trm("Location %1 is not open from %2 to %3.",
                     $location->{location_name},
-                    $location->{location_open},
-                    $location->{location_close}) 
-                    if $t->{start} < $lstart or $t->{end} > $lend;
+                    strftime("%d.%m.%Y %H:%M",localtime($t->{start_ts})),
+                    strftime("%H:%M",localtime($t->{end_ts})),
+                )
+                unless $oh->isItOpen($t->{start_ts},$t->{end_ts});
+
                 my @params = (
                     $form->{booking_room},
                     $t->{start_ts},
                     $t->{end_ts}
                 );
+
+                return trm("Can't book in the past.") if $t->{start_ts} < time;
+
                 my $IGNORE ='';
                 if ($form->{booking_id}) {
                     $IGNORE = "AND booking_id <> CAST(? AS INTEGER)";
@@ -194,6 +259,15 @@ SQL_END
             },
         },
         {
+            key => 'booking_mobile',
+            label => trm('Mobile Phone'),
+            widget => 'text',
+            set => {
+                required => true,
+                placeholder => trm("+41 79 xxx xxxx")
+            },
+        },
+        {
             key => 'booking_calendar_tag',
             label => trm('Schedule Text'),
             widget => 'text',
@@ -203,13 +277,20 @@ SQL_END
             },
         },
         {
+            key => 'booking_school',
+            label => trm('School'),
+            widget => 'text',
+            set => {
+                required => true,
+                placeholder => trm("Name of the School")
+            },
+        },
+        {
             key => 'booking_district',
             label => trm('District'),
             widget => 'selectBox',
             cfg => {
-                structure => $db->select(
-                    'district',[\"district_id AS key",\"district_name AS title"],undef,'district_name'
-                )->hashes->to_array
+                structure => $districts
             }
         },
         {
@@ -217,9 +298,7 @@ SQL_END
             label => trm('Age Group'),
             widget => 'selectBox',
             cfg => {
-                structure => $db->select(
-                    'agegroup',[\"agegroup_id AS key",\"agegroup_name AS title"],undef,'agegroup_name'
-                )->hashes->to_array
+                structure => $agegroups
             }
         },
         {
@@ -244,7 +323,9 @@ has actionCfg => sub {
         my $self = shift;
         my $args = shift;
         my %metaInfo;
-        my $t = $self->parse_time($args->{booking_time});
+        my $t = $self->parse_time($args->{booking_date},
+                    $args->{booking_from},
+                    $args->{booking_to});
         $args->{booking_start_ts} = $t->{start_ts};
         $args->{booking_duration_s} = $t->{duration};
         $args->{booking_create_ts} = time;
@@ -258,7 +339,7 @@ has actionCfg => sub {
         }
         my $tx = $self->db->begin;
         my $data = { map { "booking_".$_ => $args->{"booking_".$_} }
-            qw( cbuser room start_ts duration_s
+            qw( cbuser room start_ts duration_s mobile school
             calendar_tag district agegroup comment create_ts) };
         my $ID = $args->{booking_id};
         if ($type eq 'add')  {
@@ -278,7 +359,7 @@ has actionCfg => sub {
             });
         }
         my $room = $self->db->query(<<SQL_END,$args->{booking_room})->hash
-        SELECT room_name,location_name 
+        SELECT room_name,location_name, location_address 
         FROM room JOIN location ON room_location = location_id
         WHERE room_id = ?
 SQL_END
@@ -295,7 +376,7 @@ SQL_END
             args => {
                 id => $ID,
                 date => strftime(trm('%d.%m.%Y'),localtime($args->{booking_start_ts})),
-                location => $room->{location_name},
+                location => $room->{location_name} . ' - ' . $room->{location_address},
                 room => $room->{room_name},
                 time => $args->{booking_time},
                 accesscode => $userInfo->{cbuser_pin},
@@ -348,9 +429,10 @@ sub getAllFieldValues {
         $WHERE->{booking_cbuser} = $self->user->userId
     }
     return $self->db->select('booking',['*',
-        \"strftime('%d.%m.%Y %H:%M-',booking_start_ts,'unixepoch','localtime')
-        || strftime('%H:%M',booking_start_ts+booking_duration_s,'unixepoch','localtime')
-        AS booking_time"],
+        \"booking_start_ts AS booking_date",
+        \"strftime('%H:%M',booking_start_ts,'unixepoch','localtime')
+        AS booking_from",
+        \"strftime('%H:%M',booking_start_ts+booking_duration_s,'unixepoch','localtime') AS booking_to"],
         $WHERE
     )->hash;
 }

@@ -3,6 +3,7 @@ use Mojo::Base 'CallBackery::GuiPlugin::AbstractForm';
 use CallBackery::Translate qw(trm);
 use CallBackery::Exception qw(mkerror);
 use Mojo::JSON qw(true false);
+use Kuickres::Model::OperatingHours;
 
 use POSIX qw(strftime);
 
@@ -75,45 +76,38 @@ has formCfg => sub {
             note => trm('Use the following fields to write down some extra information about the location.')
         },
         {
-            key => 'location_open',
-            label => trm('Opening Time'),
+            key => 'location_open_yaml',
+            label => trm('Operating Hours'),
             required => true,
             set => {
-                placeholder => 'HH:MM'
+                height => 200,
+                placeholder => <<OPENING_END,
+- type: close
+  day: mon
+  time: { from: 12:00,to: 14:00 }
+- type: open
+  day:  [ 'mon','tue','wed','thu','fri']
+  time:
+    - { from: 8:00, to: 12:30 }
+    - { from: 13:00, to: 18:30 }
+OPENING_END
             },
-            widget => 'text',
+            widget => 'textArea',
             validator => sub {
                 my $value = shift;
-                if ($value !~ /^\d{2}:\d{2}$/) {
-                    return trm("Expected HH:MM");
-                }
-                return;
-            }
-        },
-        {
-            key => 'location_close',
-            label => trm('Closing Time'),
-            required => true,
-            set => {
-                placeholder => 'HH:MM'
-            },
-            widget => 'text',
-            validator => sub {
-                my $value = shift;
-                my $fieldName = shift;
-                my $form = shift;
-                if ($value !~ /^\d{2}:\d{2}$/) {
-                    return trm("Expected HH:MM");
-                }
-                return;
+                local $@;
+                eval {
+                    Kuickres::Model::OperatingHours->new($value);
+                };
+                return "$@";
             }
         },
         {
             key => 'location_address',
             label => trm('Address'),
-            widget => 'textArea',
+            widget => 'text',
             set => {
-                placeholder => "Street Nr\nPLZ Ort"
+                placeholder => "Street Nr, PLZ Ort"
             }
         },
     ];
@@ -126,27 +120,17 @@ has actionCfg => sub {
         my $self = shift;
         my $args = shift;
         my %metaInfo;
-        my $start = $args->{location_open};
-        $start =~ s/(\d+):(\d+)/$1*3600+$2*60/e;
-        my $end = $args->{location_close};
-        $end =~ s/(\d+):(\d+)/$1*3600+$2*60/e;
-        if ($end < $start) {
-            $end += 3600*24;
-        }
-        $args->{location_open_start} = $start;
-        $args->{location_open_duration} = $end - $start;
-
         if ($type eq 'add')  {
             $metaInfo{recId} = $self->db->insert('location',{
                 map { "location_".$_ => $args->{"location_".$_} } qw(
-                    name address open_start open_duration
+                    name address open_yaml
                 )
             })->last_insert_id;
         }
         else {
             $self->db->update('location', {
                 map { 'location_'.$_ => $args->{'location_'.$_} } qw(
-                    name address open_start open_duration
+                    name address open_yaml
                 )
             },{ location_id => $args->{location_id}});
         }
@@ -190,9 +174,7 @@ sub getAllFieldValues {
     return {} unless $id;
 
     my $db = $self->db;
-    my $data = $db->select('location',['*',
-        \"strftime('%H:%M',location_open_start,'unixepoch') AS location_open",
-        \"strftime('%H:%M',location_open_start+location_open_duration,'unixepoch') AS location_close"]
+    my $data = $db->select('location','*'
         ,{location_id => $id})->hash;
     return $data;
 }

@@ -1,0 +1,54 @@
+$id: https://kuckres.org/hours.yaml
+$schema: http://json-schema.org/draft-07/schema#
+definitions:
+    weekday:
+        $id: '#weekday'
+        type: string
+        enum:
+            - mon
+            - tue
+            - wed
+            - thu
+            - fri
+            - sat
+            - sun
+    timerange:
+        $id: '#timerange'
+        type: 'object'
+        additionalProperties: false
+        required:
+            - open
+            - close
+        properties:
+            open:
+                type: string
+                format: simpletime
+            close:
+                type: string
+                format: simpletime
+type: array
+items:
+    type: object
+    additionalProperties: false
+    required:
+        - type
+        - day
+        - time
+    properties:
+        type:
+            type: string
+            enum:
+                - open
+                - close
+        day:
+            oneOf:
+                - type: array
+                  items:
+                    $ref: '#weekday'
+                - $ref: '#weekday'
+        time:
+            oneOf:
+                - type: array
+                  items:
+                    $ref: '#timerange'
+                - $ref: '#timerange'

@@ -38,22 +38,6 @@ has createActionLabel => sub {
 has formCfg => sub ($self) {
     my $form = $self->SUPER::formCfg;
     my @new = (
-        {
-            key => 'given',
-            label => trm('Given Name'),
-            widget => 'text',
-            set => {
-                nativeContextMenu => true,
-            },
-        },
-        {
-            key => 'family',
-            label => trm('Family Name'),
-            widget => 'text',
-            set => {
-                nativeContextMenu => true,
-            },
-        },
     );
     splice(@$form,2,0,@new);
     return $form;

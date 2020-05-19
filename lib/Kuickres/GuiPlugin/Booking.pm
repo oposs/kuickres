@@ -169,14 +169,15 @@ has actionCfg => sub {
             key => 'add',
             popupTitle => trm('New Booking'),
             set => {
-                height => 500,
-                width => 500
+                height => 550,
+                width => 400
             },
             backend => {
                 plugin => 'BookingForm',
                 config => {
                     type => 'add',
                     from => $self->config->{from},
+                    futureLimitDays => $self->config->{futureLimitDays},
                 }
             }
         },
@@ -189,8 +190,8 @@ has actionCfg => sub {
             key => 'edit',
             popupTitle => trm('Edit Booking'),
             set => {
-                minHeight => 700,
-                minWidth => 500,
+                minHeight => 550,
+                minWidth => 400,
             },
             buttonSet => {
                 enabled => false

@@ -2,7 +2,7 @@ package Kuickres::GuiPlugin::Location;
 use Mojo::Base 'CallBackery::GuiPlugin::AbstractTable', -signatures;
 use CallBackery::Translate qw(trm);
 use CallBackery::Exception qw(mkerror);
-use Mojo::JSON qw(true false);
+use Mojo::JSON qw(true false decode_json);
 
 =head1 NAME
 
@@ -176,10 +176,7 @@ sub getTableData {
         );
     }
     my $data = $db->query(<<"SQL_END",
-    SELECT *, 
-        strftime('%H:%M - ',location_open_start,'unixepoch') ||
-        strftime('%H:%M',location_open_start+location_open_duration,'unixepoch') AS location_opentime
-    FROM location
+    SELECT * FROM location
     $SORT
     LIMIT ? OFFSET ?
 SQL_END

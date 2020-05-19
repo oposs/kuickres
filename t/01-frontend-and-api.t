@@ -1,4 +1,8 @@
 #!/usr/bin/env perl
+BEGIN {
+    unlink glob "/tmp/kuickres-testing*";
+}
+
 use FindBin;
 use lib $FindBin::Bin.'/../thirdparty/lib/perl5';
 use lib $FindBin::Bin.'/../lib';
@@ -23,8 +27,6 @@ my $db =  $t->app->database->sql->db;
 my $userId = $db->insert('cbuser',{
     cbuser_login => $user,
     cbuser_password => hmac_sha1_sum($pass),
-    cbuser_family => 'fam',
-    cbuser_given => 'given',
     cbuser_pin => $PIN,
 })->last_insert_id;
 $db->insert('cbuserright',{
@@ -50,15 +52,20 @@ my $key;
 my %metaInfo;
 
 subtest "Data Entry" => sub {
-    my $startTime = time- (time % 24*3600) + 32*3600;
+    my $startTime = time- (time % 24*3600) + 30*3600;
     for my $data (
         [ AgegroupAddForm => {  agegroup_name => "sadfu" } ],
         [ DistrictAddForm => {  district_name => "Bern" } ],
         [ LocationAddForm => {  
             location_address => "BlaBla 2\n388383",
-            location_close => "23:59",
-            location_name => "Rufi",
-            location_open => "00:00"
+            location_open_yaml => <<YAML_END,
+- type: open
+  day: ['mon','tue','wed','thu','fri','sat','sun']
+  time:
+    from: 2:00
+    to: 23:00
+YAML_END
+            location_name => "Rufi"
         } ],
         [ RoomAddForm => {
             room_name => "Hinterzimmer"
@@ -67,6 +74,7 @@ subtest "Data Entry" => sub {
         [ BookingAddForm => {}],
         [ BookingAddForm => {}],
     ){
+        note $data->[0];
         if ( $data->[0] eq 'RoomAddForm') {
             $data->[1]{room_location} = $metaInfo{LocationAddForm}[0]{recId}
         }
@@ -77,10 +85,13 @@ subtest "Data Entry" => sub {
                 booking_comment => "Hello",
                 booking_district => $metaInfo{DistrictAddForm}[0]{recId},
                 booking_room => $metaInfo{RoomAddForm}[0]{recId},
-                booking_time => strftime("%d.%m.%Y %H:%M",localtime($startTime)).
-                    strftime("-%H:%M",localtime($startTime+300))
+                booking_school => "test school",
+                booking_mobile => '+41 222',
+                booking_date => $startTime,
+                booking_from => strftime("%H:%M",localtime($startTime)),
+                booking_to => strftime("%H:%M",localtime($startTime+300))
             };
-            $startTime += 7200;
+            $startTime += 3600;
         }
         $t->app->mailTransport->clear_deliveries;
         

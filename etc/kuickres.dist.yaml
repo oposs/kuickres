@@ -7,7 +7,7 @@ BACKEND:
 # perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("apikey")'
   api_key: yyyy
 
-FRONTEND:
+  FRONTEND:
 # logo = ../resource/kuickres/logo.png
 # logo_small = ../resource/kuickres/logo-small.png
   title: Kuickres Reservation System
@@ -47,6 +47,7 @@ PLUGIN:
       module: Booking
       tab-name: Buchungen
       from: tobi+reset@oetiker.ch
+      futureLimitDays: "72"
   - Location:
       module: Location
       tab-name: Standorte

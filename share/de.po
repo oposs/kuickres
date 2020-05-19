@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-14 18:02+0200\n"
+"POT-Creation-Date: 2020-05-19 14:16+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,13 +72,11 @@ msgstr "Passwort bestätigen"
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:85
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:53
-#: lib/Kuickres/GuiPlugin/Registration.pm:43
 msgid "Given Name"
 msgstr "Vorname"
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:94
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:60
-#: lib/Kuickres/GuiPlugin/Registration.pm:51
 msgid "Family Name"
 msgstr "Familiename"
 
@@ -102,9 +100,9 @@ msgstr "Admin Konto erzeugen"
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:104
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:315
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:396
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:104
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:162
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:146
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:115
 msgid "Save Changes"
 msgstr "Änderungen Speichern"
@@ -157,11 +155,11 @@ msgstr "Das Konto für %1 konnte nicht erzeugt werden."
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:43
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:56
 #: lib/Kuickres/GuiPlugin/Booking.pm:71
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:89
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:103
 #: lib/Kuickres/GuiPlugin/District.pm:44
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:55
 #: lib/Kuickres/GuiPlugin/Location.pm:44
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:56 lib/Kuickres/GuiPlugin/Room.pm:43
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:57 lib/Kuickres/GuiPlugin/Room.pm:43
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:54
 msgid "Id"
 msgstr ""
@@ -170,7 +168,7 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:65
 #: lib/Kuickres/GuiPlugin/District.pm:52
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:64
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:65 lib/Kuickres/GuiPlugin/Room.pm:51
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:66 lib/Kuickres/GuiPlugin/Room.pm:51
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:63
 msgid "Name"
 msgstr ""
@@ -178,7 +176,7 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:72
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:105
 msgid "Add Agegroup"
-msgstr "Neue Altersgruppe"
+msgstr "Neue Klasse"
 
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:76
 msgid "New Agegroup"
@@ -186,19 +184,19 @@ msgstr "Altergruppe Erfassen"
 
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:90 lib/Kuickres/GuiPlugin/Agegroup.pm:98
 msgid "Edit Agegroup"
-msgstr "Altersgruppe Bearbeiten"
+msgstr "Klasse Bearbeiten"
 
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:111
 msgid "Delete Agegroup"
-msgstr "Altersgruppe Löschen"
+msgstr "Klasse Löschen"
 
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:114
 msgid ""
 "Do you really want to delete the selected Agegroup. This will only work if "
 "there are no reservations linked to it."
 msgstr ""
-"Soll die gewählte Altersgruppe wirklich gelöscht werden? Die ist nur möglich "
-"wenn keine Reservationen damit verbunden sind."
+"Soll die gewählte Klasse wirklich gelöscht werden? Die ist nur möglich wenn "
+"keine Reservationen damit verbunden sind."
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:48
 msgid "Show Old Reservations "
@@ -209,21 +207,21 @@ msgid "search words ..."
 msgstr "suchen ..."
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:79
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:116
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:130
 msgid "Room"
 msgstr "Raum"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:86
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:98
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:112
 msgid "User"
 msgstr "Emailadresse"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:93
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:141
 msgid "Date"
 msgstr "Datum"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:100
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:127
 msgid "Time"
 msgstr "Zeit"
 
@@ -232,17 +230,17 @@ msgid "Schedule Entry"
 msgstr "Eintrag Belegungsplan"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:115
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:207
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:290
 msgid "District"
-msgstr "Bezirk"
+msgstr "Schulkreis"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:122
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:217
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:298
 msgid "Age Group"
-msgstr "Altersgruppe"
+msgstr "Klasse"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:130
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:227
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:306
 msgid "Comment"
 msgstr "Kommentar"
 
@@ -258,113 +256,150 @@ msgstr "Gelöscht"
 msgid "New Booking"
 msgstr "Neue Buchung"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:184 lib/Kuickres/GuiPlugin/Booking.pm:190
+#: lib/Kuickres/GuiPlugin/Booking.pm:185 lib/Kuickres/GuiPlugin/Booking.pm:191
 msgid "Edit Booking"
 msgstr "Buchung Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:208
+#: lib/Kuickres/GuiPlugin/Booking.pm:209
 msgid "Delete Booking"
 msgstr "Buchung Löschen"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:211
+#: lib/Kuickres/GuiPlugin/Booking.pm:212
 msgid "Do you really want to delete the selected Booking."
 msgstr "Wollen sie die gewählte Buchung wirklich löchen?"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:225
+#: lib/Kuickres/GuiPlugin/Booking.pm:226
 msgid "Bookings in the past can not be deleted"
 msgstr "Buchungen in der Vergangenheit können nicht gelöscht werden."
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:237 lib/Kuickres/GuiPlugin/Booking.pm:251
-#, fuzzy
+#: lib/Kuickres/GuiPlugin/Booking.pm:238 lib/Kuickres/GuiPlugin/Booking.pm:252
 msgid "Failed to remove booking %1"
 msgstr "Fehler beim Löschen der Buchung %1"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:259
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:297
+#: lib/Kuickres/GuiPlugin/Booking.pm:260
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:378
 msgid "%d.%m.%Y"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:58
-msgid "Expected DD.MM.YYYY HH:MM-HH:MM"
-msgstr "DD.MM.YYYY HH:MM-HH:MM erwartet"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:62
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:60
 msgid "Error parsing %1"
 msgstr "Fehler beim parsing von %1"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:64
-#, fuzzy
-msgid "Can't book in the past! (%1)"
-msgstr "Keine Buchungen in der Vergangenheit möglich."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:89
+msgid "Select District"
+msgstr "Schulkreis wählen"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:108
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:97
+msgid "Select Agegroup"
+msgstr "Klasse wählen"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:122
 msgid "Invalid user"
 msgstr "Ungültiger Benutzer"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:143
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:149
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:239
+msgid "Can't book in the past."
+msgstr "Keine Buchungen in der Vergangenheit möglich."
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:154
 msgid "No booking more than %1 days in advance"
 msgstr "Buchungen liegt mehr als %1 Tage in der Zukunft"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:161
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:163
+msgid "Start Time"
+msgstr "Start Zeit"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:177
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:198
+msgid "HH:MM expected"
+msgstr "HH:MM erwartet"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:184
+msgid "End Time"
+msgstr "End Zeit"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:209
+msgid "Invalid Date/Time specification"
+msgstr "Ungültige Datum-Zeit Angabe"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:221
 msgid "Room %1 not found"
 msgstr "Raum %1 nicht gefunden"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:166
-msgid "Location %1 is only open for booking from %2 to %3"
-msgstr "Der Standort %1 ist nur von %2 bis %3 buchbar."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:226
+#, fuzzy
+msgid "Location %1 is not open from %2 to %3."
+msgstr "Der Standort %1 für die gewünschte Zeit nicht buchbar."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:191
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:256
 msgid "Booking overlaps with %1 existing bookings."
 msgstr "Die Buchung überlappt mit %1 existierenden Buchungen."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:198
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:263
+msgid "Mobile Phone"
+msgstr "Mobiltelefon"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:267
+msgid "+41 79 xxx xxxx"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:272
 msgid "Schedule Text"
 msgstr "Info Belegungsplan"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:202
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:276
 msgid "Text to show in the schedule"
 msgstr "Text für den öffentlichen Belegungsplan."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:230
-msgid "Note for the management"
-msgstr "Bemerkung für die Verwaltung."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:281
+msgid "School"
+msgstr "Schule"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:256
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:285
+msgid "Name of the School"
+msgstr "Name der Schule"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:309
+msgid "Note for the management"
+msgstr "Bemerkung für die Verwaltung"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:337
 msgid "You are not allowed to book in the name of other users."
 msgstr "Sie können keine Buchungen für andere Benutzer erfassen."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:273
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:354
 msgid "Can't modify booking in the past. Please close the form."
-msgstr ""
+msgstr "Buchungen in der Vergangenheit lassen sich nicht ändern."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:316
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:397
 msgid "Add Booking"
 msgstr "Buchung Speichern"
 
 #: lib/Kuickres/GuiPlugin/District.pm:73
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:105
 msgid "Add District"
-msgstr "Bezirk Erfassen"
+msgstr "Schulkreis Erfassen"
 
 #: lib/Kuickres/GuiPlugin/District.pm:78
 msgid "New District"
-msgstr "Bezirk Erfassen"
+msgstr "Schulkreis Erfassen"
 
 #: lib/Kuickres/GuiPlugin/District.pm:91 lib/Kuickres/GuiPlugin/District.pm:99
 msgid "Edit District"
-msgstr "Bezirk Bearbeiten"
+msgstr "Schulkreis Bearbeiten"
 
 #: lib/Kuickres/GuiPlugin/District.pm:112
 msgid "Delete District"
-msgstr "Bezirk Löschen"
+msgstr "Schulkreis Löschen"
 
 #: lib/Kuickres/GuiPlugin/District.pm:115
 msgid ""
 "Do you really want to delete the selected District. This will only work if "
 "there are no reservations linked to it."
 msgstr ""
-"Wollen sie wirklich den ausgewählten Bezirk löschen? Dies ist nur möglich "
-"wenn keine Buchungen damit verbunden sind."
+"Wollen sie wirklich den ausgewählten Schulkreis löschen? Dies ist nur "
+"möglich wenn keine Buchungen damit verbunden sind."
 
 #: lib/Kuickres/GuiPlugin/Location.pm:52
 msgid "Location Name"
@@ -375,12 +410,12 @@ msgid "Opening Hours"
 msgstr "Öffnungszeiten"
 
 #: lib/Kuickres/GuiPlugin/Location.pm:66
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:113
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:107
 msgid "Address"
 msgstr "Adresse"
 
 #: lib/Kuickres/GuiPlugin/Location.pm:87
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:163
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:147
 msgid "Add Location"
 msgstr "Ort Hinzufügen"
 
@@ -405,11 +440,11 @@ msgstr ""
 "Soll der gewählte Standort wirklich gelöscht werden? Dies ist nur möglich "
 "wenn keine Räume an dem Standort existieren."
 
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:74
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:75
 msgid "Location Details"
 msgstr "Standort Details"
 
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:75
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:76
 msgid ""
 "Use the following fields to write down some extra information about the "
 "location."
@@ -417,24 +452,16 @@ msgstr ""
 "In den untenstehdenden Feldern können zusätzliche Inforamtionen über den "
 "Standort erfasst werden."
 
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:79
-msgid "Opening Time"
-msgstr "Öffnungszeit"
-
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:88
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:106
-msgid "Expected HH:MM"
-msgstr "HH:MM erwartet"
-
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:95
-msgid "Closing Time"
-msgstr "Schliessungszeit"
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:80
+#, fuzzy
+msgid "Operating Hours"
+msgstr "Öffnungszeiten"
 
 #: lib/Kuickres/GuiPlugin/Registration.pm:35
 msgid "Create New Account"
 msgstr "Neues Konto Erstellen"
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:63
+#: lib/Kuickres/GuiPlugin/Registration.pm:47
 msgid ""
 "Hallo %1\n"
 "\n"
@@ -447,12 +474,12 @@ msgid ""
 "\n"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:78
+#: lib/Kuickres/GuiPlugin/Registration.pm:62
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:173
 msgid "%1 is required"
 msgstr "%1 ist erforderlich"
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:101
+#: lib/Kuickres/GuiPlugin/Registration.pm:85
 msgid "Failed to create account for %1"
 msgstr "Das Konto für %1 konnte nicht erzeugt werden."
 
@@ -471,7 +498,7 @@ msgstr "eMail Adresse schon in Gebrauch"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:80
 msgid "Invalid token"
-msgstr "Token ungültig"
+msgstr "Kennwo ungültig"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:88
 msgid "Passwords must be 8 chars or longer"
@@ -511,16 +538,16 @@ msgstr "eMailadresse"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:125
 msgid "Validation Token"
-msgstr "Token"
+msgstr "Kennwo"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:130
 msgid "check your mail for a token"
-msgstr "Das Token befindet sich in ihrem Mailbox."
+msgstr "Das Kennwo befindet sich in ihrem Mailbox."
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:134
 #, fuzzy
 msgid "[Send Token]"
-msgstr "[Token senden]"
+msgstr "[Kennwort anfordern]"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:143
 msgid "New Password"
@@ -554,15 +581,15 @@ msgstr "Passwort für %1 konnte nicht gesetzt werden."
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:204
 msgid "Send Token"
-msgstr "Token senden"
+msgstr "Kennwort anfordern"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:219
 msgid "Token sent"
-msgstr "Token gesendet"
+msgstr "Kennwort gesendet"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:220
 msgid "The token has been sent to your Mailbox."
-msgstr "Das Token wurde an ihre eMail Adresse gesendet."
+msgstr "Das Kennwort wurde an ihre eMail Adresse gesendet."
 
 #: lib/Kuickres/GuiPlugin/Room.pm:58 lib/Kuickres/GuiPlugin/RoomForm.pm:72
 msgid "Location"
