@@ -6,12 +6,13 @@ Reservationsbestätigung - <%= $id %>
 Reservationnummer: <%= $id %>
 Ort: <%= $location %>
 Raum: <%= $room %>
+Datum: <%= $date %>
 Zeitraum: <%= $time %>
-Pin: *<%= $accesscode %>#
-Kontakt: <%= $email %>
+Pin für Türöffnung: *<%= $accesscode %>#
 
 Sie können ihre Reservation jederzeit online bearbeiten.
 
+Diese Mail wurde automatisch generiert.
 ----
 <html>
 <body>
@@ -21,11 +22,13 @@ Sie können ihre Reservation jederzeit online bearbeiten.
 Reservationnummer: <%= $id %><br/>
 Ort: <%= $location %><br/>
 Raum: <%= $room %><br/>
+Datum: <%= $date %><br/>
 Zeitraum: <%= $time %><br/>
-Pin: <code>*<%= $accesscode %>#</code><br/>
-Kontakt: <%= $email %>
+Pin für Türöffnung: <code>*<%= $accesscode %>#</code><br/>
 </p>
 
 <p>Sie können ihre Reservation jederzeit online bearbeiten.</p>
+
+<p>Diese Mail wurde automatisch generiert.</p>
 </body>
 </html>

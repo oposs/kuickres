@@ -170,7 +170,7 @@ has formCfg => sub {
                 structure => [
                     map {
                         strftime("%H:%M",gmtime($_*30*60));
-                    } ( (7*2)..(18*2) )
+                    } ( (8*2)..(16*2) )
                 ]
             },
             validator => sub ($value,$fieldName,$form) {
@@ -191,7 +191,7 @@ has formCfg => sub {
                 structure => [
                     map {
                         strftime("%H:%M",gmtime($_*30*60));
-                    } ( (7*2)..(18*2) )
+                    } ( (8*2)..(16*2) )
                 ]
             },
             validator => sub ($value,$fieldName,$form) {
@@ -289,26 +289,35 @@ SQL_END
             key => 'booking_district',
             label => trm('District'),
             widget => 'selectBox',
+            set => {
+                required => true,
+            },
             cfg => {
                 structure => $districts
+            },
+            validator => sub ($value,$field,$form) {
+                return trm("please select a district")
+                    unless $value;
+                return;
             }
         },
         {
             key => 'booking_agegroup',
             label => trm('Age Group'),
             widget => 'selectBox',
+            set => {
+                required => true,
+            },
             cfg => {
                 structure => $agegroups
-            }
-        },
-        {
-            key => 'booking_comment',
-            label => trm('Comment'),
-            widget => 'textArea',
-            set => {
-                placeholder => trm("Note for the management")
             },
-        },
+            validator => sub ($value,$field,$form) {
+                return trm("please select an agegroup")
+                    unless $value;
+                return;
+            }
+
+        }
     ];
 };
 
@@ -340,7 +349,7 @@ has actionCfg => sub {
         my $tx = $self->db->begin;
         my $data = { map { "booking_".$_ => $args->{"booking_".$_} }
             qw( cbuser room start_ts duration_s mobile school
-            calendar_tag district agegroup comment create_ts) };
+            calendar_tag district agegroup create_ts) };
         my $ID = $args->{booking_id};
         if ($type eq 'add')  {
             my $res = $self->db->insert('booking',$data);
@@ -378,7 +387,7 @@ SQL_END
                 date => strftime(trm('%d.%m.%Y'),localtime($args->{booking_start_ts})),
                 location => $room->{location_name} . ' - ' . $room->{location_address},
                 room => $room->{room_name},
-                time => $args->{booking_time},
+                time => $args->{booking_from}.' - '.$args->{booking_to},
                 accesscode => $userInfo->{cbuser_pin},
                 email => $userInfo->{cbuser_login},
             }

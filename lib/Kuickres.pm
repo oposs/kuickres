@@ -144,7 +144,6 @@ CREATE TABLE booking (
     booking_school TEXT NOT NULL,
     booking_district INTEGER NOT NULL REFERENCES district(district_id),
     booking_agegroup INTEGER NOT NULL REFERENCES agegroup(agegroup_id),
-    booking_comment TEXT,
     booking_create_ts TIMESTAMP NOT NULL,
     booking_delete_ts TIMESTAMP,
         CHECK( booking_delete_ts IS NULL 
@@ -197,3 +196,7 @@ INSERT INTO cbright (cbright_key,cbright_label)
     VALUES 
         ('booker','Booker');
 
+-- 2 up
+
+DELETE FROM agegroup WHERE agegroup_name = 'Betreuung';
+UPDATE agegroup SET agegroup_name = 'Hort/Betreuung' WHERE agegroup_name = 'Hort';

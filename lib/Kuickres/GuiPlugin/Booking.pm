@@ -85,14 +85,14 @@ has tableCfg => sub {
         {
             label => trm('User'),
             type => 'string',
-            width => '4*',
+            width => '5*',
             key => 'cbuser_login',
             sortable => true,
         },
         {
             label => trm('Date'),
             type => 'string',
-            width => '4*',
+            width => '3*',
             key => 'booking_date',
             sortable => true,
         },
@@ -126,13 +126,6 @@ has tableCfg => sub {
             sortable => true,
         },
         ):()),
-        {
-            label => trm('Comment'),
-            type => 'string',
-            width => '6*',
-            key => 'booking_comment',
-            sortable => true,
-        },
         {
             label => trm('Created'),
             type => 'string',

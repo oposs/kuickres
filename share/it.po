@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-19 14:16+0200\n"
+"POT-Creation-Date: 2020-05-20 08:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -99,7 +99,7 @@ msgstr ""
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:104
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:396
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:405
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:104
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:146
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:115
@@ -230,49 +230,44 @@ msgid "District"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:122
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:298
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:306
 msgid "Age Group"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:130
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:306
-msgid "Comment"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:137
 msgid "Created"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:144
+#: lib/Kuickres/GuiPlugin/Booking.pm:137
 msgid "Deleted"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:165 lib/Kuickres/GuiPlugin/Booking.pm:170
+#: lib/Kuickres/GuiPlugin/Booking.pm:158 lib/Kuickres/GuiPlugin/Booking.pm:163
 msgid "New Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:185 lib/Kuickres/GuiPlugin/Booking.pm:191
+#: lib/Kuickres/GuiPlugin/Booking.pm:178 lib/Kuickres/GuiPlugin/Booking.pm:184
 msgid "Edit Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:209
+#: lib/Kuickres/GuiPlugin/Booking.pm:202
 msgid "Delete Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:212
+#: lib/Kuickres/GuiPlugin/Booking.pm:205
 msgid "Do you really want to delete the selected Booking."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:226
+#: lib/Kuickres/GuiPlugin/Booking.pm:219
 msgid "Bookings in the past can not be deleted"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:238 lib/Kuickres/GuiPlugin/Booking.pm:252
+#: lib/Kuickres/GuiPlugin/Booking.pm:231 lib/Kuickres/GuiPlugin/Booking.pm:245
 msgid "Failed to remove booking %1"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:260
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:378
+#: lib/Kuickres/GuiPlugin/Booking.pm:253
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:387
 msgid "%d.%m.%Y"
 msgstr ""
 
@@ -354,19 +349,23 @@ msgstr ""
 msgid "Name of the School"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:309
-msgid "Note for the management"
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:299
+msgid "please select a district"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:337
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:315
+msgid "please select an agegroup"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:346
 msgid "You are not allowed to book in the name of other users."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:354
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:363
 msgid "Can't modify booking in the past. Please close the form."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:397
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:406
 msgid "Add Booking"
 msgstr ""
 
