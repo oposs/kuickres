@@ -267,7 +267,7 @@ SQL_END
                 placeholder => trm("07x xxx xx xx")
             },
             validator => sub ($value,$field,$form) {
-                $value =~ /(?:\s*\d\s*){10}/
+                $value =~ /(?:.*?\d.*?){10}/
                 or return trm("Phone number expected");
                 return;
             }

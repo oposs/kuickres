@@ -162,7 +162,7 @@ has actionCfg => sub {
             key => 'add',
             popupTitle => trm('New Booking'),
             set => {
-                height => 550,
+                height => 450,
                 width => 400
             },
             backend => {
@@ -183,7 +183,7 @@ has actionCfg => sub {
             key => 'edit',
             popupTitle => trm('Edit Booking'),
             set => {
-                minHeight => 550,
+                minHeight => 450,
                 minWidth => 400,
             },
             buttonSet => {
