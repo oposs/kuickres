@@ -139,7 +139,6 @@ CREATE TABLE booking (
     booking_start_ts TIMESTAMP NOT NULL,
     booking_duration_s INTEGER NOT NULL
         CHECK( booking_duration_s > 0 ),
-    booking_calendar_tag TEXT,
     booking_mobile TEXT NOT NULL,
     booking_school TEXT NOT NULL,
     booking_district INTEGER NOT NULL REFERENCES district(district_id),

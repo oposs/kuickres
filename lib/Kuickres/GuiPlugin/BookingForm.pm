@@ -264,17 +264,13 @@ SQL_END
             widget => 'text',
             set => {
                 required => true,
-                placeholder => trm("+41 79 xxx xxxx")
+                placeholder => trm("07x xxx xx xx")
             },
-        },
-        {
-            key => 'booking_calendar_tag',
-            label => trm('Schedule Text'),
-            widget => 'text',
-            set => {
-                required => true,
-                placeholder => trm("Text to show in the schedule")
-            },
+            validator => sub ($value,$field,$form) {
+                $value =~ /(?:\s*\d\s*){10}/
+                or return trm("Phone number expected");
+                return;
+            }
         },
         {
             key => 'booking_school',

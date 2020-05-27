@@ -104,10 +104,10 @@ has tableCfg => sub {
             sortable => false,
         },
         {
-            label => trm('Schedule Entry'),
+            label => trm('School'),
             type => 'string',
             width => '3*',
-            key => 'booking_calendar_tag',
+            key => 'booking_school',
             sortable => true,
         },
         ($adm ? (
@@ -360,12 +360,12 @@ sub getTableData {
     my $db = $self->db;
     my $dbh = $db->dbh;
     my $WHERE = $self->WHERE($args);
-    if ( my $sc = $args->{sortColumn} ){
+    if ( my $sc = $args->{sortColumn} // 'booking_date' ){
         if ($sc eq 'booking_date') {
             $sc = 'booking_start_ts'
         }
         $SORT = {
-            $args->{sortDesc} 
+            $args->{sortDesc}
                 ? '-desc' 
                 : '-asc',
             $sc

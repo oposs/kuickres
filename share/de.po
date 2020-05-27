@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-20 08:13+0200\n"
+"POT-Creation-Date: 2020-05-27 15:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -100,7 +100,7 @@ msgstr "Admin Konto erzeugen"
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:104
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:405
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:401
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:104
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:146
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:115
@@ -226,16 +226,17 @@ msgid "Time"
 msgstr "Zeit"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:107
-msgid "Schedule Entry"
-msgstr "Eintrag Belegungsplan"
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:277
+msgid "School"
+msgstr "Schule"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:115
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:290
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:286
 msgid "District"
 msgstr "Schulkreis"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:122
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:306
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:302
 msgid "Age Group"
 msgstr "Klasse"
 
@@ -272,7 +273,7 @@ msgid "Failed to remove booking %1"
 msgstr "Fehler beim Löschen der Buchung %1"
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:253
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:387
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:383
 msgid "%d.%m.%Y"
 msgstr ""
 
@@ -336,42 +337,34 @@ msgid "Mobile Phone"
 msgstr "Mobiltelefon"
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:267
-msgid "+41 79 xxx xxxx"
+msgid "07x xxx xx xx"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:272
-msgid "Schedule Text"
-msgstr "Info Belegungsplan"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:276
-msgid "Text to show in the schedule"
-msgstr "Text für den öffentlichen Belegungsplan."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:271
+msgid "Phone number expected"
+msgstr "Telefonnummer erwartet"
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:281
-msgid "School"
-msgstr "Schule"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:285
 msgid "Name of the School"
 msgstr "Name der Schule"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:299
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:295
 msgid "please select a district"
 msgstr "Schulkreis wählen!"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:315
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:311
 msgid "please select an agegroup"
 msgstr "Klasse wählen!"
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:346
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:342
 msgid "You are not allowed to book in the name of other users."
 msgstr "Sie können keine Buchungen für andere Benutzer erfassen."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:363
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:359
 msgid "Can't modify booking in the past. Please close the form."
 msgstr "Buchungen in der Vergangenheit lassen sich nicht ändern."
 
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:406
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:402
 msgid "Add Booking"
 msgstr "Buchung Speichern"
 
