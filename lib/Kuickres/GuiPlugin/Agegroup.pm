@@ -14,7 +14,7 @@ Kuickres::GuiPlugin::Location - Agegroup Table
 
 =head1 DESCRIPTION
 
-The Song Table Gui.
+The Table Gui.
 
 =cut
 

@@ -9,7 +9,7 @@ use POSIX qw(strftime);
 
 =head1 NAME
 
-Kuickres::GuiPlugin::LocationForm - Song Edit Form
+Kuickres::GuiPlugin::LocationForm - Edit Form
 
 =head1 SYNOPSIS
 

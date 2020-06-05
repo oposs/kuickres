@@ -8,7 +8,7 @@ use POSIX qw(strftime);
 
 =head1 NAME
 
-Kuickres::GuiPlugin::AgegroupForm - Song Edit Form
+Kuickres::GuiPlugin::AgegroupForm - Edit Form
 
 =head1 SYNOPSIS
 

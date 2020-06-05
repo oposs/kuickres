@@ -10,7 +10,7 @@ use Kuickres::Email;
 
 =head1 NAME
 
-Kuickres::GuiPlugin::BookingForm - Song Edit Form
+Kuickres::GuiPlugin::BookingForm - Edit Form
 
 =head1 SYNOPSIS
 

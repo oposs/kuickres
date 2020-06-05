@@ -14,7 +14,7 @@ Kuickres::GuiPlugin::Location - District Table
 
 =head1 DESCRIPTION
 
-The Song Table Gui.
+The Table Gui.
 
 =cut
 

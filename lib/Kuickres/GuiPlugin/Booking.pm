@@ -17,7 +17,7 @@ Kuickres::GuiPlugin::Booking - Booking Table
 
 =head1 DESCRIPTION
 
-The Song Table Gui.
+The Table Gui.
 
 =cut
 

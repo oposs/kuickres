@@ -14,7 +14,7 @@ Kuickres::GuiPlugin::Location - Location Table
 
 =head1 DESCRIPTION
 
-The Song Table Gui.
+The Table Gui.
 
 =cut
 
