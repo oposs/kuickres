@@ -1,3 +1,4 @@
+Reply-To: sportanlagen@zuerich.ch
 Subject: Löschbestätigung - <%= $id %> - <%= $location %> <%= $date %>
 ----
 Löschbestätigung - <%= $id %>

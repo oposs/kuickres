@@ -1,3 +1,4 @@
+Reply-To: sportanlagen@zuerich.ch
 Subject: Reservationsbestätigung - <%= $id %> - <%= $location %> <%= $date %>
 ----
 Reservationsbestätigung - <%= $id %>
