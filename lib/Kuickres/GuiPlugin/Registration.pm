@@ -58,7 +58,7 @@ im Konto-Erzeugungs-Formular ein.
 
 sub createAction ($self,$args) {
     # now all is required ... 
-    for (qw(email token given family pass1 pass2)){
+    for (qw(email token pass1 pass2)){
         die mkerror(3893,trm('%1 is required',ucfirst))
             unless $args->{$_};
     }
@@ -68,8 +68,6 @@ sub createAction ($self,$args) {
         my $id = $db->insert('cbuser',{
             cbuser_password => hmac_sha1_sum($args->{pass1}),
             cbuser_login => $args->{email},
-            cbuser_given => $args->{given},
-            cbuser_family => $args->{family},
         })->last_insert_id;
         my $booker_id = $db->select('cbright','cbright_id',{
             cbright_key => 'booker'
