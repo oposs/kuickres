@@ -1,4 +1,4 @@
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Config.pm:453
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Config.pm:447
 msgid "Wrong password!"
 msgstr ""
 
@@ -23,6 +23,10 @@ msgstr ""
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:130
 msgid "sorry, don't know the field you are talking about"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractTable.pm:130
+msgid "Export %1"
 msgstr ""
 
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:42
@@ -221,34 +225,38 @@ msgid "Created"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:137
+msgid "Used"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:144
 msgid "Deleted"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:158 lib/Kuickres/GuiPlugin/Booking.pm:163
+#: lib/Kuickres/GuiPlugin/Booking.pm:165 lib/Kuickres/GuiPlugin/Booking.pm:170
 msgid "New Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:178 lib/Kuickres/GuiPlugin/Booking.pm:184
+#: lib/Kuickres/GuiPlugin/Booking.pm:185 lib/Kuickres/GuiPlugin/Booking.pm:191
 msgid "Edit Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:202
+#: lib/Kuickres/GuiPlugin/Booking.pm:209
 msgid "Delete Booking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:205
+#: lib/Kuickres/GuiPlugin/Booking.pm:212
 msgid "Do you really want to delete the selected Booking."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:219
+#: lib/Kuickres/GuiPlugin/Booking.pm:226
 msgid "Bookings in the past can not be deleted"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:231 lib/Kuickres/GuiPlugin/Booking.pm:245
+#: lib/Kuickres/GuiPlugin/Booking.pm:238 lib/Kuickres/GuiPlugin/Booking.pm:252
 msgid "Failed to remove booking %1"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:253
+#: lib/Kuickres/GuiPlugin/Booking.pm:260
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:383
 msgid "%d.%m.%Y"
 msgstr ""
@@ -439,7 +447,7 @@ msgstr ""
 msgid "%1 is required"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:85
+#: lib/Kuickres/GuiPlugin/Registration.pm:83
 msgid "Failed to create account for %1"
 msgstr ""
 

@@ -1,5 +1,35 @@
 # carton snapshot format: version 1.0
 DISTRIBUTIONS
+  Archive-Zip-1.68
+    pathname: P/PH/PHRED/Archive-Zip-1.68.tar.gz
+    provides:
+      Archive::Zip 1.68
+      Archive::Zip::Archive 1.68
+      Archive::Zip::BufferedFileHandle 1.68
+      Archive::Zip::DirectoryMember 1.68
+      Archive::Zip::FileMember 1.68
+      Archive::Zip::Member 1.68
+      Archive::Zip::MemberRead 1.68
+      Archive::Zip::MockFileHandle 1.68
+      Archive::Zip::NewFileMember 1.68
+      Archive::Zip::StringMember 1.68
+      Archive::Zip::Tree 1.68
+      Archive::Zip::ZipFileMember 1.68
+    requirements:
+      Compress::Raw::Zlib 2.017
+      Encode 0
+      ExtUtils::MakeMaker 0
+      File::Basename 0
+      File::Copy 0
+      File::Find 0
+      File::Path 0
+      File::Spec 0.80
+      File::Temp 0
+      IO::File 0
+      IO::Handle 0
+      IO::Seekable 0
+      Time::Local 0
+      perl 5.006
   CPAN-Uploader-0.103013
     pathname: R/RJ/RJBS/CPAN-Uploader-0.103013.tar.gz
     provides:
@@ -20,10 +50,10 @@ DISTRIBUTIONS
       Term::ReadKey 0
       strict 0
       warnings 0
-  CallBackery-0.33.1
-    pathname: O/OE/OETIKER/CallBackery-0.33.1.tar.gz
+  CallBackery-0.34.15
+    pathname: O/OE/OETIKER/CallBackery-0.34.15.tar.gz
     provides:
-      CallBackery 0.033001
+      CallBackery 0.034015
       CallBackery::Config undef
       CallBackery::Controller::RpcService undef
       CallBackery::Database undef
@@ -41,11 +71,13 @@ DISTRIBUTIONS
     requirements:
       CPAN::Uploader 0
       Config::Grammar 1.13
+      Excel::Writer::XLSX 0
       ExtUtils::MakeMaker 0
       JSON::Validator 0
       Locale::PO 0.27
       Mojolicious 8.26
       Mojolicious::Plugin::Qooxdoo v1.0.8
+      Text::CSV 0
       YAML::XS 0
       perl 5.022000
   Class-Method-Modifiers-2.13
@@ -462,6 +494,46 @@ DISTRIBUTIONS
       Encode::Alias 0
       ExtUtils::MakeMaker 0
       perl 5.008
+  Excel-Writer-XLSX-1.07
+    pathname: J/JM/JMCNAMARA/Excel-Writer-XLSX-1.07.tar.gz
+    provides:
+      Excel::Writer::XLSX 1.07
+      Excel::Writer::XLSX::Chart 1.07
+      Excel::Writer::XLSX::Chart::Area 1.07
+      Excel::Writer::XLSX::Chart::Bar 1.07
+      Excel::Writer::XLSX::Chart::Column 1.07
+      Excel::Writer::XLSX::Chart::Doughnut 1.07
+      Excel::Writer::XLSX::Chart::Line 1.07
+      Excel::Writer::XLSX::Chart::Pie 1.07
+      Excel::Writer::XLSX::Chart::Radar 1.07
+      Excel::Writer::XLSX::Chart::Scatter 1.07
+      Excel::Writer::XLSX::Chart::Stock 1.07
+      Excel::Writer::XLSX::Chartsheet 1.07
+      Excel::Writer::XLSX::Drawing 1.07
+      Excel::Writer::XLSX::Examples 1.07
+      Excel::Writer::XLSX::Format 1.07
+      Excel::Writer::XLSX::Package::App 1.07
+      Excel::Writer::XLSX::Package::Comments 1.07
+      Excel::Writer::XLSX::Package::ContentTypes 1.07
+      Excel::Writer::XLSX::Package::Core 1.07
+      Excel::Writer::XLSX::Package::Custom 1.07
+      Excel::Writer::XLSX::Package::Packager 1.07
+      Excel::Writer::XLSX::Package::Relationships 1.07
+      Excel::Writer::XLSX::Package::SharedStrings 1.07
+      Excel::Writer::XLSX::Package::Styles 1.07
+      Excel::Writer::XLSX::Package::Table 1.07
+      Excel::Writer::XLSX::Package::Theme 1.07
+      Excel::Writer::XLSX::Package::VML 1.07
+      Excel::Writer::XLSX::Package::XMLwriter 1.07
+      Excel::Writer::XLSX::Shape 1.07
+      Excel::Writer::XLSX::Utility 1.07
+      Excel::Writer::XLSX::Workbook 1.07
+      Excel::Writer::XLSX::Worksheet 1.07
+    requirements:
+      Archive::Zip 1.3
+      ExtUtils::MakeMaker 0
+      File::Temp 0.19
+      IO::File 1.14
   ExtUtils-Config-0.008
     pathname: L/LE/LEONT/ExtUtils-Config-0.008.tar.gz
     provides:
@@ -1234,6 +1306,18 @@ DISTRIBUTIONS
       Term::ReadKey 2.38
     requirements:
       ExtUtils::MakeMaker 6.58
+  Text-CSV-2.00
+    pathname: I/IS/ISHIGAKI/Text-CSV-2.00.tar.gz
+    provides:
+      Text::CSV 2.00
+      Text::CSV::ErrorDiag 2.00
+      Text::CSV_PP 2.00
+    requirements:
+      ExtUtils::MakeMaker 0
+      IO::Handle 0
+      Test::Harness 0
+      Test::More 0.71
+      perl 5.006001
   Throwable-0.200013
     pathname: R/RJ/RJBS/Throwable-0.200013.tar.gz
     provides:

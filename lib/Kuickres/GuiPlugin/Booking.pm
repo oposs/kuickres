@@ -133,6 +133,13 @@ has tableCfg => sub {
             key => 'booking_created',
             sortable => true,
         },
+        {
+            label => trm('Used'),
+            type => 'string',
+            width => '3*',
+            key => 'booking_used',
+            sortable => true,
+        },
         ($adm ? ( {
             label => trm('Deleted'),
             type => 'string',
@@ -152,7 +159,7 @@ Only users who can write get any actions presented.
 has actionCfg => sub {
     my $self = shift;
     # return [] if $self->user and not $self->user->may('admin');
-
+    my $adm = $self->user && $self->user->may('admin');
     return [
         {
             label => trm('New Booking'),
@@ -262,7 +269,8 @@ SQL_END
                     action => 'reload',
                 };
             }
-        }
+        },
+        $adm ? $self->makeExportAction() : (),
     ];
 };
 
@@ -287,6 +295,9 @@ my $FROM = <<FROM_END;
     JOIN agegroup ON booking_agegroup = agegroup_id
     JOIN district ON booking_district = district_id
     JOIN cbuser ON booking_cbuser = cbuser_id
+    LEFT JOIN (SELECT access_log_booking, MIN(access_log_entry_ts) AS access_log_entry_ts
+                FROM access_log GROUP BY access_log_booking) AS al 
+            ON al.access_log_booking = booking_id
 FROM_END
 
 my $keyMap = {
@@ -384,6 +395,7 @@ sub getTableData {
         'cbuser_login',
         'cbuser_id', 
         \"strftime('%d.%m.%Y',booking_start_ts,'unixepoch', 'localtime') AS booking_date",
+        \"strftime('%d.%m.%Y %H:%M',access_log_entry_ts,'unixepoch', 'localtime') AS booking_used",
         \"strftime('%H:%M',booking_start_ts,'unixepoch', 'localtime') || '-' ||
         strftime('%H:%M',booking_start_ts+booking_duration_s,'unixepoch','localtime') AS booking_time",
         \"strftime('%d.%m.%Y %H:%M',booking_create_ts,'unixepoch', 'localtime') AS booking_created",

@@ -82,11 +82,10 @@ YAML_END
             $data->[1] = {
                 booking_agegroup => $metaInfo{AgegroupAddForm}[0]{recId},
                 booking_cbuser => 1,
-                booking_comment => "Hello",
                 booking_district => $metaInfo{DistrictAddForm}[0]{recId},
                 booking_room => $metaInfo{RoomAddForm}[0]{recId},
                 booking_school => "test school",
-                booking_mobile => '+41 222',
+                booking_mobile => '0791231234',
                 booking_date => $startTime,
                 booking_from => strftime("%H:%M",localtime($startTime)),
                 booking_to => strftime("%H:%M",localtime($startTime+300))
@@ -117,7 +116,7 @@ YAML_END
         push @{$metaInfo{$data->[0]}}, $t->tx->res->json->{result}{metaInfo};
         if ( $data->[0] eq 'BookingAddForm') {
             my $delivery = $t->app->mailTransport->shift_deliveries;
-            # diag $delivery->{email}->as_string;
+            #diag dumper $delivery->{email};
             is $delivery->{successes}[0], $user, "mail recipient check";
             like $delivery->{email}->as_string, qr{Rufi};
         }
