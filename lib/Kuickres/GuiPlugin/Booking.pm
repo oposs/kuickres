@@ -236,7 +236,7 @@ has actionCfg => sub {
                 };
                 if ($@){
                     $self->log->error("remove booking $id: $@");
-                    die mkerror(4993,trm("Failed to remove booking %1 ($@)",$id));
+                    die mkerror(4993,trm("Failed to remove booking %1",$id));
                 }
                 my $b = $self->db->query(<<SQL_END,$id)->hash
         SELECT 
