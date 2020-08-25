@@ -97,6 +97,18 @@ has formCfg => sub {
             key => undef, title => trm("Select Agegroup")
         }
     }
+    my $users = $db->select(
+        'cbuser',[\"cbuser_id AS key",\"cbuser_login AS title"],undef,'cbuser_login'
+    )->hashes->to_array;
+
+    my $me = $db->select(
+        'cbuser',[\"cbuser_id AS key",\"cbuser_login AS title"],{
+            cbuser_id => $self->user->userId,
+        },'cbuser_login'
+    )->hash;
+
+    unshift @$users,$me;
+
     return [
         $self->config->{type} eq 'edit' ? {
             key => 'booking_id',
@@ -112,9 +124,7 @@ has formCfg => sub {
             label => trm('User'),
             widget => 'selectBox',
             cfg => {
-                structure => $db->select(
-                    'cbuser',[\"cbuser_id AS key",\"cbuser_login AS title"],undef,'cbuser_login'
-                )->hashes->to_array
+                structure => $users,
             },
             validator => sub {
                 my $value = shift;

@@ -227,15 +227,16 @@ has actionCfg => sub {
                     if $args->{selection}{booking_start_ts} < time;
                 eval {
                     $self->db->update('booking',{booking_delete_ts => time},{
-                        booking_id => $id,
-                        \[ "booking_start_ts < CAST(? AS INTEGER) ", time],
-                        %USER,
-                        booking_delete_ts => undef
-                    });
+                        -and => [
+                            booking_id => $id,
+                            \[ "booking_start_ts > CAST(? AS INTEGER) ", time],
+                            %USER,
+                            booking_delete_ts => undef
+                        ]});
                 };
                 if ($@){
                     $self->log->error("remove booking $id: $@");
-                    die mkerror(4993,trm("Failed to remove booking %1",$id));
+                    die mkerror(4993,trm("Failed to remove booking %1 ($@)",$id));
                 }
                 my $b = $self->db->query(<<SQL_END,$id)->hash
         SELECT 
