@@ -50,6 +50,7 @@ has config => sub ($self) {
 
 has database => sub ($self) {
     my $database = $self->SUPER::database();
+    $database->sql->db->query("PRAGMA foreign_keys = ON;");
     $database->sql->migrations
         ->name('KuickresBaseDB')
         ->from_data(__PACKAGE__,'appdb.sql')
@@ -67,6 +68,7 @@ has mailTransport => sub ($self) {
 
 sub startup ($self) {
     my $apiKey = $self->config->cfgHash->{BACKEND}{api_key};
+    $self->database; # make sure to migrate at start time
     $self->plugin("OpenAPI" => {
         spec => $self->home->child('share', 'openapi.yaml'),
         schema => 'v3',
