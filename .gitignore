@@ -5,6 +5,7 @@ autom4te.cache/
 /.build/
 _build/
 cover_db/
+conftools/
 inc/
 Build
 !Build/

@@ -1,0 +1,22 @@
+# carton snapshot format: version 1.0
+DISTRIBUTIONS
+  Crypt-ScryptKDF-0.010
+    pathname: M/MI/MIK/Crypt-ScryptKDF-0.010.tar.gz
+    provides:
+      Crypt::ScryptKDF 0.010
+    requirements:
+      Exporter 5.59
+      ExtUtils::CBuilder 0
+      MIME::Base64 0
+      Module::Build 0
+      Test::More 0
+      perl 5.006
+  YAML-LibYAML-0.83
+    pathname: T/TI/TINITA/YAML-LibYAML-0.83.tar.gz
+    provides:
+      YAML::LibYAML 0.83
+      YAML::XS 0.83
+      YAML::XS::LibYAML undef
+    requirements:
+      ExtUtils::MakeMaker 0
+      perl 5.008001

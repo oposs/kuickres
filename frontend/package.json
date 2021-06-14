@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@qooxdoo/compiler": "^1.0.0-beta.20200518-2020"
+    "@qooxdoo/compiler": "^1.0.0"
   }
 }

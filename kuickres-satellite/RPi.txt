@@ -6,6 +6,18 @@ systemctl mask serial-getty@ttyAMA0.service
 
 enable_uart=1
 
+/etc/systemd/journald.conf
+[Journal]
+Storage=volatile
+
+# protect rootdisk
+/etc/overlayroot.local.conf 
+# CLOUD_IMG: This file was created/modified by the Cloud Image build process
+overlayroot_cfgdisk=LABEL=OROOTCFG
+overlayroot=tmpfs:recurse=0
+
+# recover by adding overlayroot=disabled to /boot/firmware/nobtcmd.txt and
+# reboot
 
 apt install gcc make libssl-dev zlib1g-dev 
 
