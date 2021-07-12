@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the kuickres package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-11 14:39+0200\n"
+"POT-Creation-Date: 2021-07-12 14:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,188 +16,217 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Config.pm:491
-msgid "Wrong password!"
-msgstr "Falsche Passwort"
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:173
+#: lib/Kuickres/GuiPlugin/Registration.pm:62
+msgid "%1 is required"
+msgstr "%1 ist erforderlich"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:429
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:507
+#: lib/Kuickres/GuiPlugin/Booking.pm:268
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:366
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:450
+msgid "%d.%m.%Y"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:285
+msgid "07x xxx xxxx"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:145
+msgid ""
+"<a target=\"_new\" href=\"https://uit.stanford.edu/service/accounts/"
+"passwords/quickguide\">Standford Password Policy</a>"
+msgstr ""
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:422
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:500
 msgid "Access Denied"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:434
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:514
-msgid "Plugin Name missing"
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:105
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:71
+msgid "Add Agegroup"
+msgstr "Neue Klasse"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:470
+msgid "Add Booking"
+msgstr "Buchung Speichern"
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:79
+msgid "Add Category"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:440
-msgid "Upload Missing"
+#: lib/Kuickres/GuiPlugin/District.pm:73
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:105
+msgid "Add District"
+msgstr "Schulkreis Erfassen"
+
+#: lib/Kuickres/GuiPlugin/Room.pm:152 lib/Kuickres/GuiPlugin/Room.pm:160
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:144
+msgid "Add Equipment"
+msgstr "Anlage Hinzufügen"
+
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:147
+#: lib/Kuickres/GuiPlugin/Location.pm:87
+msgid "Add Location"
+msgstr "Ort Hinzufügen"
+
+#: lib/Kuickres/GuiPlugin/Room.pm:181
+msgid "Add MultiBooking"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:449
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:524
-msgid "Data Decoding Problem %1"
-msgstr ""
+#: lib/Kuickres/GuiPlugin/Room.pm:86 lib/Kuickres/GuiPlugin/RoomForm.pm:125
+msgid "Add Room"
+msgstr "Raum Hinzufügen"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractCardlist.pm:82
-msgid "cardCfg must be defined in child plugin class"
-msgstr ""
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:139
-msgid "sorry, don't know the field you are talking about"
-msgstr "Das gewählte Feld ist unbekannt."
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractTable.pm:130
-msgid "Export %1"
-msgstr ""
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:42
-msgid "Error"
-msgstr "Fehler"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:44
-msgid "No user selected."
-msgstr "Kein Benutzer gewählt"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:50
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:38
-msgid "UserId"
-msgstr "Benutzer ID"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:59
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:46
-msgid "Username"
-msgstr "Benutzername"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:68
-msgid "Password"
-msgstr "Passwort"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:76
-msgid "Password Again"
-msgstr "Passwort bestätigen"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:85
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:53
-msgid "Given Name"
-msgstr "Vorname"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:94
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:60
-msgid "Family Name"
-msgstr "Familiename"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:104
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:74
-msgid "Note"
-msgstr "Bemerkung"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:152
-msgid "You can only edit your own stuff unless you have admin permissions."
-msgstr ""
-"Ohne Admin-Berechtiungn können nur die eigenen Einträge bearbeitet werden."
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:156
-msgid "The password instances did not match."
-msgstr "Die beiden Passworte stimmen nicht überein."
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:202
-msgid "Create Admin Account"
-msgstr "Admin Konto erzeugen"
-
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
-#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:104
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:411
-#: lib/Kuickres/GuiPlugin/DistrictForm.pm:104
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:146
-#: lib/Kuickres/GuiPlugin/RoomForm.pm:115
-msgid "Save Changes"
-msgstr "Änderungen Speichern"
-
+#: lib/Kuickres/GuiPlugin/UserForm.pm:227 lib/Kuickres/GuiPlugin/User.pm:104
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:205
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:92
 msgid "Add User"
 msgstr "Konto hinzufügen"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:67
-msgid "Rights"
-msgstr "Rechte"
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:390
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:167
+msgid "Add UserCat"
+msgstr "UserCategory hinzufügen"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:96
-msgid "New User"
-msgstr "Konto Hinzufügen"
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:107
+#: lib/Kuickres/GuiPlugin/Location.pm:66
+msgid "Address"
+msgstr "Adresse"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:105
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:110
-msgid "Edit User"
-msgstr "Konto bearbeiten"
+#: lib/Kuickres/GuiPlugin/Booking.pm:127
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:320
+msgid "Age Group"
+msgstr "Klasse"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:115
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:139
-msgid "You have to select a user first"
-msgstr "Erst Benutzer wählen"
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:155
+msgid "Alle zukünftigen Bookings wurden aus der MultiBooking-Liste entfernt."
+msgstr ""
 
+#: lib/Kuickres/GuiPlugin/Booking.pm:422
+msgid "Alles"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:271
+msgid "Anlagen"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:87
+msgid "Available From"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:393
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:404
+msgid "Booking Problem"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:406
+msgid "Booking was not possible because: <ul>%1</ul>"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:234
+msgid "Bookings in the past can not be deleted"
+msgstr "Buchungen in der Vergangenheit können nicht gelöscht werden."
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:195
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:264
+msgid "Can't book in the past."
+msgstr "Keine Buchungen in der Vergangenheit möglich."
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:426
+msgid "Can't modify booking in the past. Please close the form."
+msgstr "Buchungen in der Vergangenheit lassen sich nicht ändern."
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:276
+msgid "Contact Data"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:104
+#: lib/Kuickres/GuiPlugin/Equipment.pm:58
+msgid "Cost"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:224
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:202
+msgid "Create Admin Account"
+msgstr "Admin Konto erzeugen"
+
+#: lib/Kuickres/GuiPlugin/Room.pm:173
+msgid "Create MultiBooking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Registration.pm:35
+msgid "Create New Account"
+msgstr "Neues Konto Erstellen"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:142
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:74
+msgid "Created"
+msgstr "Erzeugt"
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:442
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:517
+msgid "Data Decoding Problem %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:91
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:178
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:183
+msgid "Date"
+msgstr "Datum"
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:110
+msgid "Delete Agegroup"
+msgstr "Klasse Löschen"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:217
+msgid "Delete Booking"
+msgstr "Buchung Löschen"
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:118
+msgid "Delete Category"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/District.pm:112
+msgid "Delete District"
+msgstr "Schulkreis Löschen"
+
+#: lib/Kuickres/GuiPlugin/Equipment.pm:136
+msgid "Delete Equipment"
+msgstr "Equipment Löschen"
+
+#: lib/Kuickres/GuiPlugin/Location.pm:126
+msgid "Delete Location"
+msgstr "Standort Löschen"
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:118
+msgid "Delete MultiBooking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Room.pm:125
+msgid "Delete Room"
+msgstr "Raum Löschen"
+
+#: lib/Kuickres/GuiPlugin/User.pm:150
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:130
 msgid "Delete User"
 msgstr "Konto Löschen"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:133
-msgid "Do you really want to delete the selected user ?"
-msgstr "Wollen sie wirklich das gewählte Konto löschen?"
+#: lib/Kuickres/GuiPlugin/Booking.pm:156
+msgid "Deleted"
+msgstr "Gelöscht"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:141
-msgid "You can not delete the user you are logged in with"
-msgstr "Der eigene Benutzer kann nicht gelöscht werden."
+#: lib/Kuickres/GuiPlugin/Booking.pm:120
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:304
+msgid "District"
+msgstr "Schulkreis"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:150
-#, fuzzy
-msgid "Faild to remove user %1"
-msgstr "Das Konto für %1 konnte nicht erzeugt werden."
-
-#: lib/Kuickres/Email.pm:102
-#, fuzzy
-msgid "Failed to send mail to %1"
-msgstr "Das Konto für %1 konnte nicht erzeugt werden."
-
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:43
-#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:56
-#: lib/Kuickres/GuiPlugin/Booking.pm:71
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:115
-#: lib/Kuickres/GuiPlugin/District.pm:44
-#: lib/Kuickres/GuiPlugin/DistrictForm.pm:55
-#: lib/Kuickres/GuiPlugin/Location.pm:44
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:57 lib/Kuickres/GuiPlugin/Room.pm:43
-#: lib/Kuickres/GuiPlugin/RoomForm.pm:54
-msgid "Id"
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:121
+msgid ""
+"Do you really want to delete the MultiBooking and all associated Bookings ?"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:51
-#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:65
-#: lib/Kuickres/GuiPlugin/District.pm:52
-#: lib/Kuickres/GuiPlugin/DistrictForm.pm:64
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:66 lib/Kuickres/GuiPlugin/Room.pm:51
-#: lib/Kuickres/GuiPlugin/RoomForm.pm:63
-msgid "Name"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:72
-#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:105
-msgid "Add Agegroup"
-msgstr "Neue Klasse"
-
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:76
-msgid "New Agegroup"
-msgstr "Altergruppe Erfassen"
-
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:90 lib/Kuickres/GuiPlugin/Agegroup.pm:98
-msgid "Edit Agegroup"
-msgstr "Klasse Bearbeiten"
-
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:111
-msgid "Delete Agegroup"
-msgstr "Klasse Löschen"
-
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:114
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:113
 msgid ""
 "Do you really want to delete the selected Agegroup. This will only work if "
 "there are no reservations linked to it."
@@ -206,196 +234,9 @@ msgstr ""
 "Soll die gewählte Klasse wirklich gelöscht werden? Die ist nur möglich wenn "
 "keine Reservationen damit verbunden sind."
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:48
-msgid "Show Old Reservations "
-msgstr "Zeige alte Reservationen"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:55
-msgid "search words ..."
-msgstr "suchen ..."
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:79
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:140
-msgid "Room"
-msgstr "Raum"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:86
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:124
-msgid "User"
-msgstr "Emailadresse"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:93
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:151
-msgid "Date"
-msgstr "Datum"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:100
-msgid "Time"
-msgstr "Zeit"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:107
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:287
-msgid "School"
-msgstr "Schule"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:115
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:296
-msgid "District"
-msgstr "Schulkreis"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:122
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:312
-msgid "Age Group"
-msgstr "Klasse"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:130
-msgid "Created"
-msgstr "Erzeugt"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:137
-msgid "Used"
-msgstr "Benutzt"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:144
-msgid "Deleted"
-msgstr "Gelöscht"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:165 lib/Kuickres/GuiPlugin/Booking.pm:170
-msgid "New Booking"
-msgstr "Neue Buchung"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:185 lib/Kuickres/GuiPlugin/Booking.pm:191
-msgid "Edit Booking"
-msgstr "Buchung Bearbeiten"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:209
-msgid "Delete Booking"
-msgstr "Buchung Löschen"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:212
+#: lib/Kuickres/GuiPlugin/Booking.pm:220
 msgid "Do you really want to delete the selected Booking."
 msgstr "Wollen sie die gewählte Buchung wirklich löchen?"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:226
-msgid "Bookings in the past can not be deleted"
-msgstr "Buchungen in der Vergangenheit können nicht gelöscht werden."
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:239 lib/Kuickres/GuiPlugin/Booking.pm:253
-msgid "Failed to remove booking %1"
-msgstr "Fehler beim Löschen der Buchung %1"
-
-#: lib/Kuickres/GuiPlugin/Booking.pm:261
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:393
-msgid "%d.%m.%Y"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:60
-msgid "Error parsing %1"
-msgstr "Fehler beim parsing von %1"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:89
-msgid "Select District"
-msgstr "Schulkreis wählen"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:97
-msgid "Select Agegroup"
-msgstr "Klasse wählen"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:132
-msgid "Invalid user"
-msgstr "Ungültiger Benutzer"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:159
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:249
-msgid "Can't book in the past."
-msgstr "Keine Buchungen in der Vergangenheit möglich."
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:164
-msgid "No booking more than %1 days in advance"
-msgstr "Buchungen liegt mehr als %1 Tage in der Zukunft"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:173
-msgid "Start Time"
-msgstr "Start Zeit"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:187
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:208
-msgid "HH:MM expected"
-msgstr "HH:MM erwartet"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:194
-msgid "End Time"
-msgstr "End Zeit"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:219
-msgid "Invalid Date/Time specification"
-msgstr "Ungültige Datum-Zeit Angabe"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:231
-msgid "Room %1 not found"
-msgstr "Raum %1 nicht gefunden"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:236
-#, fuzzy
-msgid "Location %1 is not open from %2 to %3."
-msgstr "Der Standort %1 für die gewünschte Zeit nicht buchbar."
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:266
-msgid "Booking overlaps with %1 existing bookings."
-msgstr "Die Buchung überlappt mit %1 existierenden Buchungen."
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:273
-msgid "Mobile Phone"
-msgstr "Mobiltelefon"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:277
-msgid "07x xxx xx xx"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:281
-msgid "Phone number expected"
-msgstr "Telefonnummer erwartet"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:291
-msgid "Name of the School"
-msgstr "Name der Schule"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:305
-msgid "please select a district"
-msgstr "Schulkreis wählen!"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:321
-msgid "please select an agegroup"
-msgstr "Klasse wählen!"
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:352
-msgid "You are not allowed to book in the name of other users."
-msgstr "Sie können keine Buchungen für andere Benutzer erfassen."
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:369
-msgid "Can't modify booking in the past. Please close the form."
-msgstr "Buchungen in der Vergangenheit lassen sich nicht ändern."
-
-#: lib/Kuickres/GuiPlugin/BookingForm.pm:412
-msgid "Add Booking"
-msgstr "Buchung Speichern"
-
-#: lib/Kuickres/GuiPlugin/District.pm:73
-#: lib/Kuickres/GuiPlugin/DistrictForm.pm:105
-msgid "Add District"
-msgstr "Schulkreis Erfassen"
-
-#: lib/Kuickres/GuiPlugin/District.pm:78
-msgid "New District"
-msgstr "Schulkreis Erfassen"
-
-#: lib/Kuickres/GuiPlugin/District.pm:91 lib/Kuickres/GuiPlugin/District.pm:99
-msgid "Edit District"
-msgstr "Schulkreis Bearbeiten"
-
-#: lib/Kuickres/GuiPlugin/District.pm:112
-msgid "Delete District"
-msgstr "Schulkreis Löschen"
 
 #: lib/Kuickres/GuiPlugin/District.pm:115
 msgid ""
@@ -405,36 +246,9 @@ msgstr ""
 "Wollen sie wirklich den ausgewählten Schulkreis löschen? Dies ist nur "
 "möglich wenn keine Buchungen damit verbunden sind."
 
-#: lib/Kuickres/GuiPlugin/Location.pm:52
-msgid "Location Name"
-msgstr "Standort Bezeichnung"
-
-#: lib/Kuickres/GuiPlugin/Location.pm:59
-msgid "Opening Hours"
-msgstr "Öffnungszeiten"
-
-#: lib/Kuickres/GuiPlugin/Location.pm:66
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:107
-msgid "Address"
-msgstr "Adresse"
-
-#: lib/Kuickres/GuiPlugin/Location.pm:87
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:147
-msgid "Add Location"
-msgstr "Ort Hinzufügen"
-
-#: lib/Kuickres/GuiPlugin/Location.pm:91
-msgid "New Location"
-msgstr "Standort Erfassen"
-
-#: lib/Kuickres/GuiPlugin/Location.pm:105
-#: lib/Kuickres/GuiPlugin/Location.pm:110
-msgid "Edit Location"
-msgstr "Standort Bearbeiten"
-
-#: lib/Kuickres/GuiPlugin/Location.pm:126
-msgid "Delete Location"
-msgstr "Standort Löschen"
+#: lib/Kuickres/GuiPlugin/Equipment.pm:139
+msgid "Do you really want to delete the selected Equipment?"
+msgstr "Wollen sie wirklich das gewählte Equipment löschen?"
 
 #: lib/Kuickres/GuiPlugin/Location.pm:133
 msgid ""
@@ -444,26 +258,150 @@ msgstr ""
 "Soll der gewählte Standort wirklich gelöscht werden? Dies ist nur möglich "
 "wenn keine Räume an dem Standort existieren."
 
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:75
-msgid "Location Details"
-msgstr "Standort Details"
-
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:76
+#: lib/Kuickres/GuiPlugin/Room.pm:128
 msgid ""
-"Use the following fields to write down some extra information about the "
-"location."
+"Do you really want to delete the selected Room. This will only work if there "
+"are no reservations linked to it."
+msgstr "Wollen sie wirklich den gewählten Raum löschen?"
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:121
+msgid "Do you really want to delete the selected UserCat?"
+msgstr "Wollen sie wirklich die gewählte UserCategory löschen?"
+
+#: lib/Kuickres/GuiPlugin/User.pm:153
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:133
+msgid "Do you really want to delete the selected user ?"
+msgstr "Wollen sie wirklich das gewählte Konto löschen?"
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:89 lib/Kuickres/GuiPlugin/Agegroup.pm:97
+msgid "Edit Agegroup"
+msgstr "Klasse Bearbeiten"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:195 lib/Kuickres/GuiPlugin/Booking.pm:201
+msgid "Edit Booking"
+msgstr "Buchung Bearbeiten"
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:97
+msgid "Edit Category"
 msgstr ""
-"In den untenstehdenden Feldern können zusätzliche Inforamtionen über den "
-"Standort erfasst werden."
 
-#: lib/Kuickres/GuiPlugin/LocationForm.pm:80
-#, fuzzy
-msgid "Operating Hours"
-msgstr "Öffnungszeiten"
+#: lib/Kuickres/GuiPlugin/District.pm:91 lib/Kuickres/GuiPlugin/District.pm:99
+msgid "Edit District"
+msgstr "Schulkreis Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:35
-msgid "Create New Account"
-msgstr "Neues Konto Erstellen"
+#: lib/Kuickres/GuiPlugin/Equipment.pm:115
+#: lib/Kuickres/GuiPlugin/Equipment.pm:120
+msgid "Edit Equipment"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Location.pm:105
+#: lib/Kuickres/GuiPlugin/Location.pm:110
+msgid "Edit Location"
+msgstr "Standort Bearbeiten"
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:97
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:102
+msgid "Edit MultiBooking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Room.pm:104 lib/Kuickres/GuiPlugin/Room.pm:109
+msgid "Edit Room"
+msgstr "Raum Bearbeiten"
+
+#: lib/Kuickres/GuiPlugin/User.pm:121 lib/Kuickres/GuiPlugin/User.pm:130
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:105
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:110
+msgid "Edit User"
+msgstr "Konto bearbeiten"
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:102
+msgid "Edit UserCat"
+msgstr "UserCategory bearbeiten"
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:108
+msgid "Email Address"
+msgstr "eMailadresse"
+
+#: lib/Kuickres/GuiPlugin/Equipment.pm:72
+msgid "End"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:232
+msgid "End Date"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:225
+msgid "End Time"
+msgstr "End Zeit"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:192
+msgid "Epoch seconds only"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:112
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:87
+msgid "Equipment"
+msgstr "Anlage"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:377
+msgid "Equipment %1 is not in this room"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:123
+msgid "Equipment '%1' not available in the chosen periode"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:46
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:42
+msgid "Error"
+msgstr "Fehler"
+
+#: lib/Kuickres/Role/BookingHelper.pm:267
+#: lib/Kuickres/Role/BookingHelper.pm:294
+msgid "Error parsing %1"
+msgstr "Fehler beim parsing von %1"
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractTable.pm:130
+msgid "Export %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/User.pm:173
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:150
+msgid "Faild to remove user %1"
+msgstr "Das Konto %1 konnte nicht entfernt werden."
+
+#: lib/Kuickres/GuiPlugin/Registration.pm:83
+msgid "Failed to create account for %1"
+msgstr "Das Konto für %1 konnte nicht erzeugt werden."
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:247 lib/Kuickres/GuiPlugin/Booking.pm:261
+msgid "Failed to remove booking %1"
+msgstr "Fehler beim Löschen der Buchung %1"
+
+#: lib/Kuickres/Model/Email.pm:175
+msgid "Failed to send mail to %1"
+msgstr "Es konnte keine mail an %1 gesendet werden."
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:186
+msgid "Failed to update password for %1"
+msgstr "Passwort für %1 konnte nicht gesetzt werden."
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:110 lib/Kuickres/GuiPlugin/User.pm:65
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:94
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:60
+msgid "Family Name"
+msgstr "Familiename"
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:101 lib/Kuickres/GuiPlugin/User.pm:58
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:85
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:53
+msgid "Given Name"
+msgstr "Vorname"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:218
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:241
+msgid "HH:MM expected"
+msgstr "HH:MM erwartet"
 
 #: lib/Kuickres/GuiPlugin/Registration.pm:47
 msgid ""
@@ -478,53 +416,189 @@ msgid ""
 "\n"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:62
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:173
-msgid "%1 is required"
-msgstr "%1 ist erforderlich"
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:56
+#: lib/Kuickres/GuiPlugin/Booking.pm:69 lib/Kuickres/GuiPlugin/District.pm:44
+#: lib/Kuickres/GuiPlugin/Room.pm:43 lib/Kuickres/GuiPlugin/RoomForm.pm:54
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:55
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:45
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:57
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:54
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:203
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:211
+#: lib/Kuickres/GuiPlugin/Location.pm:44 lib/Kuickres/GuiPlugin/UserCat.pm:43
+#: lib/Kuickres/GuiPlugin/Equipment.pm:43
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:73
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:130
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:42
+msgid "Id"
+msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Registration.pm:83
-msgid "Failed to create account for %1"
-msgstr "Das Konto für %1 konnte nicht erzeugt werden."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:250
+msgid "Invalid Date/Time specification"
+msgstr "Ungültige Datum-Zeit Angabe"
+
+#: lib/Kuickres/Role/JsonField.pm:64
+msgid "Invalid YAML Syntax: %1"
+msgstr ""
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:58
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:61
 msgid "Invalid email address"
 msgstr "Ungügltige eMail Adresse"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:65
-msgid "Unknown email address"
-msgstr "Unbekannte eMail Adresse"
-
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:71
-msgid "email address in use"
-msgstr "eMail Adresse schon in Gebrauch"
-
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:80
 msgid "Invalid token"
 msgstr "Kennwo ungültig"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:88
-msgid "Passwords must be 8 chars or longer"
-msgstr "Das Passwort muss mindestens 8 Zeichen lang sein."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:149
+msgid "Invalid user"
+msgstr "Ungültiger Benutzer"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:90
-#, fuzzy
-msgid "Passwords < 20 chars must contain upper- and lowercase letters"
+#: lib/Kuickres/GuiPlugin/Room.pm:51 lib/Kuickres/GuiPlugin/RoomForm.pm:63
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:71
+#: lib/Kuickres/GuiPlugin/Equipment.pm:51
+msgid "Key"
 msgstr ""
-"Passworte mit weniger als 20 Zeichen müssen Gross- und Klein-Buchstaben "
-"enthalten."
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:92
-#, fuzzy
-msgid ""
-"Passwords < 16 chars must contain upper- and lowercase letters and numbers"
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:95
+msgid "Last Day"
 msgstr ""
-"Passworte mit weniger als 16 Zeichen müssen Gross- und Klein-Buchstaben und "
-"Zahlen enthalten."
+
+#: lib/Kuickres/GuiPlugin/Room.pm:65 lib/Kuickres/GuiPlugin/RoomForm.pm:81
+msgid "Location"
+msgstr "Standort"
+
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:75
+msgid "Location Details"
+msgstr "Standort Details"
+
+#: lib/Kuickres/GuiPlugin/Location.pm:52
+msgid "Location Name"
+msgstr "Standort Bezeichnung"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:134
+msgid "MBooking"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:281
+msgid "Mobile Phone"
+msgstr "Mobiltelefon"
+
+#: lib/Kuickres/Role/BookingHelper.pm:139
+msgid "More than %1 equipment points spent in a single reservation"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:167
+msgid "More than %1 hours reserved in a single days"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:156
+msgid "MultiBooking entfernt"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:226
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:239
+msgid "Must be a number"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:242
+msgid "Must be after the start"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:65
+#: lib/Kuickres/GuiPlugin/District.pm:52 lib/Kuickres/GuiPlugin/Room.pm:58
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:72
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:64
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:66
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:79
+#: lib/Kuickres/GuiPlugin/UserCat.pm:51 lib/Kuickres/GuiPlugin/Equipment.pm:87
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:81
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:50
+msgid "Name"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:299
+msgid "Name of the School"
+msgstr "Name der Schule"
+
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:75
+msgid "New Agegroup"
+msgstr "Altergruppe Erfassen"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:177 lib/Kuickres/GuiPlugin/Booking.pm:182
+msgid "New Booking"
+msgstr "Neue Buchung"
+
+#: lib/Kuickres/GuiPlugin/District.pm:78
+msgid "New District"
+msgstr "Schulkreis Erfassen"
+
+#: lib/Kuickres/GuiPlugin/Location.pm:91
+msgid "New Location"
+msgstr "Standort Erfassen"
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:143
+msgid "New Password"
+msgstr "Neues Passwort"
+
+#: lib/Kuickres/GuiPlugin/Room.pm:91
+msgid "New Room"
+msgstr "Raum Erfassen"
+
+#: lib/Kuickres/GuiPlugin/User.pm:108
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:96
+msgid "New User"
+msgstr "Konto Hinzufügen"
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:84
+msgid "New UserCat"
+msgstr "Neue UserCategory Hinzufügen"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:380
+msgid "No Equipment Selected"
+msgstr "Keine Anlagen gewählt"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:509
+msgid "No booking selected"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:48
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:44
+msgid "No user selected."
+msgstr "Kein Benutzer gewählt"
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:67
+#: lib/Kuickres/GuiPlugin/UserForm.pm:129
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:260
+#: lib/Kuickres/GuiPlugin/User.pm:86
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:104
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:74
+msgid "Note"
+msgstr "Bemerkung"
+
+#: lib/Kuickres/GuiPlugin/Location.pm:59
+msgid "Opening Hours"
+msgstr "Öffnungszeiten"
+
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:80
+msgid "Operating Hours"
+msgstr "Öffnungszeiten"
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:53
+msgid "Owner"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:84
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:68
+msgid "Password"
+msgstr "Passwort"
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:92
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:76
+msgid "Password Again"
+msgstr "Passwort bestätigen"
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:94
-#, fuzzy
 msgid ""
 "Passwords < 12 chars must contain upper- and lowercase letters and numbers "
 "and special characters"
@@ -532,91 +606,295 @@ msgstr ""
 "Passworte mit weniger als 12 Zeichen müssen Grossbuchstaben, "
 "Kleinbuchstaben, Zahlen und Sonderzeichen enthalten."
 
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:92
+msgid ""
+"Passwords < 16 chars must contain upper- and lowercase letters and numbers"
+msgstr ""
+"Passworte mit weniger als 16 Zeichen müssen Gross- und Klein-Buchstaben und "
+"Zahlen enthalten."
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:90
+msgid "Passwords < 20 chars must contain upper- and lowercase letters"
+msgstr ""
+"Passworte mit weniger als 20 Zeichen müssen Gross- und Klein-Buchstaben "
+"enthalten."
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:88
+msgid "Passwords must be 8 chars or longer"
+msgstr "Das Passwort muss mindestens 8 Zeichen lang sein."
+
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:99
 msgid "Passwords must must match"
 msgstr "Die Passworte müssen übereinstimmen."
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:108
-msgid "Email Address"
-msgstr "eMailadresse"
-
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:125
-msgid "Validation Token"
-msgstr "Kennwo"
-
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:130
-msgid "check your mail for a token"
-msgstr "Das Kennwo befindet sich in ihrem Mailbox."
-
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:134
-#, fuzzy
-msgid "[Send Token]"
-msgstr "[Kennwort anfordern]"
-
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:143
-msgid "New Password"
-msgstr "Neues Passwort"
-
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:145
-msgid ""
-"<a target=\"_new\" href=\"https://uit.stanford.edu/service/accounts/"
-"passwords/quickguide\">Standford Password Policy</a>"
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:289
+msgid "Phone number 07x xxx xxxx expected"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:147
-msgid "type a your new password"
-msgstr "tippen sie ihr Passwort"
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:427
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:507
+msgid "Plugin Name missing"
+msgstr ""
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:155
 msgid "Repeat Password"
 msgstr "Passwort Bestätigen"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:158
-msgid "repeat the password"
-msgstr "wiederholen sie das Passwort"
+#: lib/Kuickres/GuiPlugin/User.pm:79
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:67
+msgid "Rights"
+msgstr "Rechte"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:167
-msgid "Set New Password"
-msgstr "Passwort Setzen"
+#: lib/Kuickres/GuiPlugin/Booking.pm:77
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:62
+#: lib/Kuickres/GuiPlugin/Equipment.pm:94
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:169
+msgid "Room"
+msgstr "Raum"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:186
-msgid "Failed to update password for %1"
-msgstr "Passwort für %1 konnte nicht gesetzt werden."
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:252
+msgid "Room is not open from %1 to %2."
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:94
+msgid "Room not open for reservation %1 - %2"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:60
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:249
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:90
+msgid "Rule"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/UserCat.pm:58
+msgid "Rules"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/AgegroupForm.pm:104
+#: lib/Kuickres/GuiPlugin/RoomForm.pm:124
+#: lib/Kuickres/GuiPlugin/DistrictForm.pm:104
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:146
+#: lib/Kuickres/GuiPlugin/UserForm.pm:226
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:143
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:389
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:166
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:469
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
+msgid "Save Changes"
+msgstr "Änderungen Speichern"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:105
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:295
+msgid "School"
+msgstr "Schule"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:77
+msgid "Select Agegroup"
+msgstr "Klasse wählen"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:69
+msgid "Select District"
+msgstr "Schulkreis wählen"
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:60
+msgid "Select UserCat"
+msgstr ""
 
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:204
 msgid "Send Token"
 msgstr "Kennwort anfordern"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:219
-msgid "Token sent"
-msgstr "Kennwort gesendet"
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:167
+msgid "Set New Password"
+msgstr "Passwort Setzen"
 
-#: lib/Kuickres/GuiPlugin/ResetPassword.pm:220
+#: lib/Kuickres/GuiPlugin/Booking.pm:46
+msgid "Show Old Reservations "
+msgstr "Zeige alte Reservationen"
+
+#: lib/Kuickres/GuiPlugin/Equipment.pm:65
+msgid "Start"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:219
+msgid "Start Date"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:202
+msgid "Start Time"
+msgstr "Start Zeit"
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:178
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:156
+msgid "The password instances did not match."
+msgstr "Die beiden Passworte stimmen nicht überein."
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:219
 msgid "The token has been sent to your Mailbox."
 msgstr "Das Kennwort wurde an ihre eMail Adresse gesendet."
 
-#: lib/Kuickres/GuiPlugin/Room.pm:58 lib/Kuickres/GuiPlugin/RoomForm.pm:72
-msgid "Location"
-msgstr "Standort"
+#: lib/Kuickres/GuiPlugin/Booking.pm:98
+msgid "Time"
+msgstr "Zeit"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:79 lib/Kuickres/GuiPlugin/RoomForm.pm:116
-msgid "Add Room"
-msgstr "Raum Hinzufügen"
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:218
+msgid "Token sent"
+msgstr "Kennwort gesendet"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:84
-msgid "New Room"
-msgstr "Raum Erfassen"
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:65
+msgid "Unknown email address"
+msgstr "Unbekannte eMail Adresse"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:97 lib/Kuickres/GuiPlugin/Room.pm:102
-msgid "Edit Room"
-msgstr "Raum Bearbeiten"
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:433
+msgid "Upload Missing"
+msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Room.pm:118
-msgid "Delete Room"
-msgstr "Raum Löschen"
-
-#: lib/Kuickres/GuiPlugin/Room.pm:121
+#: lib/Kuickres/GuiPlugin/LocationForm.pm:76
 msgid ""
-"Do you really want to delete the selected Room. This will only work if there "
-"are no reservations linked to it."
-msgstr "Wollen sie wirklich den gewählten Raum löschen?"
+"Use the following fields to write down some extra information about the "
+"location."
+msgstr ""
+"In den untenstehdenden Feldern können zusätzliche Inforamtionen über den "
+"Standort erfasst werden."
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:149
+msgid "Used"
+msgstr "Benutzt"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:84
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:139
+msgid "User"
+msgstr "Emailadresse"
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:121 lib/Kuickres/GuiPlugin/User.pm:72
+msgid "User Category"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:117
+msgid "User has no permission to book equipment %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:66 lib/Kuickres/GuiPlugin/User.pm:43
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:50
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:38
+msgid "UserId"
+msgstr "Benutzer ID"
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:75 lib/Kuickres/GuiPlugin/User.pm:51
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:59
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:46
+msgid "Username"
+msgstr "Benutzername"
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:125
+msgid "Validation Token"
+msgstr "Kennwort"
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Config.pm:491
+msgid "Wrong password!"
+msgstr "Falsche Passwort"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:361
+msgid "You are not allowed to book in the name of other users."
+msgstr "Sie können keine Buchungen für andere Benutzer erfassen."
+
+#: lib/Kuickres/GuiPlugin/User.pm:164
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:141
+msgid "You can not delete the user you are logged in with"
+msgstr "Der eigene Benutzer kann nicht gelöscht werden."
+
+#: lib/Kuickres/GuiPlugin/UserForm.pm:174
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:152
+msgid "You can only edit your own stuff unless you have admin permissions."
+msgstr ""
+"Ohne Admin-Berechtiungn können nur die eigenen Einträge bearbeitet werden."
+
+#: lib/Kuickres/GuiPlugin/User.pm:135 lib/Kuickres/GuiPlugin/User.pm:162
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:115
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:139
+msgid "You have to select a user first"
+msgstr "Erst Benutzer wählen"
+
+#: lib/Kuickres/Role/BookingHelper.pm:145
+msgid "You may book up to %1 days into the future"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:395
+msgid "Your booking overlaps with BookingIds: %1"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:134
+msgid "[Send Token]"
+msgstr "[Kennwort anfordern]"
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractCardlist.pm:82
+msgid "cardCfg must be defined in child plugin class"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:130
+msgid "check your mail for a token"
+msgstr "Das Kennwo befindet sich in ihrem Mailbox."
+
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:76
+#: lib/Kuickres/GuiPlugin/Equipment.pm:70
+#: lib/Kuickres/GuiPlugin/Equipment.pm:77
+msgid "d.M.y"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:71
+msgid "email address in use"
+msgstr "eMail Adresse schon in Gebrauch"
+
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:184
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:434
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:205
+msgid "no selection found"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/EquipmentForm.pm:176
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:423
+msgid "no selection->room_id found"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:313
+msgid "please select a district"
+msgstr "Schulkreis wählen!"
+
+#: lib/Kuickres/GuiPlugin/BookingForm.pm:329
+msgid "please select an agegroup"
+msgstr "Klasse wählen!"
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:158
+msgid "repeat the password"
+msgstr "wiederholen sie das Passwort"
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:53
+msgid "search words ..."
+msgstr "suchen ..."
+
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:139
+msgid "sorry, don't know the field you are talking about"
+msgstr "Das gewählte Feld ist unbekannt."
+
+#: lib/Kuickres/GuiPlugin/ResetPassword.pm:147
+msgid "type a your new password"
+msgstr "tippen sie ihr Passwort"
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:457
+msgid "unknown user configured in rule"
+msgstr ""
+
+#~ msgid "Booking overlaps with %1 existing bookings."
+#~ msgstr "Die Buchung überlappt mit %1 existierenden Buchungen."
+
+#~ msgid "Location %1 is not open from %2 to %3."
+#~ msgstr "Der Standort %1 für die gewünschte Zeit %2 to %3 nicht buchbar."
+
+#~ msgid "No booking more than %1 days in advance"
+#~ msgstr "Buchungen liegt mehr als %1 Tage in der Zukunft"
+
+#~ msgid "Phone number expected"
+#~ msgstr "Telefonnummer erwartet"
+
+#~ msgid "Room %1 not found"
+#~ msgstr "Raum %1 nicht gefunden"

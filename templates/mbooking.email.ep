@@ -1,0 +1,25 @@
+Reply-To: sportanlagen@zuerich.ch
+Subject: Multi Booking - <%= $id %> / <%= $location %>
+----
+keine txt version ... sorry
+----
+<html>
+<body>
+<b>Multi Booking vom <%= $date %></b>
+
+<p>
+ID: <%= $id %><br/>
+Ort: <%= $location %><br/>
+Raum: <%= $room %><br/>
+Pin für Türöffnung: <code>*<%= $accesscode %>#</code><br/>
+</p>
+
+<div>Anlagen: <ul><%= join "\n", map {"<li>$_</li>"} @$equipmentList %></ul></div>
+
+<p>
+<%= $message %>
+</p>
+
+<p>Es kann sein dass durch diese Buchung, frühre MultiBuchungen ersetzt wurden. Im Zweifel prüfen Sie Ihre Reservationen online.</p>
+</body>
+</html>

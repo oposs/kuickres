@@ -24,7 +24,6 @@ has checkAccess => sub {
     return $self->user->may('admin');
 };
 
-
 =head1 METHODS
 
 All the methods of L<CallBackery::GuiPlugin::AbstractTable> plus:

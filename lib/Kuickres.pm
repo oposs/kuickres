@@ -4,6 +4,8 @@ use Mojo::Base 'CallBackery', -signatures;
 use CallBackery::Model::ConfigJsonSchema;
 use Mojo::Util qw(dumper);
 use Digest::SHA;
+use SQL::Abstract::Pg;
+use Carp;
 
 =head1 NAME
 
@@ -41,7 +43,16 @@ has config => sub ($self) {
     $s->{properties}{api_key} = {
         type => 'string'
     };
-    push @{$s->{required}},'api_key';
+    $s->{properties}{smtp_url} = {
+        type => 'string'
+    };
+    $s->{properties}{bcc} = {
+        type => 'string'
+    };
+    $s->{properties}{from} = {
+        type => 'string'
+    };
+    push @{$s->{required}},'api_key','from';
 
     unshift @{$config->pluginPath}, __PACKAGE__.'::GuiPlugin';
     return $config;
@@ -50,11 +61,12 @@ has config => sub ($self) {
 
 has database => sub ($self) {
     my $database = $self->SUPER::database();
-    $database->sql->db->query("PRAGMA foreign_keys = ON;");
+    $database->sql->options->{sqlite_see_if_its_a_number}=1;
     $database->sql->migrations
         ->name('KuickresBaseDB')
         ->from_data(__PACKAGE__,'appdb.sql')
         ->migrate;
+
     return $database;
 };
 
@@ -88,7 +100,7 @@ sub startup ($self) {
             }
         }
     });
-    $self->SUPER::startup();
+    return $self->SUPER::startup();
 }
 1;
 
@@ -133,6 +145,7 @@ CREATE TABLE room (
 );
 INSERT INTO room (room_location,room_name)
     VALUES (1,'Sportzentrum Josef');
+
 
 CREATE TABLE booking (
     booking_id  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -201,3 +214,65 @@ INSERT INTO cbright (cbright_key,cbright_label)
 
 DELETE FROM agegroup WHERE agegroup_name = 'Betreuung';
 UPDATE agegroup SET agegroup_name = 'Hort/Betreuung' WHERE agegroup_name = 'Hort';
+
+-- 3 up
+
+CREATE TABLE equipment (
+    equipment_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    equipment_room INTEGER NOT NULL REFERENCES room(room_id),
+    equipment_name TEXT NOT NULL,
+    equipment_start_ts TIMESTAMP NOT NULL,
+    equipment_end_ts TIMESTAMP,
+    equipment_key TEXT NOT NULL UNIQUE 
+        CHECK(regexp('^[-_0-9a-z]+$',equipment_key)),
+    equipment_cost INTEGER NOT NULL DEFAULT 1
+);
+
+INSERT INTO equipment (equipment_room,
+    equipment_name,equipment_start_ts,equipment_key)
+    VALUES 
+        (1,'Test A',100000,'test_a');
+
+CREATE TABLE mbooking (
+    mbooking_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    mbooking_cbuser INTEGER NOT NULL REFERENCES cbuser(cbuser_id),
+    mbooking_room INTERGER NOT NULL REFERENCES room(room_id),
+    mbooking_start_ts INTERGER NOT NULL,
+    mbooking_end_ts INTEGER NOT NULL,
+    mbooking_rule_json TEXT NOT NULL
+        CHECK(json_valid(mbooking_rule_json)),
+    mbooking_note TEXT,
+    mbooking_create_ts TIMESTAMP NOT NULL,
+    mbooking_delete_ts TIMESTAMP,
+        CHECK( mbooking_delete_ts IS NULL 
+            OR mbooking_delete_ts > mbooking_create_ts)
+);
+
+ALTER TABLE booking ADD booking_mbooking INTEGER
+    REFERENCES mbooking(mbooking_id);
+
+ALTER TABLE room ADD room_key 
+    TEXT 
+    CHECK(regexp('^[-_0-9a-z]+$',room_key));
+
+CREATE UNIQUE INDEX room_key_idx ON room (room_key);
+
+UPDATE room SET room_key = 'joseph' WHERE room_id = 1;
+
+ALTER TABLE booking ADD booking_equipment_json 
+    TEXT
+    DEFAULT '[0]'
+    NOT NULL
+    CHECK(json_valid(booking_equipment_json));
+
+CREATE TABLE usercat (
+    usercat_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    usercat_name TEXT NOT NULL,
+    usercat_rule_json TEXT NOT NULL CHECK(json_valid(usercat_rule_json))
+);
+
+INSERT INTO usercat (usercat_name,usercat_rule_json)
+    VALUES 
+        ('Plain','{"futureBookingDays": 60,"maxEquipmentPointsPerBooking": 3,"maxBookingHoursPerDay": 4,"equipmentList":["test_a"]}');
+
+ALTER TABLE cbuser ADD cbuser_usercat INTEGER NOT NULL default 1;

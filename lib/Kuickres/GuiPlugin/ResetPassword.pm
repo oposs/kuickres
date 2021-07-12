@@ -6,7 +6,7 @@ use Mojo::JSON qw(true false);
 use Mojo::Util qw(dumper hmac_sha1_sum md5_sum);
 use Time::Piece qw(localtime);
 use POSIX qw(strftime);
-use Kuickres::Email;
+use Kuickres::Model::Email;
 
 
 =head1 NAME
@@ -191,7 +191,7 @@ sub createAction ($self,$args) {
 }
 
 has mailer => sub ($self) {
-    Kuickres::Email->new( app=> $self->app, log=>$self->log );
+    Kuickres::Model::Email->new( app=> $self->app, log=>$self->log );
 };
 
 has actionCfg => sub {
@@ -207,7 +207,6 @@ has actionCfg => sub {
             actionHandler => sub ($self,$args) {
                 $self->mailer->sendMail({
                     to => $args->{email},
-                    from => $self->config->{from},
                     template => 'tokenmail',
                     args => {
                         token => $self->getToken($args->{email}),
@@ -237,11 +236,8 @@ has grammar => sub {
     $self->mergeGrammar(
         $self->SUPER::grammar,
         {
-            _vars => [ qw(from mailrx) ],
-            _mandatory => [ qw(from) ],
-            from => {
-                _doc => 'sender for mails',
-            },
+            _vars => [ qw( mailrx) ],
+            _mandatory => [ qw() ],
             mailrx => {
                 _doc => 'regular expression required to match for emails',
             },

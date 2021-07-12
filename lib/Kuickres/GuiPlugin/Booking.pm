@@ -2,10 +2,11 @@ package Kuickres::GuiPlugin::Booking;
 use Mojo::Base 'CallBackery::GuiPlugin::AbstractTable', -signatures;
 use CallBackery::Translate qw(trm);
 use CallBackery::Exception qw(mkerror);
-use Mojo::JSON qw(true false);
+use Mojo::JSON qw(true false from_json);
 use Mojo::Util qw(dumper);
 use Text::ParseWords;
 use POSIX qw(strftime);
+use DBI qw(:sql_types);
 
 =head1 NAME
 
@@ -21,10 +22,7 @@ The Table Gui.
 
 =cut
 
-has checkAccess => sub {
-    my $self = shift;
-    return 0 if $self->user->userId eq '__ROOT';
-
+has checkAccess => sub ($self) {
     return $self->user->may('booker') || $self->user->may('admin');
 };
 
@@ -110,6 +108,13 @@ has tableCfg => sub {
             key => 'booking_school',
             sortable => true,
         },
+        {
+            label => trm('Equipment'),
+            type => 'string',
+            width => '3*',
+            key => 'booking_equipment',
+            sortable => false,
+        },
         ($adm ? (
         {
             label => trm('District'),
@@ -123,6 +128,13 @@ has tableCfg => sub {
             type => 'string',
             width => '2*',
             key => 'agegroup_name',
+            sortable => true,
+        },
+        {
+            label => trm('MBooking'),
+            type => 'string',
+            width => '1*',
+            key => 'booking_mbooking',
             sortable => true,
         },
         ):()),
@@ -169,15 +181,13 @@ has actionCfg => sub {
             key => 'add',
             popupTitle => trm('New Booking'),
             set => {
-                height => 450,
+                height => 600,
                 width => 400
             },
             backend => {
                 plugin => 'BookingForm',
                 config => {
                     type => 'add',
-                    from => $self->config->{from},
-                    futureLimitDays => $self->config->{futureLimitDays},
                 }
             }
         },
@@ -190,7 +200,7 @@ has actionCfg => sub {
             key => 'edit',
             popupTitle => trm('Edit Booking'),
             set => {
-                minHeight => 450,
+                minHeight => 600,
                 minWidth => 400,
             },
             buttonSet => {
@@ -200,8 +210,6 @@ has actionCfg => sub {
                 plugin => 'BookingForm',
                 config => {
                     type => 'edit',
-                    from => $self->config->{from},
-                    futureLimitDays => $self->config->{futureLimitDays},
                 }
             }
         },
@@ -227,18 +235,18 @@ has actionCfg => sub {
                     if $args->{selection}{booking_start_ts} < time;
                 eval {
                     $self->db->update('booking',{booking_delete_ts => time},{
-                        -and => [
-                            booking_id => $id,
-                            \[ "booking_start_ts > CAST(? AS INTEGER) ", time],
-                            %USER,
-                            booking_delete_ts => undef
-                        ]});
+                        booking_id => $id,
+                        booking_start_ts => { 
+                            '>' => time},
+                        %USER,
+                        booking_delete_ts => undef
+                    });
                 };
                 if ($@){
                     $self->log->error("remove booking $id: $@");
                     die mkerror(4993,trm("Failed to remove booking %1",$id));
                 }
-                my $b = $self->db->query(<<SQL_END,$id)->hash
+                my $b = $self->db->query(<<'SQL_END',$id)->hash
         SELECT 
             cbuser_login,
             booking_start_ts,
@@ -254,7 +262,6 @@ SQL_END
 
                 $self->mailer->sendMail({
                     to => $b->{cbuser_login},
-                    from => $self->config->{from},
                     template => 'booking-rm',
                     args => {
                         id => $id,
@@ -276,19 +283,19 @@ SQL_END
 };
 
 has singleRoom => sub ($self) {
-    my $rooms = $self->db->query(<<SQL_END)->hashes;
-SELECT * FROM room LIMIT 2;
-SQL_END
+    my $rooms = $self->db->select('room','*',undef,{
+        limit => 2
+    })->hashes;
     return false if $rooms->size > 1;
     return $rooms->first->{room_id};
 };
 
 has mailer => sub ($self) {
-    Kuickres::Email->new( app=> $self->app, log=>$self->log );
+    Kuickres::Model::Email->new( app=> $self->app, log=>$self->log );
 };
 
 sub db {
-    shift->user->mojoSqlDb;
+    return shift->user->mojoSqlDb;
 };
 
 my $FROM = <<FROM_END;
@@ -410,11 +417,20 @@ sub getTableData {
         @field_bind,
         @where_bind,
         $args->{lastRow}-$args->{firstRow}+1,
-       $args->{firstRow},
+        $args->{firstRow},
     )->hashes;
+    my %eqLookup = ( 0 => trm('Alles'));
+
+    $db->select('equipment',[qw(equipment_id equipment_key)])->hashes->map(sub { $eqLookup{$_->{equipment_id}} = $_->{equipment_key}});
+    
     for my $row (@$data) {
         my $ok = false;
         my $mine = delete $row->{cbuser_id} == $self->user->userId;
+        
+        $row->{booking_equipment} = join(', ', 
+            map { $eqLookup{$_} // '?'} 
+                @{from_json($row->{booking_equipment_json})})
+                if %eqLookup and $row->{booking_equipment_json};
         if (not $mine and not $adm){
             delete $row->{cbuser_login};
             delete $row->{cbuser_comment};
@@ -436,23 +452,6 @@ sub getTableData {
     }
     return $data;
 }
-
-has grammar => sub {
-    my $self = shift;
-    $self->mergeGrammar(
-        $self->SUPER::grammar,
-        {
-            _vars => [ qw(from futureLimitDays) ],
-            _mandatory => [ qw(from) ],
-            from => {
-                _doc => 'sender for mails',
-            },
-            futureLimitDays => {
-                _doc => 'Keine Buchungen mehr als X Tage in der Zukunft, ohne admin'
-            }
-        },
-    );
-};
 
 1;
 

@@ -28,6 +28,9 @@ Zeitraum: <%= $time %><br/>
 Pin für Türöffnung: <code>*<%= $accesscode %>#</code><br/>
 </p>
 
+<div>Anlagen: <ul><%= join "\n", map {"<li>$_</li>"} @$equipmentList %></ul></div>
+
+
 <p>Sie können ihre Reservation jederzeit online bearbeiten.</p>
 
 <p>Diese Mail wurde automatisch generiert.</p>

@@ -1,5 +1,5 @@
 package Kuickres::GuiPlugin::RoomForm;
-use Mojo::Base 'CallBackery::GuiPlugin::AbstractForm';
+use Mojo::Base 'CallBackery::GuiPlugin::AbstractForm', -signatures;
 use CallBackery::Translate qw(trm);
 use CallBackery::Exception qw(mkerror);
 use Mojo::JSON qw(true false);
@@ -31,8 +31,8 @@ All the methods of L<CallBackery::GuiPlugin::AbstractForm> plus:
 
 =cut
 
-sub db {
-    shift->user->mojoSqlDb;
+sub db ($self) {
+    return $self->user->mojoSqlDb;
 }
 
 
@@ -59,6 +59,15 @@ has formCfg => sub {
         } : (),
 
         {
+            key => 'room_key',
+            label => trm('Key'),
+            widget => 'text',
+            required => true,
+            set => {
+                required => true,
+            },
+        },
+                {
             key => 'room_name',
             label => trm('Name'),
             widget => 'text',
@@ -92,14 +101,14 @@ has actionCfg => sub {
         if ($type eq 'add')  {
             $metaInfo{recId} = $self->db->insert('room',{
                 map { "room_".$_ => $args->{"room_".$_} } qw(
-                    name location
+                    name location key
                 )
             })->last_insert_id;
         }
         else {
             $self->db->update('room', {
                 map { 'room_'.$_ => $args->{'room_'.$_} } qw(
-                    name location
+                    name location key
                 )
             },{ room_id => $args->{room_id}});
         }

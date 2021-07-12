@@ -39,3 +39,5 @@ etc/*secret
 /configure
 *~
 /.vscode/perl-lang/
+.pls_cache
+kuickres-satellite/kuickres-satellite-img.gz

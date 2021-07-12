@@ -46,7 +46,7 @@ sub new  {
 };
 
 sub _strToTime ($self,$in) {
-    return undef unless defined $in;
+    return unless defined $in;
     for ($in) {
         /^(\d{1,2}(?:\d+)?)$/ && do {
             return int($1*3600);
@@ -56,6 +56,7 @@ sub _strToTime ($self,$in) {
         };
         Mojo::Exception->throw('Invalid time format');
     }
+    return;
 }
 
 sub _parseTime ($self,$in) {
@@ -113,10 +114,49 @@ sub isItOpen ($self,$from,$to) {
     return false;
 }
 
+=head2 getOpeningTimes (start,end,step)
+
+returns
+ 
+ {
+     hours => [[ start, end],[start, end]],
+     times => [ts1,ts2,ts3]
+ }
+
+=cut
+
+sub getOpeningTimes ($self,$from,$to,$step=300) {
+    $from = $self->_parseTime($from);
+    $to = $self->_parseTime($to);
+    my @hours;
+    my @times;
+    my $start;
+    my $end;
+    for (my $time = $from;$time < $to;$time += $step) {
+        if ($self->isItOpen($time,$to)){
+            push @times,$time;
+            $start //= $time;
+            $end = $to;
+        }
+        elsif ($start) {
+            push @hours, [$start,$end];
+            $start = undef;
+        }
+    }
+    if ($start) {
+            push @hours, [$start,$end];
+    }
+    return {
+        hours => \@hours,
+        times => \@times
+    };
+}
+
 1;
 __DATA__
+
 @@ hours.yaml
-$id: https://kuckres.org/hours.yaml
+$id: https://kuickres.org/hours.yaml
 $schema: http://json-schema.org/draft-07/schema#
 definitions:
     weekday:

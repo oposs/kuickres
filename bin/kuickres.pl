@@ -3,6 +3,8 @@
 use lib qw(); # PERL5LIB
 use FindBin;use lib "$FindBin::RealBin/../lib";use lib "$FindBin::RealBin/../thirdparty/lib/perl5"; # LIBDIR
 
+use Carp::Always;
+
 # having a non-C locale for number will wreck all sorts of havoc
 # when things get converted to string and back
 use POSIX qw(locale_h);

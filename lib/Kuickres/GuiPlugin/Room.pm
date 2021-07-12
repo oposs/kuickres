@@ -48,6 +48,13 @@ has tableCfg => sub {
             primary => true
         },
         {
+            label => trm('Key'),
+            type => 'string',
+            width => '2*',
+            key => 'room_key',
+            sortable => true,
+        },
+          {
             label => trm('Name'),
             type => 'string',
             width => '6*',
@@ -139,13 +146,55 @@ has actionCfg => sub {
                 return {
                     action => 'reload',
                 };
+            },
+        },
+        {
+            label => trm('Add Equipment'),
+            action => 'popup',
+            addToContextMenu => true,
+            name => 'EquipmentAddForm',
+            key => 'addEq',
+            buttonSet => {
+                enabled => false
+            },
+            popupTitle => trm('Add Equipment'),
+            set => {
+                height => 500,
+                width => 500
+            },
+            backend => {
+                plugin => 'EquipmentForm',
+                config => {
+                    type => 'add'
+                }
             }
-        }
+        },
+        {
+            label => trm('Create MultiBooking'),
+            action => 'popup',
+            addToContextMenu => true,
+            name => 'MultiBookingForm',
+            key => 'addMB',
+            buttonSet => {
+                enabled => false
+            },
+            popupTitle => trm('Add MultiBooking'),
+            set => {
+                height => 700,
+                width => 500
+            },
+            backend => {
+                plugin => 'MultiBookingForm',
+                config => {
+                    type => 'add'
+                }
+            }
+        },
     ];
 };
 
 sub db {
-    shift->user->mojoSqlDb;
+    return shift->user->mojoSqlDb;
 };
 
 sub getTableRowCount {
@@ -181,6 +230,12 @@ SQL_END
                 enabled => true
             },
             delete => {
+                enabled => true,
+            },
+            addEq => {
+                enabled => true,
+            },
+            addMB => {
                 enabled => true,
             },
         }

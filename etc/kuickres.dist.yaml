@@ -6,8 +6,10 @@ BACKEND:
   sesame_pass: xxxx
 # perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("apikey")'
   api_key: yyyy
-
-  FRONTEND:
+# smtp_url: smtp://user:pass@xxxx.yyy.ch
+  bcc: bcc@adderss
+  from: Sender Address <me@xxx>
+FRONTEND:
 # logo = ../resource/kuickres/logo.png
 # logo_small = ../resource/kuickres/logo-small.png
   title: Kuickres Reservation System
@@ -31,23 +33,26 @@ PLUGIN:
       module: ResetPassword
       unlisted: true
       tab-name: Reset Password
-      from: tobi+reset@oetiker.ch
+
   - RegisterNewAccount:
       module: Registration
       unlisted: true
       tab-name: Register New Account
-      from: tobi+reset@oetiker.ch
       mailrx: "@oetiker.ch$"
+      
   - InitialUser:
       module: UserForm
       mode: init
       type: add
       tab-name: Create Initial User
+
   - Booking:
       module: Booking
-      tab-name: Buchungen
-      from: tobi+reset@oetiker.ch
-      futureLimitDays: "72"
+      
+  - MultiBooking:
+      module: MultiBooking
+      tab-name: MultiBooking
+      
   - Location:
       module: Location
       tab-name: Standorte
@@ -55,6 +60,10 @@ PLUGIN:
   - Room:
       module: Room
       tab-name: Räume
+
+  - Equipment:
+      module: Equipment
+      tab-name: Equipment
 
   - District:
       module: District
@@ -64,6 +73,10 @@ PLUGIN:
       module: Agegroup
       tab-name: Altersgruppen
 
-  - AdminUser:
-      module: Users
+  - UserCat:
+      module: UserCat
+      tab-name: UserCategories
+ 
+  - UserManager:
+      module: User
       tab-name: Konto Manager

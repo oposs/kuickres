@@ -1,3 +1,13 @@
+0.5.1 2021-07-12 09:55:13 +0200 Tobias Oetiker <tobi@oetiker.ch>
+
+ - add multibooking
+ - add equipment to confirmation email
+
+0.5.0 2021-07-05 17:50:38 +0200 Tobias Oetiker <tobi@oetiker.ch>
+
+ - introduce equipment
+ - usercategories
+
 0.4.2 2020-10-08 14:14:14 +0200 Tobias Oetiker <tobi@oetiker.ch>
 
  - move range function for participants table

@@ -1,16 +1,17 @@
 package Kuickres::Controller::LocationApi;
 use Crypt::ScryptKDF qw(scrypt_hash scrypt_hash_verify);
+use DBI qw(:sql_types);
 
 use Mojo::Base 'Mojolicious::Controller',-signatures;
 use Mojo::Util qw(dumper camelize);
 sub db ($c) {
-    $c->app->database->sql->db;
+    return $c->app->database->sql->db;
 }
 
 sub get_door_keys {
     my $c = shift->openapi->valid_input or return;
     my $locationId = $c->param('locationId');
-    my $res = $c->db->query(<<SQL_END,time,time+3*24*3600,$locationId)->hashes;
+    my $res = $c->db->query(<<'SQL_END',{type => SQL_INTEGER, value => time },{type => SQL_INTEGER, value => time+3*24*3600},{type => SQL_INTEGER, value => $locationId})->hashes;
     SELECT booking_id AS "booking_id",
            booking_start_ts - 15*60 AS "valid_from_ts",
            booking_start_ts + booking_duration_s AS "valid_until_ts",
@@ -18,9 +19,10 @@ sub get_door_keys {
     FROM booking
     JOIN cbuser ON booking_cbuser = cbuser_id
     JOIN room ON booking_room = room_id
-    WHERE booking_start_ts + booking_duration_s > CAST(? AS INTEGER)
-        AND booking_start_ts < CAST(? AS INTEGER)
-        AND room_location = CAST(? AS INTEGER)
+    WHERE booking_start_ts + booking_duration_s > ?
+        AND booking_delete_ts IS NULL
+        AND booking_start_ts < ?
+        AND room_location = ?
 SQL_END
     for my $row (@$res){
         # keep the hash stable so that the satellite can see if there is a change
@@ -37,7 +39,7 @@ sub report_key_use {
     my $c = shift->openapi->valid_input or return;
     my $array = $c->req->json;
     for my $entry (@$array) {
-        my $bk = $c->db->query(<<SQL_END,$entry->{bookingId})->hash;
+        my $bk = $c->db->query(<<'SQL_END',$entry->{bookingId})->hash;
     SELECT * FROM booking 
         JOIN room ON booking_room = room_id
         JOIN cbuser ON booking_cbuser = cbuser_id        
@@ -84,7 +86,7 @@ SQL_END
 sub get_signage {
     my $c = shift->openapi->valid_input or return;
     my $lid = $c->param('locationId');
-    my $res = $c->db->query(<<SQL_END,time,time+2*24*3600,$lid)->hashes;
+    my $res = $c->db->query(<<'SQL_END',time,time+2*24*3600,$lid)->hashes;
     SELECT booking.*,cbuser_login,cbuser_family,cbuser_given,room.*,location.* FROM booking
     JOIN cbuser ON booking_cbuser = cbuser_id
     JOIN room ON booking_room = room_id
@@ -96,7 +98,7 @@ sub get_signage {
 SQL_END
     # warn dumper $res;
     $c->stash(bookings=>$res);
-    $c->render;
+    return $c->render;
 }
 
 1;

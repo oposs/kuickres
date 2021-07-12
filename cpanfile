@@ -1,7 +1,11 @@
 requires 'CallBackery';
-requires 'Mojo::SQLite';
+requires 'Mojo::SQLite', '>= 3.006';
 requires 'Email::MIME';
 requires 'Email::Sender';
+requires 'Email::Address';
 requires 'Mojolicious::Plugin::OpenAPI';
 requires 'Crypt::ScryptKDF';
 requires 'YAML::XS';
+requires 'SQL::Abstract::Pg';
+requires 'JSON::Validator';
+requires 'Carp::Always';

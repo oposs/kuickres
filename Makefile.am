@@ -42,14 +42,16 @@ clean-local:
 LANGUAGES := $(shell  $(PERL) -e 'use JSON::PP qw(decode_json); print join(" ", map {"share/".$$_.".po"} @{decode_json(join("",<>))->{locales}})' frontend/compile.json)
 CALLBACKERY_PM := $(shell find $(CALLBACKERY_QX)/.. -name "*.pm")
 
-share/messages.pot: $(PM)
+share/messages.pot: $(PM)  $(CALLBACKERY_PM) $(TEMPL) Makefile.in
 	mkdir -p share
-	$(XGETTEXT) --language=perl --package-name=$(PACKAGE) --package-version=$(VERSION) --from-code=UTF-8 --keyword=trm:1 --output=share/messages.pot $(PM) $(CALLBACKERY_PM)
+	$(XGETTEXT) --sort-output --language=perl --package-name=$(PACKAGE) --package-version=$(VERSION) --from-code=UTF-8 --keyword=trm:1 --keyword=tra:1 --output=share/messages.pot $(PM)  $(CALLBACKERY_PM) $(TEMPL)
+	$(XGETTEXT) --sort-output --join --language=php --package-name=$(PACKAGE) --package-version=$(VERSION) --from-code=UTF-8 --keyword=tra:1 --output=share/messages.pot $(TEMPL)
 	sed -i 's/; charset=CHARSET/; charset=UTF-8/' share/messages.pot
 	for lang in $(LANGUAGES); do \
-		( test -f $$lang || cp share/messages.pot $$lang ); \
-		$(MSGMERGE) -F --force-po -U $$lang share/messages.pot; \
+	    ( test -f $$lang || cp share/messages.pot $$lang ); \
+	    $(MSGMERGE) --no-fuzzy-matching --sort-output --force-po -U $$lang share/messages.pot; \
 	done
+
 
 test:
 	prove -w
