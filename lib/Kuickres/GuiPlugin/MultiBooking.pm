@@ -152,7 +152,7 @@ has actionCfg => sub {
                 }
                 return {
                     action => 'reload',
-                    message => trm("Alle zukünftigen Bookings wurden aus der MultiBooking-Liste entfernt."),
+                    message => trm("Alle zukuenftigen Bookings wurden aus der MultiBooking-Liste entfernt."),
                     title => trm('MultiBooking entfernt')
                 };
             },

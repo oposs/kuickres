@@ -38,18 +38,61 @@ All the methods of L<CallBackery::GuiPlugin::AbstractTable> plus:
 =cut
 
 has formCfg => sub {
-    my $self = shift;
+    my $self   = shift;
+    my $eqList = $self->db->select(
+        'equipment',
+        [ \"equipment_id AS key", \"equipment_name AS title" ],
+        undef,
+        {
+            order_by => ['equipment_name']
+        }
+    )->hashes->to_array;
     return [
         {
-            key => 'show_past',
+            key    => 'show_past',
             widget => 'checkBox',
-            label => trm('Show Old Reservations '),
+            set => {
+                label  => trm('Show old bookings'),
+            }
         },
         {
-            key => 'search',
+            widget => 'selectBox',
+            key    => 'day_filter',
+            cfg    => {
+                structure => [
+                    { key => undef, title => trm('Show All Days') },
+                    { key => '0',     title => trm('Sun') },
+                    { key => '1',     title => trm('Mon') },
+                    { key => '2',     title => trm('Tue') },
+                    { key => '3',     title => trm('Wed') },
+                    { key => '4',     title => trm('Thu') },
+                    { key => '5',     title => trm('Fri') },
+                    { key => '6',     title => trm('Sat') }
+                ]
+
+            }
+        },
+        {
+            key    => 'eq_filter',
+            widget => 'selectBox',
+            #set => {
+            #    minWidth => '200',
+            #},
+            cfg    => {
+                structure => [
+                    {
+                        key   => undef,
+                        title => trm('Show All Equipment')
+                    },
+                    @$eqList
+                ]
+            }
+        },
+        {
+            key    => 'search',
             widget => 'text',
-            set => {
-                width => 300,
+            set    => {
+                width       => 200,
                 placeholder => trm('search words ...'),
             },
         },
@@ -298,15 +341,13 @@ sub db {
     return shift->user->mojoSqlDb;
 };
 
-my $FROM = <<FROM_END;
-    booking JOIN room ON booking_room = room_id
-    JOIN agegroup ON booking_agegroup = agegroup_id
-    JOIN district ON booking_district = district_id
-    JOIN cbuser ON booking_cbuser = cbuser_id
-    LEFT JOIN (SELECT access_log_booking, MIN(access_log_entry_ts) AS access_log_entry_ts
-                FROM access_log GROUP BY access_log_booking) AS al 
-            ON al.access_log_booking = booking_id
-FROM_END
+my $FROM = ['booking',
+        ['cbuser','cbuser_id','booking_cbuser'],
+        ['room','room_id','booking_room'],
+        ['agegroup','agegroup_id','booking_agegroup'],
+        ['district','district_id','booking_district'],
+        [-left => \'(SELECT access_log_booking, MIN(access_log_entry_ts) AS access_log_entry_ts
+                FROM access_log GROUP BY access_log_booking) AS al','al.access_log_booking','booking_id']];
 
 my $keyMap = {
     id => 'booking_id',
@@ -330,11 +371,21 @@ sub WHERE {
         };
     if ($args->{formData}{show_past}) {
         push @{$where->{-and}},
-            \[ "booking_start_ts < CAST(? AS INTEGER) ", time]
+            \[ "booking_start_ts < ?", {
+                type => SQL_INTEGER, value => time}];
     }
     else {
         push @{$where->{-and}},
-            \[ "booking_start_ts + booking_duration_s > CAST(? AS INTEGER) ", time]
+            \[ "booking_start_ts + booking_duration_s > ?", { 
+                type => SQL_INTEGER, value => time}];
+    }
+    if (defined $args->{formData}{day_filter}) {
+        push @{$where->{-and}},
+        \["CAST(strftime('%w',booking_start_ts,'unixepoch', 'localtime') AS INTEGER) = ?", { type => SQL_INTEGER, value => int($args->{formData}{day_filter})}];
+    }
+    if (defined $args->{formData}{eq_filter}) {
+        push @{$where->{-and}},
+        [\["? in (SELECT CAST(json_each.value AS INTEGER) FROM json_each(booking_equipment_json))", { type => SQL_INTEGER, value => $args->{formData}{eq_filter}}],{ booking_equipment_json => '[0]'}];
     }
     #$self->log->debug(dumper $where);
     if (my $str = $args->{formData}{search}) {
@@ -367,7 +418,7 @@ sub WHERE {
 sub getTableRowCount {
     my $self = shift;
     my $args = shift;
-    return $self->db->select(\$FROM,'COUNT(*) AS count',$self->WHERE($args))->hash->{count};
+    return $self->db->select($FROM,'COUNT(*) AS count',$self->WHERE($args))->hash->{count};
 }
 
 sub getTableData {
@@ -377,25 +428,22 @@ sub getTableData {
         -asc => 'booking_date'
     };
     my $db = $self->db;
-    my $dbh = $db->dbh;
-    my $WHERE = $self->WHERE($args);
     if ( my $sc = $args->{sortColumn} // 'booking_date' ){
         if ($sc eq 'booking_date') {
-            $sc = 'booking_start_ts'
-        }
+            $sc = 'booking_start_ts';
+        };
         $SORT = {
-            $args->{sortDesc}
+            
+                $args->{sortDesc}
                 ? '-desc' 
                 : '-asc',
-            $sc
-        };        
+                $sc
+            };        
     }
-    my $sql = SQL::Abstract->new;
-    my ($from,@from_bind) = $sql->_table($FROM);
-    my $adm = $self->user->may('admin');
-    my ($fields,@field_bind) = $sql->_select_fields([
-        'booking.*',
-        'room_name',
+    my $adm = $self->user && $self->user->may('admin');
+    my $data = $db->select($FROM,[
+                  'booking.*',
+                'room_name',
         ( $adm ? (
             'agegroup_name',
             'district_name',
@@ -409,16 +457,16 @@ sub getTableData {
         \"strftime('%d.%m.%Y %H:%M',booking_create_ts,'unixepoch', 'localtime') AS booking_created",
         ( $adm ? (
             \"strftime('%d.%m.%Y %H:%M',booking_delete_ts,'unixepoch', 'localtime') AS booking_deleted" ): ()
-        ),
-    ]);
-    my ($where,@where_bind) = $sql->where($WHERE,$SORT);
-    my $data = $db->query("SELECT $fields FROM $from $where LIMIT ? OFFSET ?",
-        @from_bind,
-        @field_bind,
-        @where_bind,
-        $args->{lastRow}-$args->{firstRow}+1,
-        $args->{firstRow},
-    )->hashes;
+        ),  
+                ],
+                $self->WHERE($args),
+                {
+                    order_by => $SORT,
+                    limit => $args->{lastRow}-$args->{firstRow}+1,
+                    offset => $args->{firstRow}
+                }
+    )->hashes->to_array;
+
     my %eqLookup = ( 0 => trm('Alles'));
 
     $db->select('equipment',[qw(equipment_id equipment_key)])->hashes->map(sub { $eqLookup{$_->{equipment_id}} = $_->{equipment_key}});

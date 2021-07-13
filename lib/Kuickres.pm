@@ -275,4 +275,5 @@ INSERT INTO usercat (usercat_name,usercat_rule_json)
     VALUES 
         ('Plain','{"futureBookingDays": 60,"maxEquipmentPointsPerBooking": 3,"maxBookingHoursPerDay": 4,"equipmentList":["test_a"]}');
 
-ALTER TABLE cbuser ADD cbuser_usercat INTEGER NOT NULL default 1;
+ALTER TABLE cbuser ADD cbuser_usercat INTEGER NOT NULL default 1 REFERENCES usercat(usercat_id);
+

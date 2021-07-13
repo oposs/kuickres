@@ -1,3 +1,7 @@
+0.5.2 2021-07-13 11:26:49 +0200 Tobias Oetiker <tobi@oetiker.ch>
+
+ - add day and equipment filters to booking list
+
 0.5.1 2021-07-12 09:55:13 +0200 Tobias Oetiker <tobi@oetiker.ch>
 
  - add multibooking
