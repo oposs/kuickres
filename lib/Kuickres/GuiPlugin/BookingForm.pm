@@ -86,14 +86,16 @@ has formCfg => sub {
 
     my $eq_title = trm('Equipment');
     my $form = $self->args->{currentFormData};
+    $form->{booking_cbuser} = $self->user->userId if not $adm;
+
     my $t = eval { $self->parseTime(
         $form->{booking_date},
         $form->{booking_from},
         $form->{booking_to},
     ) };
-    #$self->log->debug($@) if $@;
-    #$self->log->debug("T:",dumper($t));
-    #$self->log->debug("F:",dumper($form));
+    # $self->log->debug($@) if $@;
+    # $self->log->debug("T:",dumper($t));
+    $self->log->debug("F:",dumper($form));
     my @equipment;
     my $eqHash = $self->getEqHash($form->{booking_cbuser},$form->{booking_room});
     
@@ -103,6 +105,7 @@ has formCfg => sub {
         }
     )->hashes->map(sub ($rec) {
         my $enable = false;
+        $self->log->debug("EQ CHECK:",dumper($t,$eqHash,$rec));
         if ($eqHash->{$rec->{equipment_id}}
             and $t
             and $t->{start_ts} < $rec->{equipment_end_ts}
@@ -211,7 +214,7 @@ has formCfg => sub {
                 structure => [
                     map {
                         strftime("%H:%M",gmtime($_*30*60));
-                    } ( (8*2)..(18*2) )
+                    } ( (7*2)..(18*2) )
                 ]
             },
             validator => sub ($value,$fieldName,$form) {
@@ -369,8 +372,10 @@ has actionCfg => sub {
                 equipment_id => $eq_id,
                 equipment_room => $args->{booking_room}
             })->hash){
-                push @eq_list, $eq_id if $args->{$key};
-                push @equipmentList, $eq->{equipment_name};
+                if ($args->{$key}) {
+                    push @eq_list, $eq_id;
+                    push @equipmentList, $eq->{equipment_name};
+                }
             }
             else {
                 die mkerror(17433,
@@ -403,7 +408,7 @@ has actionCfg => sub {
                 action => 'showMessage',
                 title => trm("Booking Problem"),
                 html => true,
-                message => trm("Booking was not possible because: <ul>%1</ul>",join("\n",map { "<li>$_</li>", @$issues})),
+                message => trm("Booking was not possible because: <ul>%1</ul>",join("\n",map { "<li>$_</li>"} @$issues)),
             }
         }
 

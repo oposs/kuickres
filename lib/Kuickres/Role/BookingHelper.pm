@@ -73,6 +73,7 @@ sub getEqHash ( $self, $user_id,$room_id ) {
             $hash{ $rec->{equipment_id} } = true;
         }
     );
+    $self->log->debug('EQHASH',$user_id,$room_id,dumper \%hash);
     return \%hash;
 }
 
@@ -134,15 +135,15 @@ sub checkResourceAllocations ( $self, $user, $start,
 
     my $rules = $self->getUserCatRules($user);
 
-    if ($eqp > $rules->{maxEquipmentPointPerBooking}) {
+    if ($eqp > $rules->{maxEquipmentPointsPerBooking}) {
         push @issues, 
-            trm("More than %1 equipment points spent in a single reservation",
-                $rules->{maxEquipmentPointPerBooking}
+            trm("More than %1 equipment points (%2) spent in a single reservation",
+                $rules->{maxEquipmentPointsPerBooking},$eqp
             );
     };
 
-    if ($end > time + $rules->{futureBookingDays} * 24 * 360) {
-        push @issues, trm("You may book up to %1 days into the future",
+    if ($end > time + $rules->{futureBookingDays} * 24 * 3600) {
+        push @issues, trm("Booking more lies more than %1 days in the future",
             $rules->{futureBookingDays}
         );
     }
@@ -162,10 +163,10 @@ sub checkResourceAllocations ( $self, $user, $start,
         }
     );
 
-    if ($duration > $rules->{maxBookingHoursPerDay}) {
+    if ($duration/3600 > $rules->{maxBookingHoursPerDay}) {
         push @issues, trm(
-            "More than %1 hours reserved in a single days",
-            $rules->{maxBookingHoursPerDay}
+            "More than %1 hours (%2h) reserved in a single days",
+            $rules->{maxBookingHoursPerDay},sprintf("%.1f",$duration/3600)
         );
     }
     return @issues ? \@issues : undef;

@@ -9,3 +9,4 @@ requires 'YAML::XS';
 requires 'SQL::Abstract::Pg';
 requires 'JSON::Validator';
 requires 'Carp::Always';
+requires 'Time::Piece', '>= 1.3401';

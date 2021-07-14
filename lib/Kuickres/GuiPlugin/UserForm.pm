@@ -1,5 +1,5 @@
 package Kuickres::GuiPlugin::UserForm;
-use Mojo::Base 'CallBackery::GuiPlugin::AbstractForm';
+use Mojo::Base 'CallBackery::GuiPlugin::AbstractForm', -signatures;
 use CallBackery::Translate qw(trm);
 use CallBackery::Exception qw(mkerror);
 use Mojo::Util qw(hmac_sha1_sum dumper);
@@ -122,7 +122,7 @@ has formCfg => sub {
             widget => 'selectBox',
             cfg => {
                 structure => $usercat
-            }
+            },
         },
         {
             key => 'cbuser_note',
@@ -173,7 +173,7 @@ has actionCfg => sub {
         my $itsMine = $args->{cbuser_id} == $self->user->userId;
         die mkerror(2847,trm("You can only edit your own stuff unless you have admin permissions."))
             unless $admin  or $itsMine;
-
+        die mkerror(28483,trm("Select a userCat")) if $admin and not $args->{cbuser_usercat};
         if ($args->{cbuser_password} ne $DUMMY_PASSWORD){
             die mkerror(2847,trm("The password instances did not match."))
                 if $args->{cbuser_password} ne $args->{cbuser_password_check};

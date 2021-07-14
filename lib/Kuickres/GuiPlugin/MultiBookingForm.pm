@@ -301,7 +301,7 @@ has actionCfg => sub {
             $args->{mbooking_id},
             $args->{mbooking_room},
             $args->{mbooking_start_ts},
-            $args->{mbooking_end_ts},
+            $args->{mbooking_end_ts}+24*3600,
             $args->{mbooking_rule}
         );
 

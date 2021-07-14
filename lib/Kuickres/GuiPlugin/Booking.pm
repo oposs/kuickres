@@ -132,10 +132,11 @@ has tableCfg => sub {
         },
         {
             label => trm('Date'),
-            type => 'string',
+            type => 'date',
             width => '3*',
-            key => 'booking_date',
+            key => 'booking_start_ts',
             sortable => true,
+            format => trm('dd.MM.yyyy'),
         },
         {
             label => trm('Time'),
@@ -183,23 +184,26 @@ has tableCfg => sub {
         ):()),
         {
             label => trm('Created'),
-            type => 'string',
+            type => 'date',
             width => '3*',
-            key => 'booking_created',
+            key => 'booking_create_ts',
+            format => trm('dd.MM.yyyy HH:mm'),
             sortable => true,
         },
         {
             label => trm('Used'),
-            type => 'string',
+            type => 'date',
             width => '3*',
-            key => 'booking_used',
+            key => 'access_log_entry_ts',
+            format => trm('dd.MM.yyyy HH:mm'),
             sortable => true,
         },
         ($adm ? ( {
             label => trm('Deleted'),
-            type => 'string',
+            type => 'date',
             width => '3*',
-            key => 'booking_deleted',
+            format => trm('dd.MM.yyyy HH:mm'),
+            key => 'booking_delete_ts',
             sortable => true,
         } ):())
     ]
@@ -224,8 +228,8 @@ has actionCfg => sub {
             key => 'add',
             popupTitle => trm('New Booking'),
             set => {
-                height => 600,
-                width => 400
+                height => 700,
+                width => 350
             },
             backend => {
                 plugin => 'BookingForm',
@@ -243,8 +247,8 @@ has actionCfg => sub {
             key => 'edit',
             popupTitle => trm('Edit Booking'),
             set => {
-                minHeight => 600,
-                minWidth => 400,
+                height => 700,
+                width => 350,
             },
             buttonSet => {
                 enabled => false
@@ -425,13 +429,10 @@ sub getTableData {
     my $self = shift;
     my $args = shift;
     my $SORT = {
-        -asc => 'booking_date'
+        -asc => 'booking_start_ts'
     };
     my $db = $self->db;
-    if ( my $sc = $args->{sortColumn} // 'booking_date' ){
-        if ($sc eq 'booking_date') {
-            $sc = 'booking_start_ts';
-        };
+    if ( my $sc = $args->{sortColumn}){
         $SORT = {
             
                 $args->{sortDesc}
@@ -450,13 +451,13 @@ sub getTableData {
         ):()),
         'cbuser_login',
         'cbuser_id', 
-        \"strftime('%d.%m.%Y',booking_start_ts,'unixepoch', 'localtime') AS booking_date",
-        \"strftime('%d.%m.%Y %H:%M',access_log_entry_ts,'unixepoch', 'localtime') AS booking_used",
+        \'booking_start_ts * 1000 AS booking_start_ts',
+        \'access_log_entry_ts * 1000 AS access_log_entry_ts',
         \"strftime('%H:%M',booking_start_ts,'unixepoch', 'localtime') || '-' ||
         strftime('%H:%M',booking_start_ts+booking_duration_s,'unixepoch','localtime') AS booking_time",
-        \"strftime('%d.%m.%Y %H:%M',booking_create_ts,'unixepoch', 'localtime') AS booking_created",
+        \'booking_create_ts * 1000 AS booking_create_ts',
         ( $adm ? (
-            \"strftime('%d.%m.%Y %H:%M',booking_delete_ts,'unixepoch', 'localtime') AS booking_deleted" ): ()
+            'booking_delete_ts * 1000 AS booking_delete_ts' ): ()
         ),  
                 ],
                 $self->WHERE($args),
