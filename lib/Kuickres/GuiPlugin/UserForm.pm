@@ -182,14 +182,13 @@ has actionCfg => sub {
 
         $args->{cbuser_password} = hmac_sha1_sum($args->{cbuser_password});
         my $db = $self->db;
-
-        $args->{cbuser_id} = $db->updateOrInsertData('cbuser',{
-            map { $_ => $args->{'cbuser_'.$_} } @fields
-        },$args->{cbuser_id} ? { id => int($args->{cbuser_id}) } : ());
-
-
-        my $adminId = $db->fetchValue('cbright',{key=>'admin'},'id');
+        if (@fields) {
+            $args->{cbuser_id} = $db->updateOrInsertData('cbuser',{
+                map { $_ => $args->{'cbuser_'.$_} } @fields
+            },$args->{cbuser_id} ? { id => int($args->{cbuser_id}) } : ());
+        }
         if ($admin){
+            my $adminId = $db->fetchValue('cbright',{key=>'admin'},'id');
             for (keys %$args){
                 next if not /^cbright_id_(\d+)$/;
                 my $right_id = $1;

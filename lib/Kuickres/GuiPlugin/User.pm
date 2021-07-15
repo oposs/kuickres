@@ -244,9 +244,11 @@ sub getTableData {
             edit => {
                 enabled => true
             },
-            delete => {
-                enabled => true,
-            },
+            $self->user->may('admin') ? (
+                delete => {
+                    enabled => true,
+                },
+            ) : ()
         }
     }
     return $data;

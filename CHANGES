@@ -1,5 +1,16 @@
-0.5.3 2021-07-14 17:03:36 +0200 Tobias Oetiker <tobi@oetiker.ch>
+0.5.5 2021-07-15 18:24:10 +0200 Tobias Oetiker <tobi@oetiker.ch>
 
+ - more german
+ - multibooking with partial success in bestEffort mode
+
+0.5.4 2021-07-15 13:26:30 +0200 Tobias Oetiker <tobi@oetiker.ch>
+
+ - more translations
+ - fixed calculation of total daily reservation time
+ - fix biweekly booking
+
+0.5.3 2021-07-14 17:03:36 +0200 Tobias Oetiker <tobi@oetiker.ch>
+ - set reply-to to Reply-To: SPA-Sportunterricht@zuerich.ch
  - fixed validation rules for non privileged booker
  - fixed equipment list in notification email
  - fixed sorting order for booking list

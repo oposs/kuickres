@@ -58,10 +58,10 @@ user: kuickres@login.name
 mobile: mobile_number
 SAMPLE_RULE
     $self->db->select('district','*',undef,{order_by => 'district_id'})->hashes->map(sub {
-        $rule .= "# districtId: $_->{district_id} # $_->{district_name}\n"
+        $rule .= "#districtId: $_->{district_id} # $_->{district_name}\n"
     });
     $self->db->select('agegroup','*',undef,{order_by => 'agegroup_id'})->hashes->map(sub {
-        $rule .= "# agegroupId: $_->{agegroup_id} # $_->{agegroup_name}\n"
+        $rule .= "#agegroupId: $_->{agegroup_id} # $_->{agegroup_name}\n"
     });
     $rule .= <<'SAMPLE_RULE';
 school: school_house
@@ -72,15 +72,13 @@ SAMPLE_RULE
     }
     $rule .= <<'SAMPLE_RULE';
 interval: weekly
-# interval: biweekly
+#interval: biweekly
 day:
 # - mon
 # - tue
 # - wed
 # - thu
 # - fri
-# - sat
-# - sun
 startTime: 15:00
 endTime: 17:00
 SAMPLE_RULE
@@ -239,8 +237,8 @@ has formCfg => sub ($self) {
                 return trm("Must be a number")
                     if $value !~ /^\d+$/;
                 
-                return trm("Must be after the start")
-                    if $value < $form->{mbooking_start_ts};
+                return trm("End Data must be after the Start Date")
+                    if $value <= $form->{mbooking_start_ts};
                 return;
             }
         },
@@ -269,6 +267,7 @@ has actionCfg => sub {
     my $handler = sub {
         my $self = shift;
         my $args = shift;
+        $self->log->debug(dumper \@_);
         my %metaInfo;
         my $db = $self->db;
         my $tx = $db->begin;
@@ -306,12 +305,12 @@ has actionCfg => sub {
         );
 
         my $message;
-        my $good = "The following reservations have been created: <ul>".join("\n",map {"<li>$_</li>"} @$success)."</ul>";
-        my $bad = "The following reservations could not be created: <ul>";
+        my $good = "Die folgenden Reservationen konnte erzeugt werden: <ul>".join("\n",map {"<li>$_</li>"} @$success)."</ul>";
+        my $bad = "Die folgenden Reservationen konnten nicht erzeugt werden: <ul>";
 
         for my $prob (@$problems) {
             $bad .= "<li>$prob->{key}<ul>"
-            . join("\n",map {"<li>Overlapping $_</li>"} @{$prob->{overlaps}})
+            . join("\n",map {"<li>Überlappend $_</li>"} @{$prob->{overlaps}})
             . join("\n",map {"<li>$_</li>"} @{$prob->{issues}})
             ."</ul></li>";
         }
@@ -328,8 +327,8 @@ has actionCfg => sub {
                 return {
                     action => 'showMessage',
                     html => true,
-                    message => "No reservations have been created. ".$bad."<div>If you set the <b>bestEffort</b> flag, the following reservations could be created: <ul>".join("\n",map {"<li>$_</li>"} @$success)."</ul>",
-                    title => "Problems",
+                    message => "Keine Reservationen wurden erzeugt. ".$bad."<div>Wenn Du das <b>bestEffort</b> Flag auf 'true' setzt, dann könnten folgende Reservationen erzeugt werden: <ul>".join("\n",map {"<li>$_</li>"} @$success)."</ul>",
+                    title => "Probleme",
                 }
             }
         }
@@ -337,9 +336,9 @@ has actionCfg => sub {
             return {
                 action => 'showMessage',
                 html => true,
-                title => "Problems",
+                title => "Probleme",
                 width => '600',
-                message => "No reservations have been created. ".$bad
+                message => "Keine Reservationen wurden erzeugt. ".$bad
             };
         }
         my $rule = $args->{mbooking_rule};
@@ -481,7 +480,8 @@ sub multiBook ($self,$recId,$room,$start,$end,$rule) {
     my @success;
     while ($now->epoch < $end->epoch){
         if ($dayFilter->{$now->day_of_week}) {
-            $self->log->debug("working on ".$now->strftime);
+            my @currentEq = @equipment;
+            #$self->log->debug("working on ".$now->strftime);
             my @conflict;
             my $start = $now+$startTime;
             my $end = $now+$endTime;
@@ -493,9 +493,26 @@ sub multiBook ($self,$recId,$room,$start,$end,$rule) {
                 $start->epoch,
                 $end->epoch,
                 $room,
-                \@equipment
+                \@currentEq
             );
+            #$self->log->debug("FULL ", dumper \@args);
             my $overlaps = $self->getBookings(@args);
+            my @overlapEq;
+            if ($overlaps) {
+                @overlapEq = map { ($overlaps->{eq_hash}{$_} or exists $overlaps->{eq_hash}{0})
+                    ? ($overlaps->{eq_hash}{$_}) : () } @equipment;
+
+                @currentEq = grep {not $overlaps->{eq_hash}{$_} } @equipment;
+
+                if (@currentEq) {
+                    #$self->log->debug("CLEAN " ,dumper \@args,\@currentEq,$overlaps);
+                    if ($self->getBookings(@args)){
+                        die mkerror(8474,trm("Internal error with eq removal"));
+                    }
+                    # we can book some equipment it seems
+                    $overlaps = undef;
+                };   
+            }
             my $issues = $self->checkResourceAllocations(@args);
 
             if (not $overlaps and not $issues) {
@@ -510,22 +527,30 @@ sub multiBook ($self,$recId,$room,$start,$end,$rule) {
                     booking_agegroup => $rule->{agegroupId},
                     booking_district => $rule->{districtId},
                     booking_school => $rule->{school},
-                    booking_equipment_json => to_json(\@equipment),
+                    booking_equipment_json => to_json(\@currentEq),
                 })->last_insert_id;
-                push @success, "$id - $key";
+                push @success, "$id - $key"
+                . (@overlapEq ? " ".trm("(Ohne: %1!)",join(', ',@overlapEq)) : '');
+                if(@overlapEq) {
+                push @problem, {
+                   key => $key,
+                   overlaps => [],
+                   issues =>  [(@overlapEq ? trm("Ohne: %1!",join(', ',@overlapEq)) : '')],
+                };
+                }
             }
             else {
                 push @problem, {
                     key => $key,
-                    overlaps => $overlaps,
+                    overlaps => $overlaps->{desc_array},
                     issues => $issues,
                 };
             }
         }
         $now = ($now+36*3600)->truncate(to => 'day');
         if ($rule->{interval} eq 'biweekly' 
-            and ($now-$week_start)->days > 6) {
-            $now = ($now + 6*24*3600 + 36*3600)->truncate(to => 'day');
+            and ($now-$week_start)->days >=7) {
+            $week_start = $now = ($now + 6*24*3600 + 36*3600)->truncate(to => 'day');
         }
 
     }

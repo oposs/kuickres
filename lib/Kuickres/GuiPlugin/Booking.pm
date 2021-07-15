@@ -457,7 +457,7 @@ sub getTableData {
         strftime('%H:%M',booking_start_ts+booking_duration_s,'unixepoch','localtime') AS booking_time",
         \'booking_create_ts * 1000 AS booking_create_ts',
         ( $adm ? (
-            'booking_delete_ts * 1000 AS booking_delete_ts' ): ()
+            \'booking_delete_ts * 1000 AS booking_delete_ts' ): ()
         ),  
                 ],
                 $self->WHERE($args),

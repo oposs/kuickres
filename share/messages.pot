@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: kuickres 0.5.3\n"
+"Project-Id-Version: kuickres 0.5.5\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-14 17:05+0200\n"
+"POT-Creation-Date: 2021-07-15 18:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,9 +23,13 @@ msgid "%1 is required"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:315
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:366
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:365
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:455
 msgid "%d.%m.%Y"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:533
+msgid "(Ohne: %1!)"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:288
@@ -79,13 +83,13 @@ msgstr ""
 msgid "Add Room"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/UserForm.pm:227 lib/Kuickres/GuiPlugin/User.pm:104
+#: lib/Kuickres/GuiPlugin/UserForm.pm:226 lib/Kuickres/GuiPlugin/User.pm:104
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:205
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:92
 msgid "Add User"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:390
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:389
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:167
 msgid "Add UserCat"
 msgstr ""
@@ -108,6 +112,10 @@ msgstr ""
 msgid "Alles"
 msgstr ""
 
+#: lib/Kuickres/Role/BookingHelper.pm:128
+msgid "Anlage %1 ist im gewünschten Zeitraum nicht verfügbar."
+msgstr ""
+
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:274
 msgid "Anlagen"
 msgstr ""
@@ -116,13 +124,13 @@ msgstr ""
 msgid "Available From"
 msgstr ""
 
+#: lib/Kuickres/Role/BookingHelper.pm:122
+msgid "Benutzer hat keine erlaubniss die Anlage  %1 zu buchen."
+msgstr ""
+
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:398
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:409
 msgid "Booking Problem"
-msgstr ""
-
-#: lib/Kuickres/Role/BookingHelper.pm:146
-msgid "Booking more lies more than %1 days in the future"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:411
@@ -131,6 +139,10 @@ msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:281
 msgid "Bookings in the past can not be deleted"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:150
+msgid "Buchung liegt mehr als %1 Tage in der Zukunft"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:198
@@ -151,7 +163,7 @@ msgstr ""
 msgid "Cost"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/UserForm.pm:224
+#: lib/Kuickres/GuiPlugin/UserForm.pm:223
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:202
 msgid "Create Admin Account"
 msgstr ""
@@ -325,7 +337,11 @@ msgstr ""
 msgid "End"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:232
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:240
+msgid "End Data must be after the Start Date"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:230
 msgid "End Date"
 msgstr ""
 
@@ -346,17 +362,13 @@ msgstr ""
 msgid "Equipment %1 is not in this room"
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:124
-msgid "Equipment '%1' not available in the chosen periode"
-msgstr ""
-
 #: lib/Kuickres/GuiPlugin/UserForm.pm:46
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:42
 msgid "Error"
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:268
-#: lib/Kuickres/Role/BookingHelper.pm:295
+#: lib/Kuickres/Role/BookingHelper.pm:285
+#: lib/Kuickres/Role/BookingHelper.pm:312
 msgid "Error parsing %1"
 msgstr ""
 
@@ -426,14 +438,18 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/MultiBooking.pm:45
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:57
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:54
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:203
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:211
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:201
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:209
 #: lib/Kuickres/GuiPlugin/Location.pm:44 lib/Kuickres/GuiPlugin/UserCat.pm:43
 #: lib/Kuickres/GuiPlugin/Equipment.pm:43
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:73
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:133
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:42
 msgid "Id"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:510
+msgid "Internal error with eq removal"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:253
@@ -483,6 +499,14 @@ msgstr ""
 msgid "MBooking"
 msgstr ""
 
+#: lib/Kuickres/Role/BookingHelper.pm:144
+msgid "Mehr als %1 Anlage Punkte (%2) in einer einzelnen Reservation"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:182
+msgid "Mehr als %1 Stunden (%2h) reserviert in einem einzelnen Tag"
+msgstr ""
+
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:284
 msgid "Mobile Phone"
 msgstr ""
@@ -491,25 +515,13 @@ msgstr ""
 msgid "Mon"
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:140
-msgid "More than %1 equipment points (%2) spent in a single reservation"
-msgstr ""
-
-#: lib/Kuickres/Role/BookingHelper.pm:168
-msgid "More than %1 hours (%2h) reserved in a single days"
-msgstr ""
-
 #: lib/Kuickres/GuiPlugin/MultiBooking.pm:156
 msgid "MultiBooking entfernt"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:226
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:239
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:224
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:237
 msgid "Must be a number"
-msgstr ""
-
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:242
-msgid "Must be after the start"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/AgegroupForm.pm:65
@@ -576,11 +588,15 @@ msgstr ""
 
 #: lib/Kuickres/GuiPlugin/MultiBooking.pm:67
 #: lib/Kuickres/GuiPlugin/UserForm.pm:129
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:260
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:258
 #: lib/Kuickres/GuiPlugin/User.pm:86
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:104
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:74
 msgid "Note"
+msgstr ""
+
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:538
+msgid "Ohne: %1!"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Location.pm:59
@@ -637,6 +653,10 @@ msgstr ""
 msgid "Plugin Name missing"
 msgstr ""
 
+#: lib/Kuickres/Role/BookingHelper.pm:99
+msgid "Raum ist nicht verfügbar für Reservationen von %1 - %2"
+msgstr ""
+
 #: lib/Kuickres/GuiPlugin/ResetPassword.pm:155
 msgid "Repeat Password"
 msgstr ""
@@ -657,12 +677,8 @@ msgstr ""
 msgid "Room is not open from %1 to %2."
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:95
-msgid "Room not open for reservation %1 - %2"
-msgstr ""
-
 #: lib/Kuickres/GuiPlugin/MultiBooking.pm:60
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:249
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:247
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:90
 msgid "Rule"
 msgstr ""
@@ -679,9 +695,9 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/RoomForm.pm:124
 #: lib/Kuickres/GuiPlugin/DistrictForm.pm:104
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:146
-#: lib/Kuickres/GuiPlugin/UserForm.pm:226
+#: lib/Kuickres/GuiPlugin/UserForm.pm:225
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:143
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:389
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:388
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:166
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:474
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
@@ -733,12 +749,16 @@ msgstr ""
 msgid "Start"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:219
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:217
 msgid "Start Date"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:205
 msgid "Start Time"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:93
+msgid "Startzeit muss vor Endzeit sein"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:64
@@ -795,10 +815,6 @@ msgstr ""
 
 #: lib/Kuickres/GuiPlugin/UserForm.pm:121 lib/Kuickres/GuiPlugin/User.pm:72
 msgid "User Category"
-msgstr ""
-
-#: lib/Kuickres/Role/BookingHelper.pm:118
-msgid "User has no permission to book equipment %1"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/UserForm.pm:66 lib/Kuickres/GuiPlugin/User.pm:43
@@ -881,13 +897,13 @@ msgid "email address in use"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:184
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:434
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:433
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:205
 msgid "no selection found"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:176
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:423
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:422
 msgid "no selection->room_id found"
 msgstr ""
 
@@ -915,6 +931,6 @@ msgstr ""
 msgid "type a your new password"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:457
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:456
 msgid "unknown user configured in rule"
 msgstr ""

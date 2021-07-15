@@ -73,7 +73,7 @@ sub getEqHash ( $self, $user_id,$room_id ) {
             $hash{ $rec->{equipment_id} } = true;
         }
     );
-    $self->log->debug('EQHASH',$user_id,$room_id,dumper \%hash);
+    #$self->log->debug('EQHASH',$user_id,$room_id,dumper \%hash);
     return \%hash;
 }
 
@@ -89,10 +89,14 @@ sub checkResourceAllocations ( $self, $user, $start,
     # eq check
     my $db = $self->db;
 
+    if ($start >= $end) {
+        push @issues, trm("Startzeit muss vor Endzeit sein");
+    }
+
     #### check opening hours
     if (not $self->isRoomOpen( $room, $start, $end ) ) {
         push @issues, trm(
-            "Room not open for reservation %1 - %2",
+            "Raum ist nicht verfügbar für Reservationen von %1 - %2",
             localtime($start)->strftime("%H:%M"),
             localtime($end)->strftime("%H:%M"),
         );
@@ -115,13 +119,13 @@ sub checkResourceAllocations ( $self, $user, $start,
         sub ($rec) {
             my $eqId = $rec->{equipment_id};
             if (not $eqUserHash->{$eqId} and not $self->user->may('admin')) {
-                push @issues, trm( "User has no permission to book equipment %1", $rec->{equipment_name});
+                push @issues, trm( "Benutzer hat keine erlaubniss die Anlage  %1 zu buchen.", $rec->{equipment_name});
             }
 
             if ($end < $rec->{equipment_start_ts}
               or $start > $rec->{equipment_end_ts}) {
                 push @issues, trm(
-                    "Equipment '%1' not available in the chosen periode",
+                    "Anlage %1 ist im gewünschten Zeitraum nicht verfügbar.",
                     $rec->{equipment_name}
                 )
             }            
@@ -137,35 +141,45 @@ sub checkResourceAllocations ( $self, $user, $start,
 
     if ($eqp > $rules->{maxEquipmentPointsPerBooking}) {
         push @issues, 
-            trm("More than %1 equipment points (%2) spent in a single reservation",
+            trm("Mehr als %1 Anlage Punkte (%2) in einer einzelnen Reservation",
                 $rules->{maxEquipmentPointsPerBooking},$eqp
             );
     };
 
     if ($end > time + $rules->{futureBookingDays} * 24 * 3600) {
-        push @issues, trm("Booking more lies more than %1 days in the future",
+        push @issues, trm("Buchung liegt mehr als %1 Tage in der Zukunft",
             $rules->{futureBookingDays}
         );
     }
 
     my $duration = $end - $start;
+    my $day_start = localtime($start)->truncate(to=>'day');
+    my $day_end   = ($day_start + 36*3600)->truncate(to=>'day');
+    #$self->log->debug("exclude:",$exclude);
+    #$self->log->debug("start:",$day_start->strftime);
+    #$self->log->debug("end:",$day_end->strftime);
     my $bookings = $db->select(
         'booking',
         '*',
-        {
+        { -and => [
             booking_delete_ts => undef,
             booking_cbuser    => $user,
+            -bool => \["booking_start_ts  > ?", { 
+                type=> SQL_INTEGER, value =>  $day_start->epoch }],
+            -bool => \["booking_start_ts < ?", { 
+                type=> SQL_INTEGER, value =>  $day_end->epoch }],
             $exclude ? ( booking_id => { '!=' => $exclude } ) : (),
-        }
+        ]}
     )->hashes->map(
         sub {
+            #$self->log->debug("MINE",dumper $_);
             $duration += $_->{booking_duration_s};
         }
     );
 
     if ($duration/3600 > $rules->{maxBookingHoursPerDay}) {
         push @issues, trm(
-            "More than %1 hours (%2h) reserved in a single days",
+            "Mehr als %1 Stunden (%2h) reserviert in einem einzelnen Tag",
             $rules->{maxBookingHoursPerDay},sprintf("%.1f",$duration/3600)
         );
     }
@@ -227,24 +241,27 @@ sub getBookings ( $self, $user, $start, $end, $room, $equipment,
             ]
         }
     )->hashes->map(sub ($rec){
-        my $key = 'ID:'.$rec->{booking_id} . ' '
+        my $desc = 'ID:'.$rec->{booking_id} . ' '
             . localtime($rec->{booking_start_ts})->strftime("%H:%M")
             . ' - '
             . localtime($rec->{booking_start_ts}
                 + $rec->{booking_duration_s})->strftime("%H:%M");
-        push @{$overlaps{ $key} } , $rec->{booking_equipment};
+        $overlaps{ $rec->{booking_id} }{desc} = $desc;
+        push @{$overlaps{ $rec->{booking_id} }{eq}} , $rec->{booking_equipment};
     });
     my @overlaps;
+    my %eqs;
     for my $key (sort keys %overlaps) {
         my @eqList;
-        $db->select('equipment', '*', { 
-            equipment_id => { in => $overlaps{$key} } }
+        $db->select('equipment', '*', {
+            $overlaps{$key}{eq}[0] ne '0' ? (equipment_id => { in => $overlaps{$key}{eq} }):() }
         )->hashes->map(sub ($rec) {
             push @eqList, $rec->{equipment_name};
+            $eqs{$rec->{equipment_id}} = $rec->{equipment_name};
         });
-        push @overlaps, $key. ((@eqList) ? ( ': ' . join(', ', @eqList)):'');
+        push @overlaps, $overlaps{$key}{desc}. ((@eqList) ? ( ': ' . join(', ', @eqList)):'');
     }
-    return @overlaps ? \@overlaps : undef;
+    return @overlaps ? { desc_array => \@overlaps, eq_hash => \%eqs } : undef;
 }
 
 =head3 parseTime(date,from,to)

@@ -95,7 +95,7 @@ has formCfg => sub {
     ) };
     # $self->log->debug($@) if $@;
     # $self->log->debug("T:",dumper($t));
-    $self->log->debug("F:",dumper($form));
+    #$self->log->debug("F:",dumper($form));
     my @equipment;
     my $eqHash = $self->getEqHash($form->{booking_cbuser},$form->{booking_room});
     
@@ -397,7 +397,7 @@ has actionCfg => sub {
                 action => 'showMessage',
                 title => trm("Booking Problem"),
                 html => true,
-                message => trm("Your booking overlaps with BookingIds: %1",join(", ",@$overlaps))
+                message => trm("Your booking overlaps with BookingIds: %1",join(", ", @{$overlaps->{desc_array}}))
             }
         }
 
