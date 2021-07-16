@@ -275,5 +275,28 @@ INSERT INTO usercat (usercat_name,usercat_rule_json)
     VALUES 
         ('Plain','{"futureBookingDays": 60,"maxEquipmentPointsPerBooking": 3,"maxBookingHoursPerDay": 4,"equipmentList":["test_a"]}');
 
-ALTER TABLE cbuser ADD cbuser_usercat INTEGER NOT NULL default 1 REFERENCES usercat(usercat_id);
+COMMIT;
+PRAGMA foreign_keys=off;
+BEGIN;
+
+ALTER TABLE cbuser ADD cbuser_usercat INTEGER NOT NULL DEFAULT 1;
+
+CREATE TABLE cbuser_new (
+    cbuser_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    cbuser_login TEXT UNIQUE,
+    cbuser_family TEXT,
+    cbuser_given TEXT,
+    cbuser_password TEXT NOT NULL,
+    cbuser_note TEXT,
+    cbuser_calendar_tag TEXT,
+    cbuser_pin INTEGER DEFAULT (substr(random() || '0000000',3,7)),
+    cbuser_usercat INTEGER NOT NULL default 1 REFERENCES usercat(usercat_id)
+);
+
+INSERT INTO cbuser_new SELECT * from cbuser;
+DROP TABLE cbuser;
+ALTER TABLE cbuser_new RENAME to cbuser;
+COMMIT;
+PRAGMA foreign_keys=on;
+BEGIN;
 

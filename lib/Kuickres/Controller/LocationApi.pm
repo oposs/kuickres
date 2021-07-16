@@ -86,14 +86,14 @@ SQL_END
 sub get_signage {
     my $c = shift->openapi->valid_input or return;
     my $lid = $c->param('locationId');
-    my $res = $c->db->query(<<'SQL_END',time,time+2*24*3600,$lid)->hashes;
+    my $res = $c->db->query(<<'SQL_END',{ type=>SQL_INTEGER, value=>time},{type=>SQL_INTEGER, value=>time+2*24*3600},{type=>SQL_INTEGER,value => $lid})->hashes;
     SELECT booking.*,cbuser_login,cbuser_family,cbuser_given,room.*,location.* FROM booking
     JOIN cbuser ON booking_cbuser = cbuser_id
     JOIN room ON booking_room = room_id
     JOIN location ON room_location = location_id
-    WHERE booking_start_ts > CAST(? AS INTEGER)
-        AND booking_start_ts < CAST(? AS INTEGER)
-        AND room_location = CAST(? AS INTEGER)
+    WHERE booking_start_ts > ?
+        AND booking_start_ts < ?
+        AND room_location = ?
     ORDER BY booking_start_ts
 SQL_END
     # warn dumper $res;

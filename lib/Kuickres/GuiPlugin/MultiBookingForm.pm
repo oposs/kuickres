@@ -309,6 +309,7 @@ has actionCfg => sub {
         my $bad = "Die folgenden Reservationen konnten nicht erzeugt werden: <ul>";
 
         for my $prob (@$problems) {
+            next unless $prob; #skip silent problems
             $bad .= "<li>$prob->{key}<ul>"
             . join("\n",map {"<li>Überlappend $_</li>"} @{$prob->{overlaps}})
             . join("\n",map {"<li>$_</li>"} @{$prob->{issues}})
@@ -532,12 +533,8 @@ sub multiBook ($self,$recId,$room,$start,$end,$rule) {
                 push @success, "$id - $key"
                 . (@overlapEq ? " ".trm("(Ohne: %1!)",join(', ',@overlapEq)) : '');
                 if(@overlapEq) {
-                push @problem, {
-                   key => $key,
-                   overlaps => [],
-                   issues =>  [(@overlapEq ? trm("Ohne: %1!",join(', ',@overlapEq)) : '')],
+                    push @problem, ''; # a silent problem marker
                 };
-                }
             }
             else {
                 push @problem, {

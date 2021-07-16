@@ -4,12 +4,12 @@ msgid "%1 is required"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/Booking.pm:315
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:365
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:366
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:455
 msgid "%d.%m.%Y"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:533
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:534
 msgid "(Ohne: %1!)"
 msgstr ""
 
@@ -23,7 +23,7 @@ msgid ""
 "passwords/quickguide\">Standford Password Policy</a>"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:422
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:423
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:500
 msgid "Access Denied"
 msgstr ""
@@ -70,7 +70,7 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:389
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:390
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:167
 msgid "Add UserCat"
 msgstr ""
@@ -162,7 +162,7 @@ msgstr ""
 msgid "Created"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:442
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:443
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:517
 msgid "Data Decoding Problem %1"
 msgstr ""
@@ -429,7 +429,7 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:510
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:511
 msgid "Internal error with eq removal"
 msgstr ""
 
@@ -576,10 +576,6 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:538
-msgid "Ohne: %1!"
-msgstr ""
-
 #: lib/Kuickres/GuiPlugin/Location.pm:59
 msgid "Opening Hours"
 msgstr ""
@@ -629,7 +625,7 @@ msgstr ""
 msgid "Phone number 07x xxx xxxx expected"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:427
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:428
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:507
 msgid "Plugin Name missing"
 msgstr ""
@@ -678,7 +674,7 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:146
 #: lib/Kuickres/GuiPlugin/UserForm.pm:225
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:143
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:388
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:389
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:166
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:474
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
@@ -775,7 +771,7 @@ msgstr ""
 msgid "Unknown email address"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:433
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:434
 msgid "Upload Missing"
 msgstr ""
 
@@ -878,13 +874,13 @@ msgid "email address in use"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:184
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:433
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:434
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:205
 msgid "no selection found"
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:176
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:422
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:423
 msgid "no selection->room_id found"
 msgstr ""
 
@@ -912,6 +908,6 @@ msgstr ""
 msgid "type a your new password"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:456
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:457
 msgid "unknown user configured in rule"
 msgstr ""
