@@ -278,13 +278,15 @@ has actionCfg => sub {
                 if (not $self->user->may('admin')){
                     $USER{booking_cbuser} = $self->user->userId;
                 }
+                my $booking = $self->db->select('booking','*',{
+                    booking_id => $id})->hash or die mkerror(38883,trm("Buchung %1 existiert nicht",$id));
                 die mkerror(3843,trm("Bookings in the past can not be deleted"))
-                    if $args->{selection}{booking_start_ts} < time;
+                    if $booking->{booking_start_ts} < time;
                 eval {
                     $self->db->update('booking',{booking_delete_ts => time},{
                         booking_id => $id,
-                        booking_start_ts => { 
-                            '>' => time},
+                        -bool => \["booking_start_ts > ?", { 
+                           type => SQL_INTEGER, value => time}],
                         %USER,
                         booking_delete_ts => undef
                     });
@@ -422,12 +424,14 @@ sub WHERE {
 sub getTableRowCount {
     my $self = shift;
     my $args = shift;
+    $self->log->debug('GETTABLEROWCOUNT:'.dumper $args);
     return $self->db->select($FROM,'COUNT(*) AS count',$self->WHERE($args))->hash->{count};
 }
 
 sub getTableData {
     my $self = shift;
     my $args = shift;
+    $self->log->debug('GETTABLEDATA:'.dumper $args);
     my $SORT = {
         -asc => 'booking_start_ts'
     };

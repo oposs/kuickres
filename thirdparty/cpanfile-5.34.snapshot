@@ -50,10 +50,10 @@ DISTRIBUTIONS
       Term::ReadKey 0
       strict 0
       warnings 0
-  CallBackery-0.38.11
-    pathname: O/OE/OETIKER/CallBackery-0.38.11.tar.gz
+  CallBackery-0.39.6
+    pathname: O/OE/OETIKER/CallBackery-0.39.6.tar.gz
     provides:
-      CallBackery 0.038011
+      CallBackery 0.039006
       CallBackery::Config undef
       CallBackery::Controller::RpcService undef
       CallBackery::Database undef
@@ -81,8 +81,15 @@ DISTRIBUTIONS
       Mojolicious::Plugin::Qooxdoo v1.0.13
       Syntax::Keyword::Try 0
       Text::CSV 0
+      XS::Parse::Keyword 0.21
       YAML::XS 0
       perl 5.022000
+  Canary-Stability-2013
+    pathname: M/ML/MLEHMANN/Canary-Stability-2013.tar.gz
+    provides:
+      Canary::Stability 2013
+    requirements:
+      ExtUtils::MakeMaker 0
   Carp-Always-0.16
     pathname: F/FE/FERREIRA/Carp-Always-0.16.tar.gz
     provides:
@@ -133,14 +140,14 @@ DISTRIBUTIONS
       Module::Build 0
       Test::More 0
       perl 5.006
-  DBD-SQLite-1.66
-    pathname: I/IS/ISHIGAKI/DBD-SQLite-1.66.tar.gz
+  DBD-SQLite-1.70
+    pathname: I/IS/ISHIGAKI/DBD-SQLite-1.70.tar.gz
     provides:
-      DBD::SQLite 1.66
+      DBD::SQLite 1.70
       DBD::SQLite::Constants undef
       DBD::SQLite::GetInfo undef
-      DBD::SQLite::VirtualTable 1.66
-      DBD::SQLite::VirtualTable::Cursor 1.66
+      DBD::SQLite::VirtualTable 1.70
+      DBD::SQLite::VirtualTable::Cursor 1.70
       DBD::SQLite::VirtualTable::FileContent undef
       DBD::SQLite::VirtualTable::FileContent::Cursor undef
       DBD::SQLite::VirtualTable::PerlData undef
@@ -278,6 +285,15 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
+  EV-4.33
+    pathname: M/ML/MLEHMANN/EV-4.33.tar.gz
+    provides:
+      EV 4.33
+      EV::MakeMaker undef
+    requirements:
+      Canary::Stability 0
+      ExtUtils::MakeMaker 6.52
+      common::sense 0
   Email-Abstract-3.009
     pathname: R/RJ/RJBS/Email-Abstract-3.009.tar.gz
     provides:
@@ -392,33 +408,33 @@ DISTRIBUTIONS
       overload 0
       strict 0
       warnings 0
-  Email-Sender-1.500
-    pathname: R/RJ/RJBS/Email-Sender-1.500.tar.gz
+  Email-Sender-2.500
+    pathname: R/RJ/RJBS/Email-Sender-2.500.tar.gz
     provides:
-      Email::Sender 1.500
-      Email::Sender::Failure 1.500
-      Email::Sender::Failure::Multi 1.500
-      Email::Sender::Failure::Permanent 1.500
-      Email::Sender::Failure::Temporary 1.500
-      Email::Sender::Manual 1.500
-      Email::Sender::Manual::QuickStart 1.500
-      Email::Sender::Role::CommonSending 1.500
-      Email::Sender::Role::HasMessage 1.500
-      Email::Sender::Simple 1.500
-      Email::Sender::Success 1.500
-      Email::Sender::Success::Partial 1.500
-      Email::Sender::Transport 1.500
-      Email::Sender::Transport::DevNull 1.500
-      Email::Sender::Transport::Failable 1.500
-      Email::Sender::Transport::Maildir 1.500
-      Email::Sender::Transport::Mbox 1.500
-      Email::Sender::Transport::Print 1.500
-      Email::Sender::Transport::SMTP 1.500
-      Email::Sender::Transport::SMTP::Persistent 1.500
-      Email::Sender::Transport::Sendmail 1.500
-      Email::Sender::Transport::Test 1.500
-      Email::Sender::Transport::Wrapper 1.500
-      Email::Sender::Util 1.500
+      Email::Sender 2.500
+      Email::Sender::Failure 2.500
+      Email::Sender::Failure::Multi 2.500
+      Email::Sender::Failure::Permanent 2.500
+      Email::Sender::Failure::Temporary 2.500
+      Email::Sender::Manual 2.500
+      Email::Sender::Manual::QuickStart 2.500
+      Email::Sender::Role::CommonSending 2.500
+      Email::Sender::Role::HasMessage 2.500
+      Email::Sender::Simple 2.500
+      Email::Sender::Success 2.500
+      Email::Sender::Success::Partial 2.500
+      Email::Sender::Transport 2.500
+      Email::Sender::Transport::DevNull 2.500
+      Email::Sender::Transport::Failable 2.500
+      Email::Sender::Transport::Maildir 2.500
+      Email::Sender::Transport::Mbox 2.500
+      Email::Sender::Transport::Print 2.500
+      Email::Sender::Transport::SMTP 2.500
+      Email::Sender::Transport::SMTP::Persistent 2.500
+      Email::Sender::Transport::Sendmail 2.500
+      Email::Sender::Transport::Test 2.500
+      Email::Sender::Transport::Wrapper 2.500
+      Email::Sender::Util 2.500
     requirements:
       Carp 0
       Email::Abstract 3.006
@@ -511,6 +527,13 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       File::Temp 0.19
       IO::File 1.14
+  ExtUtils-CChecker-0.11
+    pathname: P/PE/PEVANS/ExtUtils-CChecker-0.11.tar.gz
+    provides:
+      ExtUtils::CChecker 0.11
+    requirements:
+      ExtUtils::CBuilder 0
+      Module::Build 0.4004
   ExtUtils-Config-0.008
     pathname: L/LE/LEONT/ExtUtils-Config-0.008.tar.gz
     provides:
@@ -633,18 +656,18 @@ DISTRIBUTIONS
       Test::Builder::Module 0
       Time::HiRes 0
       perl 5.010
-  Future-AsyncAwait-0.51
-    pathname: P/PE/PEVANS/Future-AsyncAwait-0.51.tar.gz
+  Future-AsyncAwait-0.54
+    pathname: P/PE/PEVANS/Future-AsyncAwait-0.54.tar.gz
     provides:
-      Future::AsyncAwait 0.51
-      Future::AsyncAwait::Awaitable 0.51
-      Test::Future::AsyncAwait::Awaitable 0.51
+      Future::AsyncAwait 0.54
+      Future::AsyncAwait::Awaitable 0.54
+      Test::Future::AsyncAwait::Awaitable 0.54
     requirements:
       ExtUtils::CBuilder 0
       Future 0.43
       Module::Build 0.4004
-      XS::Parse::Keyword 0.05
-      XS::Parse::Keyword::Builder 0.05
+      XS::Parse::Keyword 0.13
+      XS::Parse::Keyword::Builder 0.13
       XS::Parse::Sublike 0.10
       XS::Parse::Sublike::Builder 0.10
       perl 5.016
@@ -803,14 +826,13 @@ DISTRIBUTIONS
       Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
-  JSON-Validator-4.20
-    pathname: J/JH/JHTHORSEN/JSON-Validator-4.20.tar.gz
+  JSON-Validator-5.02
+    pathname: J/JH/JHTHORSEN/JSON-Validator-5.02.tar.gz
     provides:
-      JSON::Validator 4.20
+      JSON::Validator 5.02
       JSON::Validator::Error undef
       JSON::Validator::Formats undef
       JSON::Validator::Joi undef
-      JSON::Validator::Ref undef
       JSON::Validator::Schema undef
       JSON::Validator::Schema::Draft201909 undef
       JSON::Validator::Schema::Draft4 undef
@@ -819,6 +841,7 @@ DISTRIBUTIONS
       JSON::Validator::Schema::OpenAPIv2 undef
       JSON::Validator::Schema::OpenAPIv3 undef
       JSON::Validator::Store undef
+      JSON::Validator::URI undef
       JSON::Validator::Util undef
     requirements:
       ExtUtils::MakeMaker 0
@@ -988,18 +1011,18 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Mojo-SQLite-3.006
-    pathname: D/DB/DBOOK/Mojo-SQLite-3.006.tar.gz
+  Mojo-SQLite-3.007
+    pathname: D/DB/DBOOK/Mojo-SQLite-3.007.tar.gz
     provides:
-      Mojo::SQLite 3.006
-      Mojo::SQLite::Database 3.006
-      Mojo::SQLite::Migrations 3.006
-      Mojo::SQLite::PubSub 3.006
-      Mojo::SQLite::Results 3.006
-      Mojo::SQLite::Transaction 3.006
+      Mojo::SQLite 3.007
+      Mojo::SQLite::Database 3.007
+      Mojo::SQLite::Migrations 3.007
+      Mojo::SQLite::PubSub 3.007
+      Mojo::SQLite::Results 3.007
+      Mojo::SQLite::Transaction 3.007
     requirements:
       Carp 0
-      DBD::SQLite 1.64
+      DBD::SQLite 1.68
       DBI 1.627
       File::Spec::Functions 0
       File::Temp 0
@@ -1011,8 +1034,8 @@ DISTRIBUTIONS
       URI::db 0.15
       URI::file 4.21
       perl 5.010001
-  Mojolicious-9.19
-    pathname: S/SR/SRI/Mojolicious-9.19.tar.gz
+  Mojolicious-9.22
+    pathname: S/SR/SRI/Mojolicious-9.22.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
@@ -1080,7 +1103,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
       Mojo::WebSocket undef
-      Mojolicious 9.19
+      Mojolicious 9.22
       Mojolicious::Command undef
       Mojolicious::Command::Author::cpanify undef
       Mojolicious::Command::Author::generate undef
@@ -1129,17 +1152,17 @@ DISTRIBUTIONS
       IO::Socket::IP 0.37
       Sub::Util 1.41
       perl 5.016
-  Mojolicious-Plugin-OpenAPI-4.04
-    pathname: J/JH/JHTHORSEN/Mojolicious-Plugin-OpenAPI-4.04.tar.gz
+  Mojolicious-Plugin-OpenAPI-5.00
+    pathname: J/JH/JHTHORSEN/Mojolicious-Plugin-OpenAPI-5.00.tar.gz
     provides:
-      Mojolicious::Plugin::OpenAPI 4.04
+      Mojolicious::Plugin::OpenAPI 5.00
       Mojolicious::Plugin::OpenAPI::Cors undef
       Mojolicious::Plugin::OpenAPI::Parameters undef
       Mojolicious::Plugin::OpenAPI::Security undef
       Mojolicious::Plugin::OpenAPI::SpecRenderer undef
     requirements:
       ExtUtils::MakeMaker 0
-      JSON::Validator 4.18
+      JSON::Validator 5.00
       Mojolicious 9.00
   Mojolicious-Plugin-Qooxdoo-1.0.13
     pathname: O/OE/OETIKER/Mojolicious-Plugin-Qooxdoo-1.0.13.tar.gz
@@ -1637,13 +1660,16 @@ DISTRIBUTIONS
       Fcntl 0
       URI 1.10
       perl 5.008001
-  XS-Parse-Keyword-0.08
-    pathname: P/PE/PEVANS/XS-Parse-Keyword-0.08.tar.gz
+  XS-Parse-Keyword-0.21
+    pathname: P/PE/PEVANS/XS-Parse-Keyword-0.21.tar.gz
     provides:
-      XS::Parse::Keyword 0.08
-      XS::Parse::Keyword::Builder 0.08
+      XS::Parse::Infix 0.21
+      XS::Parse::Infix::Builder 0.21
+      XS::Parse::Keyword 0.21
+      XS::Parse::Keyword::Builder 0.21
     requirements:
       ExtUtils::CBuilder 0
+      ExtUtils::CChecker 0.11
       Module::Build 0.4004
       perl 5.014
   XS-Parse-Sublike-0.12
@@ -1664,6 +1690,12 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       perl 5.008001
+  common-sense-3.75
+    pathname: M/ML/MLEHMANN/common-sense-3.75.tar.gz
+    provides:
+      common::sense 3.75
+    requirements:
+      ExtUtils::MakeMaker 0
   libwww-perl-6.55
     pathname: O/OA/OALDERS/libwww-perl-6.55.tar.gz
     provides:

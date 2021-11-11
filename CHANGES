@@ -1,3 +1,15 @@
+0.5.9 2021-11-11 11:43:03 +0100 Tobias Oetiker <tobi@oetiker.ch>
+
+ - fix excel export by upgrading to latest callbackery
+
+0.5.8 2021-07-20 17:34:30 +0200 Tobias Oetiker <tobi@oetiker.ch>
+
+ - fix booking deletion check with proper typing
+
+0.5.7 2021-07-16 14:48:26 +0200 Tobias Oetiker <tobi@oetiker.ch>
+
+ - update to latest callbackery for better date export funktion
+
 0.5.6 2021-07-16 10:07:32 +0200 Tobias Oetiker <tobi@oetiker.ch>
 
  - in multibooking do NOT list partial bookings under problems but still only

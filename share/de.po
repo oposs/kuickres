@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-16 11:24+0200\n"
+"POT-Creation-Date: 2021-11-11 11:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,13 +21,13 @@ msgstr ""
 msgid "%1 is required"
 msgstr "%1 ist erforderlich"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:315
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:366
+#: lib/Kuickres/GuiPlugin/Booking.pm:317
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:367
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:455
 msgid "%d.%m.%Y"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:534
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:535
 msgid "(Ohne: %1!)"
 msgstr ""
 
@@ -41,8 +41,8 @@ msgid ""
 "passwords/quickguide\">Standford Password Policy</a>"
 msgstr ""
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:423
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:500
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:427
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:504
 msgid "Access Denied"
 msgstr ""
 
@@ -88,7 +88,7 @@ msgstr "Raum Hinzufügen"
 msgid "Add User"
 msgstr "Konto hinzufügen"
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:390
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:391
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:167
 msgid "Add UserCat"
 msgstr "UserCategory hinzufügen"
@@ -107,7 +107,7 @@ msgstr "Klasse"
 msgid "Alle zukuenftigen Bookings wurden aus der MultiBooking-Liste entfernt."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:471
+#: lib/Kuickres/GuiPlugin/Booking.pm:475
 msgid "Alles"
 msgstr ""
 
@@ -136,9 +136,13 @@ msgstr "Buchungsproblem"
 msgid "Booking was not possible because: <ul>%1</ul>"
 msgstr "Die Buchung konnte nicht durchgeführt werden wegen <ul>%1</ul>"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:281
+#: lib/Kuickres/GuiPlugin/Booking.pm:283
 msgid "Bookings in the past can not be deleted"
 msgstr "Buchungen in der Vergangenheit können nicht gelöscht werden."
+
+#: lib/Kuickres/GuiPlugin/Booking.pm:282
+msgid "Buchung %1 existiert nicht"
+msgstr ""
 
 #: lib/Kuickres/Role/BookingHelper.pm:150
 msgid "Buchung liegt mehr als %1 Tage in der Zukunft"
@@ -180,8 +184,8 @@ msgstr "Neues Konto Erstellen"
 msgid "Created"
 msgstr "Erzeugt"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:443
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:517
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:447
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:521
 msgid "Data Decoding Problem %1"
 msgstr "Datendekodierungsproblem %1"
 
@@ -390,7 +394,7 @@ msgstr "Das Konto %1 konnte nicht entfernt werden."
 msgid "Failed to create account for %1"
 msgstr "Das Konto für %1 konnte nicht erzeugt werden."
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:294 lib/Kuickres/GuiPlugin/Booking.pm:308
+#: lib/Kuickres/GuiPlugin/Booking.pm:296 lib/Kuickres/GuiPlugin/Booking.pm:310
 msgid "Failed to remove booking %1"
 msgstr "Fehler beim Löschen der Buchung %1"
 
@@ -453,7 +457,7 @@ msgstr ""
 msgid "Id"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:511
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:512
 msgid "Internal error with eq removal"
 msgstr ""
 
@@ -655,8 +659,8 @@ msgstr "Die Passworte müssen übereinstimmen."
 msgid "Phone number 07x xxx xxxx expected"
 msgstr "Telefonnummer 07x xxx xxxx erwartet"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:428
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:507
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:432
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:511
 msgid "Plugin Name missing"
 msgstr "Plugin Name fehlt"
 
@@ -704,7 +708,7 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:146
 #: lib/Kuickres/GuiPlugin/UserForm.pm:225
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:143
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:389
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:390
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:166
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:474
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
@@ -801,7 +805,7 @@ msgstr ""
 msgid "Unknown email address"
 msgstr "Unbekannte eMail Adresse"
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:434
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../Controller/RpcService.pm:438
 msgid "Upload Missing"
 msgstr "Upload fehlt"
 
@@ -907,13 +911,13 @@ msgid "email address in use"
 msgstr "eMail Adresse schon in Gebrauch"
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:184
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:434
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:435
 #: lib/Kuickres/GuiPlugin/UserCatForm.pm:205
 msgid "no selection found"
 msgstr "Kein Auswahl gefunden"
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:176
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:423
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:424
 msgid "no selection->room_id found"
 msgstr ""
 
@@ -941,7 +945,7 @@ msgstr "Das gewählte Feld ist unbekannt."
 msgid "type a your new password"
 msgstr "tippen sie ihr Passwort"
 
-#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:457
+#: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:458
 msgid "unknown user configured in rule"
 msgstr "Unbekannter user in der Rule"
 

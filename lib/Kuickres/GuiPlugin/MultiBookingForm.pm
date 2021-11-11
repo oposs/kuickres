@@ -293,7 +293,8 @@ has actionCfg => sub {
             },{
                 booking_mbooking => $args->{mbooking_id},
                 booking_delete_ts => undef,
-                booking_start_ts => { '>' => time }
+                -bool => \['booking_start_ts > ?', { type => SQL_INTEGER, value => time
+                 }]
             });
         }
         my ($success,$problems) = $self->multiBook(
