@@ -1,7 +1,11 @@
 
 BACKEND:
-  cfg_db: /tmp/kuickres-testing.db
-  api_key: a6b3a23b564d61601cb1c132845cd7d785501b5d
+  cfg_db: /tmp/var/kuickres.db
+# perl -MDigest::SHA -e 'print Digest::SHA::hmac_sha1_hex("access"),"\n"'
+  api_key: dddddddddddd
+# smtp_url: smtp://user:pass@xxxx.yyy.ch
+  bcc: tobi+kuickresbbcc@xxxx.ch
+  from: Kuickres Dev <tobi+kuickres@xxxxx.ch>
 
 FRONTEND:
 # logo = ../resource/kuickres/logo.png
@@ -27,12 +31,10 @@ PLUGIN:
       module: ResetPassword
       unlisted: true
       tab-name: Reset Password
-      from: tobi+reset@oetiker.ch
   - RegisterNewAccount:
       module: Registration
       unlisted: true
       tab-name: Register New Account
-      from: tobi+reset@oetiker.ch
       mailrx: "@oetiker.ch$"
   - InitialUser:
       module: UserForm
@@ -42,23 +44,34 @@ PLUGIN:
   - Booking:
       module: Booking
       tab-name: Buchungen
-      from: tobi+reset@oetiker.ch
+
   - Location:
       module: Location
       tab-name: Standorte
-      
   - Room:
       module: Room
       tab-name: Räume
+  - MultiBooking:
+      module: MultiBooking
+      tab-name: MultiBooking
+
+  - Equipment:
+      module: Equipment
+      tab-name: Anlagen
+
 
   - District:
       module: District
-      tab-name: Bezirke
+      tab-name: Schulkreise
 
+  - UserCat:
+      module: UserCat
+      tab-name: UserCategories
+ 
   - Agegroup:
       module: Agegroup
-      tab-name: Altersgruppen
+      tab-name: Klassen
 
   - AdminUser:
-      module: Users
+      module: User
       tab-name: Konto Manager
