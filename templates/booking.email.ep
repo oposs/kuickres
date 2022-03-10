@@ -11,7 +11,13 @@ Datum: <%= $date %>
 Zeitraum: <%= $time %>
 Pin für Türöffnung: *<%= $accesscode %>#
 
+Anlagen:
+
+<%= join "", map {"- $_\n"} @$equipmentList %>
+
 Sie können ihre Reservation jederzeit online bearbeiten.
+
+Die Anlage ist pünktlich und sauber zu verlassen (dreckige Schuhe beim Ankommen im Eingangsbereich platzieren). Allfällige Defekte bitte an saalsporthalle@zuerich.ch melden.
 
 Diese Mail wurde automatisch generiert.
 ----
@@ -32,6 +38,9 @@ Pin für Türöffnung: <code>*<%= $accesscode %>#</code><br/>
 
 
 <p>Sie können ihre Reservation jederzeit online bearbeiten.</p>
+
+<p>Die Anlage ist pünktlich und sauber zu verlassen (dreckige Schuhe beim Ankommen im Eingangsbereich platzieren). Allfällige Defekte bitte an
+<a href="mailto:saalsporthalle@zuerich.ch">saalsporthalle@zuerich.ch</a> melden.</p>
 
 <p>Diese Mail wurde automatisch generiert.</p>
 </body>
