@@ -9,4 +9,4 @@ cat CHANGES >> CHANGES.new && mv CHANGES.new CHANGES
 $EDITOR CHANGES
 ./bootstrap
 make dist
-cat kuickres-$V.tar.gz | ssh kuicksa@freddie 'tar zxf -;cd kuickres-'$V';./configure --prefix=$HOME/opt/kuickres;make install;$HOME/start.sh'
+cat kuickres-$V.tar.gz | ssh kuicksa@freddielx 'tar zxf -;cd kuickres-'$V';./configure --prefix=$HOME/opt/kuickres;make install;$HOME/start.sh'

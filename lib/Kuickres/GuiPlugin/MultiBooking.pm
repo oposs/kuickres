@@ -98,7 +98,6 @@ has actionCfg => sub {
             action => 'popup',
             key => 'edit',
             addToContextMenu => false,
-            name => 'MultiBookingEditForm',
             popupTitle => trm('Edit MultiBooking'),
             buttonSet => {
                 enabled => false

@@ -103,8 +103,8 @@ has actionCfg => sub {
         $admin ? ({
             label => trm('Add User'),
             action => 'popup',
+            key => 'add',
             addToContextMenu => true,
-            name => 'userFormAdd',
             popupTitle => trm('New User'),
             set => {
                 height => 500,
@@ -125,7 +125,6 @@ has actionCfg => sub {
             },
             addToContextMenu => true,
             defaultAction => true,
-            name => 'userFormEdit',
             key => 'edit',
             popupTitle => trm('Edit User'),
             actionHandler => sub {

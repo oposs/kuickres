@@ -119,7 +119,7 @@ sub checkResourceAllocations ( $self, $user, $start,
         sub ($rec) {
             my $eqId = $rec->{equipment_id};
             if (not $eqUserHash->{$eqId} and not $self->user->may('admin')) {
-                push @issues, trm( "Benutzer hat keine erlaubniss die Anlage  %1 zu buchen.", $rec->{equipment_name});
+                push @issues, trm( "Benutzer hat keine Erlaubnis die Anlage  %1 zu buchen.", $rec->{equipment_name});
             }
 
             if ($end < $rec->{equipment_start_ts}
@@ -133,9 +133,12 @@ sub checkResourceAllocations ( $self, $user, $start,
         }
     );
 
+
     if ($self->user->may('admin')){
         return @issues ? \@issues : undef;
     };
+    
+    ## these rules only apply to non-admin users ##
 
     my $rules = $self->getUserCatRules($user);
 
@@ -181,6 +184,25 @@ sub checkResourceAllocations ( $self, $user, $start,
         push @issues, trm(
             "Mehr als %1 Stunden (%2h) reserviert in einem einzelnen Tag",
             $rules->{maxBookingHoursPerDay},sprintf("%.1f",$duration/3600)
+        );
+    }
+    if (not $rules->{allowDoubleBooking}) {
+        my $overlaps = $db->select(
+            'booking',
+            '*',
+            { -and => [
+                booking_delete_ts => undef,
+                booking_cbuser    => $user,
+                -bool => \["booking_start_ts + booking_duration_s > ?", { 
+                    type=> SQL_INTEGER, value =>  $start }],
+                -bool => \["booking_start_ts < ?", { 
+                    type=> SQL_INTEGER, value =>  $end }],
+                $exclude ? ( booking_id => { '!=' => $exclude } ) : (),
+            ]}
+        )->hashes->map(
+            sub {
+                push @issues, trm("Im gewünschten Zeitraum existiert schon eine Buchung für deinen Account. Bitte bearbeite die bestehende Buchung.");
+            }
         );
     }
     return @issues ? \@issues : undef;

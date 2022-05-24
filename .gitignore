@@ -40,4 +40,5 @@ etc/*secret
 *~
 /.vscode/perl-lang/
 .pls_cache
-kuickres-satellite/kuickres-satellite-img.gz
+kuickres-satellite/*.gz
+frontend/qx_packages

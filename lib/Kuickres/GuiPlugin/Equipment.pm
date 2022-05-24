@@ -116,7 +116,6 @@ has actionCfg => sub {
             action => 'popup',
             key => 'edit',
             addToContextMenu => false,
-            name => 'EquipmentEditForm',
             popupTitle => trm('Edit Equipment'),
             buttonSet => {
                 enabled => false

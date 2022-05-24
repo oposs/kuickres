@@ -73,7 +73,6 @@ has actionCfg => sub {
             label => trm('Add District'),
             action => 'popup',
             addToContextMenu => false,
-            name => 'DistrictAddForm',
             key => 'add',
             popupTitle => trm('New District'),
             set => {
@@ -92,7 +91,6 @@ has actionCfg => sub {
             action => 'popup',
             key => 'edit',
             addToContextMenu => false,
-            name => 'DistrictEditForm',
             buttonSet => {
                 enabled => false
             },

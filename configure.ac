@@ -64,8 +64,8 @@ ac_node_version="10"
 if test -x "$NODE"; then
   AC_MSG_CHECKING(make sure we have at least node ${ac_node_version})
   case `$NODE --version` in
-  v14*)
-    AC_MSG_RESULT(ok v14)
+  v1*)
+    AC_MSG_RESULT(ok v16)
     ;;
   *)
     AC_MSG_RESULT(no);

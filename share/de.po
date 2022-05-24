@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kuickres 0.0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-11 11:41+0100\n"
+"POT-Creation-Date: 2022-05-24 16:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "%1 is required"
 msgstr "%1 ist erforderlich"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:317
+#: lib/Kuickres/GuiPlugin/Booking.pm:315
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:367
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:455
 msgid "%d.%m.%Y"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "Add District"
 msgstr "Schulkreis Erfassen"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:152 lib/Kuickres/GuiPlugin/Room.pm:160
+#: lib/Kuickres/GuiPlugin/Room.pm:150 lib/Kuickres/GuiPlugin/Room.pm:157
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:144
 msgid "Add Equipment"
 msgstr "Anlage Hinzufügen"
@@ -74,7 +74,7 @@ msgstr "Anlage Hinzufügen"
 msgid "Add Location"
 msgstr "Ort Hinzufügen"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:181
+#: lib/Kuickres/GuiPlugin/Room.pm:177
 msgid "Add MultiBooking"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgid "Add User"
 msgstr "Konto hinzufügen"
 
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:391
-#: lib/Kuickres/GuiPlugin/UserCatForm.pm:167
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:173
 msgid "Add UserCat"
 msgstr "UserCategory hinzufügen"
 
@@ -103,11 +103,11 @@ msgstr "Adresse"
 msgid "Age Group"
 msgstr "Klasse"
 
-#: lib/Kuickres/GuiPlugin/MultiBooking.pm:155
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:154
 msgid "Alle zukuenftigen Bookings wurden aus der MultiBooking-Liste entfernt."
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:475
+#: lib/Kuickres/GuiPlugin/Booking.pm:473
 msgid "Alles"
 msgstr ""
 
@@ -124,7 +124,7 @@ msgid "Available From"
 msgstr "Verfügbar ab"
 
 #: lib/Kuickres/Role/BookingHelper.pm:122
-msgid "Benutzer hat keine erlaubniss die Anlage  %1 zu buchen."
+msgid "Benutzer hat keine Erlaubnis die Anlage  %1 zu buchen."
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:398
@@ -136,15 +136,15 @@ msgstr "Buchungsproblem"
 msgid "Booking was not possible because: <ul>%1</ul>"
 msgstr "Die Buchung konnte nicht durchgeführt werden wegen <ul>%1</ul>"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:283
+#: lib/Kuickres/GuiPlugin/Booking.pm:281
 msgid "Bookings in the past can not be deleted"
 msgstr "Buchungen in der Vergangenheit können nicht gelöscht werden."
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:282
+#: lib/Kuickres/GuiPlugin/Booking.pm:280
 msgid "Buchung %1 existiert nicht"
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:150
+#: lib/Kuickres/Role/BookingHelper.pm:153
 msgid "Buchung liegt mehr als %1 Tage in der Zukunft"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr "Kosten"
 msgid "Create Admin Account"
 msgstr "Admin Konto erzeugen"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:173
+#: lib/Kuickres/GuiPlugin/Room.pm:170
 msgid "Create MultiBooking"
 msgstr ""
 
@@ -195,39 +195,39 @@ msgstr "Datendekodierungsproblem %1"
 msgid "Date"
 msgstr "Datum"
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:110
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:108
 msgid "Delete Agegroup"
 msgstr "Klasse Löschen"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:264
+#: lib/Kuickres/GuiPlugin/Booking.pm:262
 msgid "Delete Booking"
 msgstr "Buchung Löschen"
 
-#: lib/Kuickres/GuiPlugin/UserCat.pm:118
+#: lib/Kuickres/GuiPlugin/UserCat.pm:116
 msgid "Delete Category"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/District.pm:112
+#: lib/Kuickres/GuiPlugin/District.pm:110
 msgid "Delete District"
 msgstr "Schulkreis Löschen"
 
-#: lib/Kuickres/GuiPlugin/Equipment.pm:136
+#: lib/Kuickres/GuiPlugin/Equipment.pm:135
 msgid "Delete Equipment"
 msgstr "Equipment Löschen"
 
-#: lib/Kuickres/GuiPlugin/Location.pm:126
+#: lib/Kuickres/GuiPlugin/Location.pm:124
 msgid "Delete Location"
 msgstr "Standort Löschen"
 
-#: lib/Kuickres/GuiPlugin/MultiBooking.pm:118
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:117
 msgid "Delete MultiBooking"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/Room.pm:125
+#: lib/Kuickres/GuiPlugin/Room.pm:123
 msgid "Delete Room"
 msgstr "Raum Löschen"
 
-#: lib/Kuickres/GuiPlugin/User.pm:150
+#: lib/Kuickres/GuiPlugin/User.pm:149
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:130
 msgid "Delete User"
 msgstr "Konto Löschen"
@@ -241,12 +241,12 @@ msgstr "Gelöscht"
 msgid "District"
 msgstr "Schulkreis"
 
-#: lib/Kuickres/GuiPlugin/MultiBooking.pm:121
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:120
 msgid ""
 "Do you really want to delete the MultiBooking and all associated Bookings ?"
 msgstr "Wollen Sie das MultiBooking mit allen erzeugten Buchungen löschen ?"
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:113
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:111
 msgid ""
 "Do you really want to delete the selected Agegroup. This will only work if "
 "there are no reservations linked to it."
@@ -254,11 +254,11 @@ msgstr ""
 "Soll die gewählte Klasse wirklich gelöscht werden? Die ist nur möglich wenn "
 "keine Reservationen damit verbunden sind."
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:267
+#: lib/Kuickres/GuiPlugin/Booking.pm:265
 msgid "Do you really want to delete the selected Booking."
 msgstr "Wollen sie die gewählte Buchung wirklich löchen?"
 
-#: lib/Kuickres/GuiPlugin/District.pm:115
+#: lib/Kuickres/GuiPlugin/District.pm:113
 msgid ""
 "Do you really want to delete the selected District. This will only work if "
 "there are no reservations linked to it."
@@ -266,11 +266,11 @@ msgstr ""
 "Wollen sie wirklich den ausgewählten Schulkreis löschen? Dies ist nur "
 "möglich wenn keine Buchungen damit verbunden sind."
 
-#: lib/Kuickres/GuiPlugin/Equipment.pm:139
+#: lib/Kuickres/GuiPlugin/Equipment.pm:138
 msgid "Do you really want to delete the selected Equipment?"
 msgstr "Wollen sie wirklich das gewählte Equipment löschen?"
 
-#: lib/Kuickres/GuiPlugin/Location.pm:133
+#: lib/Kuickres/GuiPlugin/Location.pm:131
 msgid ""
 "Do you really want to delete the selected Location. This will only work if "
 "there are no rooms linked to it."
@@ -278,63 +278,63 @@ msgstr ""
 "Soll der gewählte Standort wirklich gelöscht werden? Dies ist nur möglich "
 "wenn keine Räume an dem Standort existieren."
 
-#: lib/Kuickres/GuiPlugin/Room.pm:128
+#: lib/Kuickres/GuiPlugin/Room.pm:126
 msgid ""
 "Do you really want to delete the selected Room. This will only work if there "
 "are no reservations linked to it."
 msgstr "Wollen sie wirklich den gewählten Raum löschen?"
 
-#: lib/Kuickres/GuiPlugin/UserCat.pm:121
+#: lib/Kuickres/GuiPlugin/UserCat.pm:119
 msgid "Do you really want to delete the selected UserCat?"
 msgstr "Wollen sie wirklich die gewählte UserCategory löschen?"
 
-#: lib/Kuickres/GuiPlugin/User.pm:153
+#: lib/Kuickres/GuiPlugin/User.pm:152
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:133
 msgid "Do you really want to delete the selected user ?"
 msgstr "Wollen sie wirklich das gewählte Konto löschen?"
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:89 lib/Kuickres/GuiPlugin/Agegroup.pm:97
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:88 lib/Kuickres/GuiPlugin/Agegroup.pm:95
 msgid "Edit Agegroup"
 msgstr "Klasse Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:242 lib/Kuickres/GuiPlugin/Booking.pm:248
+#: lib/Kuickres/GuiPlugin/Booking.pm:241 lib/Kuickres/GuiPlugin/Booking.pm:246
 msgid "Edit Booking"
 msgstr "Buchung Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/UserCat.pm:97
+#: lib/Kuickres/GuiPlugin/UserCat.pm:96
 msgid "Edit Category"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/District.pm:91 lib/Kuickres/GuiPlugin/District.pm:99
+#: lib/Kuickres/GuiPlugin/District.pm:90 lib/Kuickres/GuiPlugin/District.pm:97
 msgid "Edit District"
 msgstr "Schulkreis Bearbeiten"
 
 #: lib/Kuickres/GuiPlugin/Equipment.pm:115
-#: lib/Kuickres/GuiPlugin/Equipment.pm:120
+#: lib/Kuickres/GuiPlugin/Equipment.pm:119
 msgid "Edit Equipment"
 msgstr "Anlagen Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/Location.pm:105
-#: lib/Kuickres/GuiPlugin/Location.pm:110
+#: lib/Kuickres/GuiPlugin/Location.pm:104
+#: lib/Kuickres/GuiPlugin/Location.pm:108
 msgid "Edit Location"
 msgstr "Standort Bearbeiten"
 
 #: lib/Kuickres/GuiPlugin/MultiBooking.pm:97
-#: lib/Kuickres/GuiPlugin/MultiBooking.pm:102
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:101
 msgid "Edit MultiBooking"
 msgstr "MultiBooking Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:104 lib/Kuickres/GuiPlugin/Room.pm:109
+#: lib/Kuickres/GuiPlugin/Room.pm:103 lib/Kuickres/GuiPlugin/Room.pm:107
 msgid "Edit Room"
 msgstr "Raum Bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/User.pm:121 lib/Kuickres/GuiPlugin/User.pm:130
+#: lib/Kuickres/GuiPlugin/User.pm:121 lib/Kuickres/GuiPlugin/User.pm:129
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:105
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:110
 msgid "Edit User"
 msgstr "Konto bearbeiten"
 
-#: lib/Kuickres/GuiPlugin/UserCat.pm:102
+#: lib/Kuickres/GuiPlugin/UserCat.pm:100
 msgid "Edit UserCat"
 msgstr "UserCategory bearbeiten"
 
@@ -376,8 +376,8 @@ msgstr "Anlage %1 befindet sich nicht in diesem Raum"
 msgid "Error"
 msgstr "Fehler"
 
-#: lib/Kuickres/Role/BookingHelper.pm:285
-#: lib/Kuickres/Role/BookingHelper.pm:312
+#: lib/Kuickres/Role/BookingHelper.pm:307
+#: lib/Kuickres/Role/BookingHelper.pm:334
 msgid "Error parsing %1"
 msgstr "Fehler beim parsing von %1"
 
@@ -385,7 +385,7 @@ msgstr "Fehler beim parsing von %1"
 msgid "Export %1"
 msgstr "Exportiere %1"
 
-#: lib/Kuickres/GuiPlugin/User.pm:173
+#: lib/Kuickres/GuiPlugin/User.pm:172
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:150
 msgid "Faild to remove user %1"
 msgstr "Das Konto %1 konnte nicht entfernt werden."
@@ -394,7 +394,7 @@ msgstr "Das Konto %1 konnte nicht entfernt werden."
 msgid "Failed to create account for %1"
 msgstr "Das Konto für %1 konnte nicht erzeugt werden."
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:296 lib/Kuickres/GuiPlugin/Booking.pm:310
+#: lib/Kuickres/GuiPlugin/Booking.pm:294 lib/Kuickres/GuiPlugin/Booking.pm:308
 msgid "Failed to remove booking %1"
 msgstr "Fehler beim Löschen der Buchung %1"
 
@@ -451,10 +451,16 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:209
 #: lib/Kuickres/GuiPlugin/Location.pm:44 lib/Kuickres/GuiPlugin/UserCat.pm:43
 #: lib/Kuickres/GuiPlugin/Equipment.pm:43
-#: lib/Kuickres/GuiPlugin/UserCatForm.pm:73
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:74
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:133
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:42
 msgid "Id"
+msgstr ""
+
+#: lib/Kuickres/Role/BookingHelper.pm:204
+msgid ""
+"Im gewünschten Zeitraum existiert schon eine Buchung für deinen Account. "
+"Bitte bearbeite die bestehende Buchung."
 msgstr ""
 
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:512
@@ -508,11 +514,11 @@ msgstr "Standort Bezeichnung"
 msgid "MBooking"
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:144
+#: lib/Kuickres/Role/BookingHelper.pm:147
 msgid "Mehr als %1 Anlage Punkte (%2) in einer einzelnen Reservation"
 msgstr ""
 
-#: lib/Kuickres/Role/BookingHelper.pm:182
+#: lib/Kuickres/Role/BookingHelper.pm:185
 msgid "Mehr als %1 Stunden (%2h) reserviert in einem einzelnen Tag"
 msgstr ""
 
@@ -524,7 +530,7 @@ msgstr "Mobiltelefon"
 msgid "Mon"
 msgstr ""
 
-#: lib/Kuickres/GuiPlugin/MultiBooking.pm:156
+#: lib/Kuickres/GuiPlugin/MultiBooking.pm:155
 msgid "MultiBooking entfernt"
 msgstr ""
 
@@ -540,7 +546,7 @@ msgstr "Muss eine Zahl sein!"
 #: lib/Kuickres/GuiPlugin/LocationForm.pm:66
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:79
 #: lib/Kuickres/GuiPlugin/UserCat.pm:51 lib/Kuickres/GuiPlugin/Equipment.pm:87
-#: lib/Kuickres/GuiPlugin/UserCatForm.pm:81
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:82
 #: lib/Kuickres/GuiPlugin/Agegroup.pm:50
 msgid "Name"
 msgstr ""
@@ -549,19 +555,19 @@ msgstr ""
 msgid "Name of the School"
 msgstr "Name der Schule"
 
-#: lib/Kuickres/GuiPlugin/Agegroup.pm:75
+#: lib/Kuickres/GuiPlugin/Agegroup.pm:74
 msgid "New Agegroup"
 msgstr "Altergruppe Erfassen"
 
-#: lib/Kuickres/GuiPlugin/Booking.pm:224 lib/Kuickres/GuiPlugin/Booking.pm:229
+#: lib/Kuickres/GuiPlugin/Booking.pm:224 lib/Kuickres/GuiPlugin/Booking.pm:228
 msgid "New Booking"
 msgstr "Neue Buchung"
 
-#: lib/Kuickres/GuiPlugin/District.pm:78
+#: lib/Kuickres/GuiPlugin/District.pm:77
 msgid "New District"
 msgstr "Schulkreis Erfassen"
 
-#: lib/Kuickres/GuiPlugin/Location.pm:91
+#: lib/Kuickres/GuiPlugin/Location.pm:90
 msgid "New Location"
 msgstr "Standort Erfassen"
 
@@ -569,7 +575,7 @@ msgstr "Standort Erfassen"
 msgid "New Password"
 msgstr "Neues Passwort"
 
-#: lib/Kuickres/GuiPlugin/Room.pm:91
+#: lib/Kuickres/GuiPlugin/Room.pm:90
 msgid "New Room"
 msgstr "Raum Erfassen"
 
@@ -578,7 +584,7 @@ msgstr "Raum Erfassen"
 msgid "New User"
 msgstr "Konto Hinzufügen"
 
-#: lib/Kuickres/GuiPlugin/UserCat.pm:84
+#: lib/Kuickres/GuiPlugin/UserCat.pm:83
 msgid "New UserCat"
 msgstr "Neue UserCategory Hinzufügen"
 
@@ -690,7 +696,7 @@ msgstr "Der Raum ist nicht offen von %1 bis %2."
 
 #: lib/Kuickres/GuiPlugin/MultiBooking.pm:60
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:247
-#: lib/Kuickres/GuiPlugin/UserCatForm.pm:90
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:91
 msgid "Rule"
 msgstr "Regel"
 
@@ -709,7 +715,7 @@ msgstr ""
 #: lib/Kuickres/GuiPlugin/UserForm.pm:225
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:143
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:390
-#: lib/Kuickres/GuiPlugin/UserCatForm.pm:166
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:172
 #: lib/Kuickres/GuiPlugin/BookingForm.pm:474
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/UserForm.pm:204
 msgid "Save Changes"
@@ -858,7 +864,7 @@ msgstr "Falsche Passwort"
 msgid "You are not allowed to book in the name of other users."
 msgstr "Sie können keine Buchungen für andere Benutzer erfassen."
 
-#: lib/Kuickres/GuiPlugin/User.pm:164
+#: lib/Kuickres/GuiPlugin/User.pm:163
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:141
 msgid "You can not delete the user you are logged in with"
 msgstr "Der eigene Benutzer kann nicht gelöscht werden."
@@ -869,7 +875,7 @@ msgid "You can only edit your own stuff unless you have admin permissions."
 msgstr ""
 "Ohne Admin-Berechtiungn können nur die eigenen Einträge bearbeitet werden."
 
-#: lib/Kuickres/GuiPlugin/User.pm:135 lib/Kuickres/GuiPlugin/User.pm:162
+#: lib/Kuickres/GuiPlugin/User.pm:134 lib/Kuickres/GuiPlugin/User.pm:161
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:115
 #: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/Users.pm:139
 msgid "You have to select a user first"
@@ -912,7 +918,7 @@ msgstr "eMail Adresse schon in Gebrauch"
 
 #: lib/Kuickres/GuiPlugin/EquipmentForm.pm:184
 #: lib/Kuickres/GuiPlugin/MultiBookingForm.pm:435
-#: lib/Kuickres/GuiPlugin/UserCatForm.pm:205
+#: lib/Kuickres/GuiPlugin/UserCatForm.pm:211
 msgid "no selection found"
 msgstr "Kein Auswahl gefunden"
 
@@ -937,7 +943,7 @@ msgstr "wiederholen sie das Passwort"
 msgid "search words ..."
 msgstr "suchen ..."
 
-#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:139
+#: /home/oetiker/checkouts/kuickres/thirdparty/lib/perl5/CallBackery/qooxdoo/../GuiPlugin/AbstractForm.pm:91
 msgid "sorry, don't know the field you are talking about"
 msgstr "Das gewählte Feld ist unbekannt."
 

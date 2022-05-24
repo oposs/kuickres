@@ -49,6 +49,7 @@ has sample_rule => sub ($self) {
 futureBookingDays: 60
 maxEquipmentPointsPerBooking: 5
 maxBookingHoursPerDay: 4
+allowDoubleBooking: false
 equipmentList:
 SAMPLE_RULE
     for (@{$self->eqList}) {
@@ -125,7 +126,12 @@ has formCfg => sub {
                         minItems => 1,
                         uniqueItems => true,
                         additionalItems => false,
-                    }
+                    },
+                    allowDoubleBooking => {
+                        type => 'boolean',
+                        description => 'Allow double booking',
+                        default => false,
+                    },
                 }
             })
         },
