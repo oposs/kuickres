@@ -55,6 +55,13 @@ has tableCfg => sub {
             key => 'district_name',
             sortable => true,
         },
+        {
+            label => trm('Active'),
+            type => 'string',
+            width => '6*',
+            key => 'district_active',
+            sortable => true,
+        },
      ]
 };
 
@@ -76,8 +83,8 @@ has actionCfg => sub {
             key => 'add',
             popupTitle => trm('New District'),
             set => {
-                height => 500,
-                width => 500
+                height => 180,
+                width => 450
             },
             backend => {
                 plugin => 'DistrictForm',
@@ -90,14 +97,15 @@ has actionCfg => sub {
             label => trm('Edit District'),
             action => 'popup',
             key => 'edit',
-            addToContextMenu => false,
+            addToContextMenu => true,
+            defaultAction => true,
             buttonSet => {
                 enabled => false
             },
             popupTitle => trm('Edit District'),
             set => {
-                minHeight => 500,
-                minWidth => 500
+                height => 180,
+                width => 450
             },
             backend => {
                 plugin => 'DistrictForm',
@@ -168,6 +176,7 @@ SQL_END
        $args->{firstRow},
     )->hashes;
     for my $row (@$data) {
+        $row->{district_active} = $row->{district_active} ? 'X' : '';
         $row->{_actionSet} = {
             edit => {
                 enabled => true

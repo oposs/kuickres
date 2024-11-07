@@ -1,3 +1,5 @@
+QX=qx
+#/home/oetiker/scratch/qooxdoo/bin/build/qx
 
 AUTOMAKE_OPTIONS=foreign
 
@@ -17,16 +19,16 @@ source: node_modules compiled/source/.built
 
 
 source-watch: node_modules
-	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --watch --feedback=false --erase
+	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) $(QX) compile --watch --feedback=false --erase
 
 build: ../public/.built
 
 clean: node_modules
-	$(NPX) qx clean
+	$(NPX) $(QX) clean
 
 ../public/.built: $(EXTRA_DIST) Makefile.in $(CBFILES)
 	$(MAKE) node_modules
-	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --target=build --feedback=false
+	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) $(QX) compile --target=build
 	mkdir -p ../public/$(QX_CLASS)
 	cp -p compiled/build/$(QX_CLASS)/*.js ../public/$(QX_CLASS)
 	cp -p compiled/build/index.html ../public
@@ -34,7 +36,7 @@ clean: node_modules
 	touch $@
 
 compiled/source/.built: $(EXTRA_DIST) Makefile.in $(CBFILES)
-	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) qx compile --feedback=false
+	CALLBACKERY_QX=$(CALLBACKERY_QX) $(NPX) $(QX) compile --warn-as-error
 	touch $@
 
 node_modules/.installed package-lock.json: package.json

@@ -50,10 +50,10 @@ DISTRIBUTIONS
       perl 5.012
       strict 0
       warnings 0
-  CallBackery-0.42.1
-    pathname: O/OE/OETIKER/CallBackery-0.42.1.tar.gz
+  CallBackery-0.49.3
+    pathname: O/OE/OETIKER/CallBackery-0.49.3.tar.gz
     provides:
-      CallBackery 0.042001
+      CallBackery 0.049003
       CallBackery::Config undef
       CallBackery::Controller::RpcService undef
       CallBackery::Database undef
@@ -75,15 +75,18 @@ DISTRIBUTIONS
       Config::Grammar 1.13
       Excel::Writer::XLSX 0
       ExtUtils::MakeMaker 0
-      Future::AsyncAwait 0.54
-      JSON::Validator 5.03
+      Future::AsyncAwait 0.65
+      JSON::Validator 5.14
       Locale::PO 0.27
-      Mojolicious 9.12
-      Mojolicious::Plugin::Qooxdoo v1.0.13
-      Syntax::Keyword::Try 0.25
+      Mojolicious 9.33
+      Mojolicious::Plugin::Qooxdoo v1.0.14
+      Pod::Simple::HTML 0
+      Pod::Simple::Text 0
+      Syntax::Keyword::Try 0.29
+      Test::Fatal 0
       Text::CSV 0
-      XS::Parse::Keyword 0.21
-      YAML::XS 0.83
+      XS::Parse::Keyword 0.38
+      YAML::XS 0.88
       perl 5.022000
   Canary-Stability-2013
     pathname: M/ML/MLEHMANN/Canary-Stability-2013.tar.gz
@@ -606,31 +609,32 @@ DISTRIBUTIONS
       POSIX 0
       strict 0
       warnings 0
-  Future-0.48
-    pathname: P/PE/PEVANS/Future-0.48.tar.gz
+  Future-0.50
+    pathname: P/PE/PEVANS/Future-0.50.tar.gz
     provides:
-      Future 0.48
-      Future::Exception 0.48
-      Future::Mutex 0.48
-      Future::Queue 0.48
-      Future::Utils 0.48
-      Test::Future 0.48
-      Test::Future::Deferred 0.48
+      Future 0.50
+      Future::Exception 0.50
+      Future::Mutex 0.50
+      Future::PP 0.50
+      Future::Utils 0.50
+      Test::Future 0.50
+      Test::Future::Deferred 0.50
     requirements:
       Carp 1.25
       Module::Build 0.4004
       Test::Builder::Module 0
       Time::HiRes 0
       perl 5.010
-  Future-AsyncAwait-0.58
-    pathname: P/PE/PEVANS/Future-AsyncAwait-0.58.tar.gz
+  Future-AsyncAwait-0.66
+    pathname: P/PE/PEVANS/Future-AsyncAwait-0.66.tar.gz
     provides:
-      Future::AsyncAwait 0.58
-      Future::AsyncAwait::Awaitable 0.58
-      Test::Future::AsyncAwait::Awaitable 0.58
+      Future::AsyncAwait 0.66
+      Future::AsyncAwait::Awaitable 0.66
+      Future::AsyncAwait::ExtensionBuilder 0.66
+      Test::Future::AsyncAwait::Awaitable 0.66
     requirements:
       ExtUtils::CBuilder 0
-      Future 0.48
+      Future 0.50
       Module::Build 0.4004
       XS::Parse::Keyword 0.13
       XS::Parse::Keyword::Builder 0.13
@@ -792,10 +796,10 @@ DISTRIBUTIONS
       Mozilla::CA 0
       Net::SSLeay 1.46
       Scalar::Util 0
-  JSON-Validator-5.08
-    pathname: J/JH/JHTHORSEN/JSON-Validator-5.08.tar.gz
+  JSON-Validator-5.14
+    pathname: J/JH/JHTHORSEN/JSON-Validator-5.14.tar.gz
     provides:
-      JSON::Validator 5.08
+      JSON::Validator 5.14
       JSON::Validator::Error undef
       JSON::Validator::Formats undef
       JSON::Validator::Joi undef
@@ -814,7 +818,7 @@ DISTRIBUTIONS
       List::Util 1.45
       Mojolicious 7.28
       YAML::XS 0.67
-      perl 5.010001
+      perl 5.016
   LWP-MediaTypes-6.04
     pathname: O/OA/OALDERS/LWP-MediaTypes-6.04.tar.gz
     provides:
@@ -1000,14 +1004,15 @@ DISTRIBUTIONS
       URI::db 0.15
       URI::file 4.21
       perl 5.010001
-  Mojolicious-9.26
-    pathname: S/SR/SRI/Mojolicious-9.26.tar.gz
+  Mojolicious-9.37
+    pathname: S/SR/SRI/Mojolicious-9.37.tar.gz
     provides:
       Mojo undef
       Mojo::Asset undef
       Mojo::Asset::File undef
       Mojo::Asset::Memory undef
       Mojo::Base undef
+      Mojo::BaseUtil undef
       Mojo::ByteStream undef
       Mojo::Cache undef
       Mojo::Collection undef
@@ -1069,7 +1074,7 @@ DISTRIBUTIONS
       Mojo::UserAgent::Transactor undef
       Mojo::Util undef
       Mojo::WebSocket undef
-      Mojolicious 9.26
+      Mojolicious 9.37
       Mojolicious::Command undef
       Mojolicious::Command::Author::cpanify undef
       Mojolicious::Command::Author::generate undef
@@ -1130,11 +1135,11 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       JSON::Validator 5.08
       Mojolicious 9.00
-  Mojolicious-Plugin-Qooxdoo-1.0.13
-    pathname: O/OE/OETIKER/Mojolicious-Plugin-Qooxdoo-1.0.13.tar.gz
+  Mojolicious-Plugin-Qooxdoo-1.0.14
+    pathname: O/OE/OETIKER/Mojolicious-Plugin-Qooxdoo-1.0.14.tar.gz
     provides:
-      Mojolicious::Plugin::Qooxdoo 1.000013
-      Mojolicious::Plugin::Qooxdoo::JsonRpcController 1.000013
+      Mojolicious::Plugin::Qooxdoo 1.000014
+      Mojolicious::Plugin::Qooxdoo::JsonRpcController 1.000014
     requirements:
       CPAN::Uploader 0
       ExtUtils::MakeMaker 0
@@ -1325,11 +1330,11 @@ DISTRIBUTIONS
       ExtUtils::MakeMaker 0
       Scalar::Util 0
       perl 5.006
-  Syntax-Keyword-Try-0.27
-    pathname: P/PE/PEVANS/Syntax-Keyword-Try-0.27.tar.gz
+  Syntax-Keyword-Try-0.29
+    pathname: P/PE/PEVANS/Syntax-Keyword-Try-0.29.tar.gz
     provides:
-      Syntax::Keyword::Try 0.27
-      Syntax::Keyword::Try::Deparse 0.27
+      Syntax::Keyword::Try 0.29
+      Syntax::Keyword::Try::Deparse 0.29
     requirements:
       ExtUtils::CBuilder 0
       Module::Build 0.4004
@@ -1401,6 +1406,18 @@ DISTRIBUTIONS
       List::Util 1.09
       Scalar::Util 1.09
       Test::Builder 0
+  Test-Fatal-0.017
+    pathname: R/RJ/RJBS/Test-Fatal-0.017.tar.gz
+    provides:
+      Test::Fatal 0.017
+    requirements:
+      Carp 0
+      Exporter 5.57
+      ExtUtils::MakeMaker 6.78
+      Test::Builder 0
+      Try::Tiny 0.07
+      strict 0
+      warnings 0
   Text-CSV-2.01
     pathname: I/IS/ISHIGAKI/Text-CSV-2.01.tar.gz
     provides:
@@ -1629,13 +1646,13 @@ DISTRIBUTIONS
       Fcntl 0
       URI 1.10
       perl 5.008001
-  XS-Parse-Keyword-0.23
-    pathname: P/PE/PEVANS/XS-Parse-Keyword-0.23.tar.gz
+  XS-Parse-Keyword-0.42
+    pathname: P/PE/PEVANS/XS-Parse-Keyword-0.42.tar.gz
     provides:
-      XS::Parse::Infix 0.23
-      XS::Parse::Infix::Builder 0.23
-      XS::Parse::Keyword 0.23
-      XS::Parse::Keyword::Builder 0.23
+      XS::Parse::Infix 0.42
+      XS::Parse::Infix::Builder 0.42
+      XS::Parse::Keyword 0.42
+      XS::Parse::Keyword::Builder 0.42
     requirements:
       ExtUtils::CBuilder 0
       ExtUtils::CChecker 0.11
@@ -1651,11 +1668,11 @@ DISTRIBUTIONS
       ExtUtils::CBuilder 0
       Module::Build 0.4004
       perl 5.016
-  YAML-LibYAML-0.83
-    pathname: T/TI/TINITA/YAML-LibYAML-0.83.tar.gz
+  YAML-LibYAML-0.89
+    pathname: T/TI/TINITA/YAML-LibYAML-0.89.tar.gz
     provides:
-      YAML::LibYAML 0.83
-      YAML::XS 0.83
+      YAML::LibYAML 0.89
+      YAML::XS 0.89
       YAML::XS::LibYAML undef
     requirements:
       ExtUtils::MakeMaker 0

@@ -61,12 +61,16 @@ has formCfg => sub {
 
         {
             key => 'district_name',
-            label => trm('Name'),
+            label => trm('District'),
             widget => 'text',
-            required => true,
             set => {
                 required => true,
             },
+        },
+        {
+            key => 'district_active',
+            label => trm('Aktiv'),
+            widget => 'checkBox',
         },
     ];
 };
@@ -78,17 +82,18 @@ has actionCfg => sub {
         my $self = shift;
         my $args = shift;
         my %metaInfo;
+        $args->{district_active} = $args->{district_active} ? 1 : 0;
         if ($type eq 'add')  {
             $metaInfo{recId} = $self->db->insert('district',{
                 map { "district_".$_ => $args->{"district_".$_} } qw(
-                    name
+                    name active
                 )
             })->last_insert_id;
         }
         else {
             $self->db->update('district', {
                 map { 'district_'.$_ => $args->{'district_'.$_} } qw(
-                    name
+                    name active
                 )
             },{ district_id => $args->{district_id}});
         }
@@ -127,13 +132,14 @@ has grammar => sub {
 sub getAllFieldValues {
     my $self = shift;
     my $args = shift;
-    return {} if $self->config->{type} ne 'edit';
-    my $id = $args->{selection}{location_id};
-    return {} unless $id;
+    return {  district_active => true } if $self->config->{type} ne 'edit';
+    my $id = $args->{selection}{district_id};
+    return { } unless $id;
 
     my $db = $self->db;
     my $data = $db->select('district','*'
         ,{district_id => $id})->hash;
+    $data->{district_active} = $data->{district_active} ? true : false;
     return $data;
 }
 

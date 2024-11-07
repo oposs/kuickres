@@ -1,7 +1,7 @@
 requires 'Mojolicious';
 requires 'Future::AsyncAwait';
 requires 'EV';
-requires 'CallBackery', '>=0.39.6';
+requires 'CallBackery', '>=0.49.0';
 requires 'Mojo::SQLite', '>= 3.006';
 requires 'Email::MIME';
 requires 'Email::Sender';

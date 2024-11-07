@@ -300,3 +300,6 @@ COMMIT;
 PRAGMA foreign_keys=on;
 BEGIN;
 
+-- 4 up
+
+ALTER TABLE district ADD district_active INT NOT NULL DEFAULT 1;

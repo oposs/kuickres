@@ -23,6 +23,7 @@ The Table Gui.
 =cut
 
 has checkAccess => sub ($self) {
+    return 0 if $self->user->userId eq '__ROOT';
     return $self->user->may('booker') || $self->user->may('admin');
 };
 
@@ -227,8 +228,8 @@ has actionCfg => sub {
             key => 'add',
             popupTitle => trm('New Booking'),
             set => {
-                height => 700,
-                width => 350
+                height => 600,
+                width => 480
             },
             backend => {
                 plugin => 'BookingForm',
@@ -245,8 +246,8 @@ has actionCfg => sub {
             key => 'edit',
             popupTitle => trm('Edit Booking'),
             set => {
-                height => 700,
-                width => 350,
+                height => 600,
+                width => 480,
             },
             buttonSet => {
                 enabled => false

@@ -59,20 +59,6 @@ else
   AC_MSG_ERROR(could not find perl)
 fi
 
-ac_node_version="10"
-
-if test -x "$NODE"; then
-  AC_MSG_CHECKING(make sure we have at least node ${ac_node_version})
-  case `$NODE --version` in
-  v1*)
-    AC_MSG_RESULT(ok v16)
-    ;;
-  *)
-    AC_MSG_RESULT(no);
-    NODE=old-node
-  esac
-fi
-
 AM_CONDITIONAL(BUILD_QOOXDOO_APP,[test -x $NODE])
 
 AC_PATH_PROG(OPENSSL, openssl, no)
@@ -160,38 +146,6 @@ frontend/Makefile
 AC_SUBST(VERSION)
 
 AC_OUTPUT
-
-
-if test -x "$NODE"; then
-:
-else
-cat <<NOTES
-
-** WARNING ***********************************************
-
-To run the qooxdoo compiler, at least node v10 is required.
-Use nvm to setup your local, up to date copy of node.
-Go to https://github.com/nvm-sh/nvm for futher information
-
-NOTES
-fi
-
-
-if test "$mod_ok" = "0"; then
-    cat <<NOTES
-
-** SOME PERL MODULES ARE MISSING ******************************
-
-If you know where perl can find the missing modules, set
-the PERL5LIB environment variable accordingly. Otherwise
-just proceed and the missing modules will be installed
-automatically.
-
-To force the system to download missing perl modules, you can
-do a `touch PERL_MODULES` before running `$GMAKE`
-NOTES
-
-fi
 
 cat <<NOTES
 

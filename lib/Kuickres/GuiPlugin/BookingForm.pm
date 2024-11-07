@@ -62,7 +62,7 @@ has formCfg => sub {
     my $room = $db->select('room','room_id')->hash->{room_id};
 
     my $districts = $db->select(
-        'district',[\"district_id AS key",\"district_name AS title"],undef,'district_id'
+        'district',[\"district_id AS key",\"district_name AS title"],{district_active => 1},'district_id'
     )->hashes->to_array;
     if ($self->config->{type} eq 'add'){
         unshift @$districts, {
